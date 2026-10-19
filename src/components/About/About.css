@@ -1,0 +1,12 @@
+.about-section { color: var(--color-black); background: #e7e3dc; }
+.about-layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(4rem, 9vw, 13rem); margin-top: 6rem; }
+.about-layout h2 { font-size: clamp(4.8rem, 7.8vw, 10rem); }
+.about-layout h2 span { color: #8c867e; }
+.about-copy { padding-top: .5rem; }
+.about-copy p { max-width: 45rem; color: #77716a; font-size: 1.45rem; line-height: 1.9; }
+.about-copy .about-lead { margin-bottom: 2rem; color: #242321; font: 500 clamp(2rem, 2.5vw, 3rem)/1.35 var(--font-display); letter-spacing: -.04em; }
+.about-signoff { display: flex; align-items: center; gap: 1.3rem; margin-top: 4rem; font: 700 1.1rem/1.7 var(--font-display); letter-spacing: .12em; }
+.about-signoff small { color: #77716a; font-size: .9rem; font-weight: 500; letter-spacing: .18em; }
+.about-sign { display: grid; place-items: center; width: 4.4rem; height: 4.4rem; border: 1px solid #aaa39b; border-radius: 50%; font-size: 2rem; letter-spacing: -.08em; }
+.about-sign span { color: var(--color-orange); }
+@media (max-width: 760px) { .about-layout { grid-template-columns: 1fr; gap: 3rem; margin-top: 4rem; } .about-layout h2 { font-size: clamp(4.8rem, 12vw, 7rem); } }
