@@ -27,3 +27,9 @@
   .header-nav > a { padding: 1.6rem 0; font-size: 1.6rem; border-bottom: 1px solid rgba(255,255,255,.1); }
   .header-nav .header-cta { margin-top: 1.4rem; padding: 1.4rem; border: 1px solid rgba(255,255,255,.25); }
 }
+
+.brand-mark { flex: 0 0 auto; width: clamp(20rem, 25vw, 31rem); }
+.brand-logo { display: block; width: 100%; height: auto; }
+@media (max-width: 760px) {
+  .brand-mark { width: clamp(19rem, 57vw, 25rem); }
+}
