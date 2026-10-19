@@ -1,0 +1,13 @@
+.contact-section { background: var(--color-orange); color: var(--color-white); }
+.contact-section .section-kicker { color: rgba(255,255,255,.7); }
+.contact-section .section-kicker i { background: var(--color-white); }
+.contact-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(4rem, 8vw, 12rem); margin-top: 6rem; }
+.contact-layout h2 { font-size: clamp(5rem, 8.8vw, 11rem); line-height: .96; }
+.contact-layout h2 span { color: rgba(255,255,255,.58); }
+.contact-copy { align-self: end; padding-bottom: .5rem; }
+.contact-copy > p { max-width: 37rem; font-size: 1.5rem; line-height: 1.8; color: rgba(255,255,255,.82); }
+.contact-cta { display: inline-flex; align-items: center; gap: 1.5rem; margin-top: 3rem; padding: 1.5rem 1.8rem; color: var(--color-black); background: var(--color-white); font-size: 1.3rem; font-weight: 600; transition: transform .25s ease; }
+.contact-cta:hover { transform: translateY(-3px); }
+.contact-details { display: flex; flex-direction: column; gap: .8rem; margin-top: 3rem; color: rgba(255,255,255,.7); font-size: 1.1rem; }
+.contact-details span { display: flex; align-items: center; gap: .8rem; }
+@media (max-width: 760px) { .contact-layout { grid-template-columns: 1fr; gap: 3rem; margin-top: 4rem; } .contact-layout h2 { font-size: clamp(5rem, 13vw, 7rem); } }
