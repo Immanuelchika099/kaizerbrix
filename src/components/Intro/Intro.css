@@ -1,0 +1,12 @@
+.section-shell { padding: clamp(7rem, 11vw, 15rem) var(--page-gutter); }
+.section-kicker { display: flex; align-items: center; gap: 1.5rem; color: #9a938b; font-size: 1rem; letter-spacing: .17em; font-weight: 600; }
+.section-kicker i { display: block; width: 5rem; height: 1px; background: var(--color-orange); }
+.intro-section { color: var(--color-black); background: var(--color-stone); }
+.intro-main { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(22rem, .6fr); align-items: end; gap: clamp(4rem, 8vw, 12rem); margin-top: 7rem; }
+.intro-main h2 { max-width: 90rem; font-size: clamp(4rem, 7vw, 9rem); line-height: 1.02; letter-spacing: -.07em; }
+.intro-main h2 span { color: #8c867e; }
+.intro-aside { padding-bottom: .8rem; }
+.intro-aside p { max-width: 34rem; color: #5d5954; font-size: 1.55rem; line-height: 1.8; }
+.underlined-link { display: inline-flex; align-items: center; gap: 1rem; margin-top: 2.6rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(9,9,9,.35); font-size: 1.3rem; font-weight: 600; }
+.underlined-link svg { color: var(--color-orange); }
+@media (max-width: 760px) { .intro-main { grid-template-columns: 1fr; gap: 3rem; margin-top: 4.5rem; } .intro-main h2 { font-size: clamp(4rem, 11vw, 6.5rem); } .intro-aside p { font-size: 1.5rem; } }
