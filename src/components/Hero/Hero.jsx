@@ -12,12 +12,12 @@ function Hero() {
   })
 
   const introY = useTransform(scrollYProgress, [0, 0.42], [0, reduceMotion ? 0 : -100])
-  const introOpacity = useTransform(scrollYProgress, [0, 0.27, 0.43], [1, 1, 0])
+  const introOpacity = useTransform(scrollYProgress, [0, 0.27, 0.43], reduceMotion ? [1, 1, 1] : [1, 1, 0])
   const introScale = useTransform(scrollYProgress, [0, 0.42], [1, reduceMotion ? 1 : 0.96])
   const projectY = useTransform(scrollYProgress, [0.2, 0.56], [reduceMotion ? 0 : 110, 0])
   const projectX = useTransform(scrollYProgress, [0.2, 0.56], [reduceMotion ? 0 : 70, 0])
-  const projectOpacity = useTransform(scrollYProgress, [0.2, 0.43, 0.6], [0, 0.8, 1])
-  const projectScale = useTransform(scrollYProgress, [0.2, 0.58], [0.96, 1])
+  const projectOpacity = useTransform(scrollYProgress, [0.2, 0.43, 0.6], reduceMotion ? [1, 1, 1] : [0, 0.8, 1])
+  const projectScale = useTransform(scrollYProgress, [0.2, 0.58], [reduceMotion ? 1 : 0.96, 1])
   const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
   return (
