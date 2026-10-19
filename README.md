@@ -1,16 +1,24 @@
-# React + Vite
+# KeizaBrix Construction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Building with precision. Creating with purpose.**
 
-Currently, two official plugins are available:
+KeizaBrix Construction is a modern construction company website designed to showcase the company's brand, services, and projects through a premium digital experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The website combines a clean corporate identity, cinematic scrolling, smooth animations, and responsive design to communicate professionalism, build client confidence, and create a memorable online presence.
 
-## React Compiler
+### Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Premium, modern corporate design
+- Responsive experience across desktop, tablet, and mobile
+- Cinematic scrolling and smooth animations
+- Company and services presentation
+- Construction project showcase
+- Client enquiry and contact experience
 
-## Expanding the ESLint configuration
+### Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React · Vite · JavaScript · CSS · Framer Motion · Lenis · React Router
+
+---
+
+**KeizaBrix Construction** — Building with precision. Creating with purpose.
