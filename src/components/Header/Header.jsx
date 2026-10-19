@@ -18,8 +18,7 @@ function Header() {
   return (
     <header className="site-header">
       <a className="brand-mark" href="#home" aria-label="Kaizerbrix Consults home" onClick={closeMenu}>
-        <span className="brand-symbol" aria-hidden="true">K<span>.</span></span>
-        <span className="brand-name">KAIZERBRIX <small>CONSULTS</small></span>
+        <img className="brand-logo" src="/kaizerbrix-logo.svg" alt="Kaizerbrix Consults" />
       </a>
       <nav className={`header-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
         {links.map((link) => (
