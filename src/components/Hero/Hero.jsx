@@ -33,11 +33,11 @@ function Hero() {
             <p className="hero-eyebrow"><span /> KAIZERBRIX CONSULTS <span className="hero-eyebrow-divider">/</span> BUILDING ENDURING LEGACIES</p>
             <h1>Building<br /><span>enduring</span><br />legacies<span className="hero-period">.</span></h1>
             <div className="hero-intro-bottom">
-              <p>Architecture, civil engineering, surveying and construction solutions — shaped around the places people live and work.</p>
+              <p>Architecture, civil engineering, surveying, town planning, procurement and construction — guided by the company’s commitment to building enduring legacies.</p>
               <div className="hero-scroll-cue"><span>SCROLL TO EXPLORE</span><ArrowDown size={17} /></div>
               <a href="#projects" className="hero-primary-link">Explore our work <ArrowUpRight size={17} /></a>
             </div>
-            <div className="hero-side-note"><span>01</span><i /> BUILT WITH PURPOSE</div>
+            <div className="hero-side-note"><span>01</span><i /> BUILDING ENDURING LEGACIES</div>
           </motion.div>
 
           <motion.div
@@ -56,7 +56,7 @@ function Hero() {
               <div className="hero-visual-stamp">EXECUTED<br />2023</div>
             </div>
             <div className="hero-project-copy">
-              <p className="hero-project-kicker"><span /> SELECTED PROJECT <span className="hero-project-count">01 / 02</span></p>
+              <p className="hero-project-kicker"><span /> SELECTED PROJECT <span className="hero-project-count">EXECUTED · 2023</span></p>
               <h2>5 Bedroom<br /><em>Duplex.</em></h2>
               <p className="hero-project-description">Surveying, architectural design, site clearing, construction and finishing.</p>
               <div className="hero-project-meta">
