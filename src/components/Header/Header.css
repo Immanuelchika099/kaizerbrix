@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 2.2rem var(--page-gutter);
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 .brand-mark {
@@ -30,7 +30,7 @@
 
 .header-nav > a {
   position: relative;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(23, 23, 23, 0.78);
   font-size: 1.35rem;
   font-weight: 500;
   transition: color 180ms ease;
@@ -50,7 +50,7 @@
 }
 
 .header-nav > a:not(.header-cta):hover {
-  color: #fff;
+  color: #171717;
 }
 
 .header-nav > a:not(.header-cta):hover::after {
@@ -62,15 +62,16 @@
   align-items: center;
   gap: 1.1rem;
   padding: 1.15rem 1.55rem;
-  border: 1px solid rgba(255, 255, 255, 0.36);
+  border: 1px solid rgba(23, 23, 23, 0.3);
   border-radius: 2px;
-  color: #fff;
-  transition: background 180ms ease, border-color 180ms ease;
+  color: #171717;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
 .header-nav .header-cta:hover {
   border-color: var(--color-orange);
   background: var(--color-orange);
+  color: #fff;
 }
 
 .header-cta svg {
@@ -84,10 +85,10 @@
 
 .menu-toggle {
   display: none;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(23, 23, 23, 0.28);
   border-radius: 2px;
-  background: rgba(16, 16, 15, 0.55);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  color: #171717;
   padding: 0.9rem;
 }
 
@@ -114,8 +115,8 @@
     align-items: stretch;
     gap: 0;
     padding: 8.5rem var(--page-gutter) 2.4rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    background: #111110;
+    border-bottom: 1px solid rgba(23, 23, 23, 0.12);
+    background: #fff;
   }
 
   .header-nav.is-open {
@@ -124,7 +125,7 @@
 
   .header-nav > a {
     padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(23, 23, 23, 0.1);
     font-size: 1.5rem;
   }
 
@@ -136,7 +137,7 @@
     justify-content: space-between;
     margin-top: 1.5rem;
     padding: 1.35rem 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(23, 23, 23, 0.28);
   }
 }
 
