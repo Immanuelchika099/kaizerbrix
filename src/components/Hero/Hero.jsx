@@ -16,15 +16,14 @@ function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 90])
   const contentOpacity = useTransform(scrollYProgress, [0, 0.82], [1, 0.18])
   const detailY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -55])
-  const orbitX = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 70])
 
   return (
     <section className="hero-section" id="home" ref={sectionRef}>
       <motion.div className="hero-backdrop" aria-hidden="true" style={{ y: backdropY, scale: backdropScale }}>
         <div className="hero-grid" />
-        <motion.div className="hero-orbit hero-orbit-one" style={{ x: orbitX }} />
+        <div className="hero-orbit hero-orbit-one" />
         <div className="hero-orbit hero-orbit-two" />
-        <motion.div className="hero-slab" style={{ y: detailY }} />
+        <div className="hero-slab" />
       </motion.div>
       <motion.div className="hero-content" style={{ y: contentY, opacity: contentOpacity }}>
         <motion.p className="eyebrow hero-eyebrow" initial={reduceMotion ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
