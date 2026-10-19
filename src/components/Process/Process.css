@@ -1,0 +1,14 @@
+.process-section { background: #171615; }
+.process-heading { display: flex; align-items: end; justify-content: space-between; gap: 4rem; margin: 5rem 0 7rem; }
+.process-heading h2 { font-size: clamp(4.8rem, 7.8vw, 10rem); }
+.process-heading h2 span { color: #77716a; }
+.process-heading > p { max-width: 29rem; padding-bottom: .5rem; color: #aaa39b; font-size: 1.4rem; line-height: 1.8; }
+.process-steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 2.4rem; }
+.process-step > span { color: var(--color-orange); font-size: 1.1rem; }
+.process-step-line { height: 1px; margin: 2rem 0 2.5rem; background: linear-gradient(90deg,var(--color-orange),rgba(255,255,255,.15)); }
+.process-step h3 { font-size: 2.8rem; }
+.process-step p { max-width: 25rem; margin-top: 1.4rem; color: #aaa39b; font-size: 1.3rem; line-height: 1.8; }
+.process-link { display: inline-flex; align-items: center; gap: 1rem; margin-top: 5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,.3); font-size: 1.3rem; }
+.process-link svg { color: var(--color-orange); }
+@media (max-width: 760px) { .process-heading { flex-direction: column; align-items: flex-start; gap: 2rem; margin: 4rem 0; } .process-heading h2 { font-size: clamp(4.8rem, 13vw, 7rem); } .process-steps { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 3.5rem 1.8rem; } .process-step h3 { font-size: 2.4rem; } }
+@media (max-width: 420px) { .process-steps { grid-template-columns: 1fr; } }
