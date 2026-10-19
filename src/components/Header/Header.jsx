@@ -5,6 +5,7 @@ import './Header.css'
 const links = [
   { label: 'Projects', href: '#projects' },
   { label: 'Expertise', href: '#expertise' },
+  { label: 'Our process', href: '#process' },
   { label: 'About', href: '#about' },
 ]
 
@@ -17,18 +18,20 @@ function Header() {
 
   return (
     <header className="site-header">
-      <a className="brand-mark" href="#home" aria-label="Kaizerbrix Consults home" onClick={closeMenu}>
-        <img className="brand-logo" src="/kaizerbrix-logo.svg" alt="Kaizerbrix Consults" />
-      </a>
-      <nav className={`header-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
-        {links.map((link) => (
-          <a key={link.href} href={link.href} onClick={closeMenu}>{link.label}</a>
-        ))}
-        <a className="header-cta" href="#contact" onClick={closeMenu}>Start a project <ArrowUpRight size={15} /></a>
-      </nav>
-      <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? <X size={22} /> : <Menu size={22} />}
-      </button>
+      <div className="header-inner">
+        <a className="brand-mark" href="#home" aria-label="Kaizerbrix Consults home" onClick={closeMenu}>
+          <img className="brand-logo" src="/kaizerbrix-logo.svg" alt="Kaizerbrix Consults" />
+        </a>
+        <nav className={`header-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} onClick={closeMenu}>{link.label}</a>
+          ))}
+          <a className="header-cta" href="#contact" onClick={closeMenu}>Start an enquiry <ArrowUpRight size={15} /></a>
+        </nav>
+        <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
     </header>
   )
 }
