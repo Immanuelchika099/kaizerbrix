@@ -420,7 +420,7 @@
 
 @media (max-width: 900px) {
   .hero-stage-inner { padding-top: 13rem; }
-  .hero-intro-scene { inset-top: 13rem; }
+  .hero-intro-scene { inset: 13rem var(--page-gutter) 5.5rem; }
   .hero-intro-scene h1 { font-size: clamp(6.5rem, 13vw, 11rem); }
   .hero-intro-bottom { grid-template-columns: minmax(20rem, 1fr) auto; }
   .hero-scroll-cue { display: none; }
