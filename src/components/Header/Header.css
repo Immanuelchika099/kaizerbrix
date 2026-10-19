@@ -33,9 +33,3 @@
 @media (max-width: 760px) {
   .brand-mark { width: clamp(19rem, 57vw, 25rem); }
 }
-
-.brand-mark { flex: 0 0 auto; width: clamp(20rem, 25vw, 31rem); }
-.brand-logo { display: block; width: 100%; height: auto; }
-@media (max-width: 760px) {
-  .brand-mark { width: clamp(19rem, 57vw, 25rem); }
-}
