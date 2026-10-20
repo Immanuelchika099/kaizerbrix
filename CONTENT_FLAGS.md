@@ -51,3 +51,11 @@ The PDF has been located and inspected locally. Its page artwork is flattened at
 - Android manifest uses scalable SVG icons. iOS home-screen icon rendering should still be checked on device; SVG Apple touch icon support can vary.
 - The latest Vercel deployment status check is failing due to Vercel's daily deployment API limit, not a reported source build failure. Latest commits require a new deployment before production validation.
 - Build and lint checks remain unverified in a local environment. The GitHub Actions build workflow is configured, but its result must be checked before release.
+
+
+## 20 October 2026 — navigation, pinning and alignment pass
+- Homepage navigation now uses a full-screen charcoal menu; desktop presents a two-column editorial index and mobile a vertical list. External pages use a separate responsive full-screen menu.
+- The homepage hero is configured to pin on mobile with a shorter scroll distance. Dynamic viewport/orientation refresh hooks were added, but the result must be tested on a physical Android device.
+- Root overflow clipping was removed around the homepage and routed pages to reduce the chance of GSAP pin elements being clipped by ancestors.
+- Homepage contact footer columns and external-page footer wrapping have been adjusted for narrower viewports.
+- This is a source-side refinement only. The current production deployment has not been verified against these changes because the Vercel deployment rate limit was previously reached.
