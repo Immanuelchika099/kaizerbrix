@@ -18,6 +18,8 @@ function RouteCurtain() {
   useEffect(() => {
     if (previousPath.current === location.pathname) return;
     previousPath.current = location.pathname;
+    if (window.__kbLenis) window.__kbLenis.scrollTo(0, { immediate: true, force: true });
+    window.scrollTo(0, 0);
     if (reduce) return;
     setCover(true);
     const reveal = window.setTimeout(() => setCover(false), 630);
@@ -48,7 +50,8 @@ function RoutedPages() {
       '/projects': ['Selected Projects | KaizerBrix Consults', 'Explore residential projects recorded in the KaizerBrix Consults company profile.'],
       '/contact': ['Contact KaizerBrix Consults | Start a Project', 'Contact KaizerBrix Consults in Port Harcourt to discuss a construction, design or consultancy project.']
     };
-    const [title, description] = seo[location.pathname] || seo['/'];
+    const routePath = location.pathname.replace(/\\/+$/, '') || '/';
+    const [title, description] = seo[routePath] || seo['/'];
     document.title = title;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute('content', description);
