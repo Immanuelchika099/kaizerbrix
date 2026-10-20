@@ -22,11 +22,11 @@ function PageFrame({children}){
     if(!root)return;
     const selector='.kb-page-intro-copy,.kb-page-intro-image,.kb-about-statement>p,.kb-about-statement-foot,.kb-vision-image,.kb-vision-copy article,.kb-section-heading,.kb-values-grid article,.kb-expertise-lead p,.kb-service-row,.kb-service-end,.kb-projects-intro>p,.kb-project-card,.kb-projects-note,.kb-contact-copy,.kb-contact-form,.kb-footer-top';
     const targets=[...root.querySelectorAll(selector)];
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){targets.forEach(el=>el.classList.add('is-in-view'));return;}
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){targets.forEach(el=>el.classList.add('is-in-view'));return;}
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
       if(entry.isIntersecting){entry.target.classList.add('is-in-view');observer.unobserve(entry.target);}
     }),{threshold:0.12,rootMargin:'0px 0px -7% 0px'});
-    targets.forEach((el,index)=>{el.style.setProperty('--reveal-index',String(index%4));observer.observe(el);});
+    targets.forEach((el,index)=>{el.style.transitionDelay=((index%4)*75)+'ms';observer.observe(el);});
     return()=>observer.disconnect();
   },[]);
   return <div className="kb-page" ref={frame}><SiteNav/>{children}<SiteFooter/></div>
