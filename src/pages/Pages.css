@@ -411,3 +411,13 @@
 
 /* Center the contact form's email-app helper note. */
 .kb-page .kb-contact-form>small{text-align:center!important;align-self:stretch!important}
+
+
+/* Global animated logo intro on every fresh document load. */
+.kb-brand-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:#fff;animation:kb-intro-exit .4s ease 2s forwards}
+.kb-brand-intro>img{display:block;width:clamp(190px,42vw,310px);max-width:76vw;height:auto;object-fit:contain;opacity:0;animation:kb-logo-arrive .8s cubic-bezier(.2,.8,.2,1) .12s forwards}
+.kb-brand-intro-line{position:absolute;left:50%;top:calc(50% + 48px);width:clamp(90px,20vw,150px);height:2px;transform:translateX(-50%) scaleX(0);transform-origin:left;background:#df481d;animation:kb-line-grow .6s ease .45s forwards}
+@keyframes kb-logo-arrive{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes kb-line-grow{to{transform:translateX(-50%) scaleX(1)}}
+@keyframes kb-intro-exit{to{opacity:0;visibility:hidden;pointer-events:none}}
+@media(prefers-reduced-motion:reduce){.kb-brand-intro>img,.kb-brand-intro-line{animation-duration:.01ms!important;animation-delay:0ms!important}.kb-brand-intro{animation-delay:1.2s!important}}
