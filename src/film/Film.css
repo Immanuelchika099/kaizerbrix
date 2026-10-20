@@ -83,8 +83,8 @@ html,body{overflow-x:clip}
 
 
 /* Cinematic navbar refinement inspired by the IMAN portfolio */
-.film-nav{left:clamp(14px,3vw,42px);right:clamp(14px,3vw,42px);top:18px;width:auto;height:68px;padding:0 12px 0 20px;border:1px solid rgba(255,255,255,.2);border-radius:3px;background:rgba(15,14,14,.78);color:#fff;backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);box-shadow:0 16px 50px rgba(0,0,0,.14);transition:background .4s,border-color .4s,color .4s}
-.film-nav.is-light{background:rgba(15,14,14,.5);border-color:rgba(255,255,255,.2);color:#fff}
+.film-nav{left:clamp(14px,3vw,42px);right:clamp(14px,3vw,42px);top:18px;width:auto;height:68px;padding:0 12px 0 20px;border:1px solid rgba(23,21,22,.12);border-radius:3px;background:rgba(255,255,255,.96);color:var(--ink);backdrop-filter:blur(18px) saturate(115%);-webkit-backdrop-filter:blur(18px) saturate(115%);box-shadow:0 12px 36px rgba(0,0,0,.07);transition:background .4s,border-color .4s,color .4s}
+.film-nav.is-light{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#fff}
 .film-nav.menu-open{background:transparent;border-color:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
 .film-nav-mark{width:29px;height:32px;color:var(--orange)}
 .film-menu-button{min-width:112px;height:44px;padding:0 13px 0 16px;border:1px solid rgba(255,255,255,.22);border-radius:2px;background:rgba(255,255,255,.055);display:flex;justify-content:space-between;gap:14px;align-items:center;color:#fff;transition:background .3s,border-color .3s}
@@ -463,6 +463,9 @@ html,body{overflow-x:clip}
 /* Direction-aware navigation: clear the frame while scrolling down, restore on scroll-up. */
 .film-nav{transition:transform .36s cubic-bezier(.22,1,.36,1),background .3s,border-color .3s,color .3s;will-change:transform}
 .film-nav.is-hidden:not(.menu-open){transform:translateY(calc(-100% - 24px))}
-.film-nav.is-scrolled:not(.is-light):not(.menu-open){background:rgba(23,21,22,.94);border-color:rgba(255,255,255,.14)}
+.film-nav.is-scrolled:not(.is-light):not(.menu-open){background:rgba(255,255,255,.98);border-color:rgba(23,21,22,.12);color:var(--ink)}
 
 .values-photo .film-photo-placeholder,.hse-photo .film-photo-placeholder{position:absolute;inset:0;min-height:0}
+
+/* Keep the navigation light to match the white editorial brand; only hero-overlaid nav uses white text. */
+.film-nav:not(.is-light):not(.menu-open){background:rgba(255,255,255,.96);color:var(--ink);border-color:rgba(23,21,22,.12)}
