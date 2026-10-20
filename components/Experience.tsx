@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Flip } from 'gsap/Flip';
 import { useGSAP } from '@gsap/react';
 import Lenis from 'lenis';
-import { brand, navItems } from '@/app/data';
+import { brand, navItems, projects, projectSlugs } from '@/app/data';
 
 gsap.registerPlugin(ScrollTrigger, Flip, useGSAP);
 
@@ -160,16 +160,33 @@ export function MotionShell({ children }: { children: ReactNode }) {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (pendingKind.current === 'project' && sharedCloneRef.current) {
       const clone = sharedCloneRef.current;
-      gsap.to(clone, { opacity: 0, duration: 0.2, delay: 0.05, onComplete: () => { clone.remove(); sharedCloneRef.current = null; finish(); } });
+      const revealProject = () => gsap.to(clone, { opacity: 0, duration: 0.2, delay: 0.05, onComplete: () => { clone.remove(); sharedCloneRef.current = null; finish(); } });
+      const hero = rootRef.current?.querySelector<HTMLImageElement>('.route-content .case-hero img');
+      if (hero) void hero.decode().catch(() => undefined).then(revealProject); else revealProject();
       return;
     }
     if (reduced) {
       gsap.fromTo(rootRef.current, { opacity: 0 }, { opacity: 1, duration: 0.2, onComplete: finish });
       return;
     }
-    gsap.to(markRef.current, { opacity: 0, scale: 1.08, duration: 0.18, ease: 'power2.in' });
-    gsap.to(planeRef.current, { clipPath: 'polygon(100% 0,100% 0,100% 100%,100% 100%)', duration: 0.62, delay: 0.08, ease: 'power3.inOut', onComplete: () => { setTransitionActive(false); pendingPath.current = null; lenisRef.current?.start(); } });
+    const revealRoute = () => {
+      gsap.to(markRef.current, { opacity: 0, scale: 1.08, duration: 0.18, ease: 'power2.in' });
+      gsap.to(planeRef.current, { clipPath: 'polygon(100% 0,100% 0,100% 100%,100% 100%)', duration: 0.62, delay: 0.08, ease: 'power3.inOut', onComplete: finish });
+    };
+    const hero = rootRef.current?.querySelector<HTMLImageElement>('.route-content .page-hero img, .route-content .case-hero img');
+    if (hero) void hero.decode().catch(() => undefined).then(revealRoute); else revealRoute();
   }, [pathname, transitionActive]);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    let cancelled = false;
+    const refresh = () => { if (!cancelled) ScrollTrigger.refresh(); };
+    void document.fonts.ready.then(refresh);
+    const images = Array.from(root.querySelectorAll<HTMLImageElement>('img'));
+    void Promise.all(images.map((image) => image.decode().catch(() => undefined))).then(refresh);
+    return () => { cancelled = true; };
+  }, [pathname]);
 
   useEffect(() => {
     if (!menuOpen) { lenisRef.current?.start(); return; }
@@ -251,7 +268,16 @@ export function MotionShell({ children }: { children: ReactNode }) {
 
 export function TransitionLink({ href, children, className, ...props }: ComponentProps<typeof Link>) {
   const { navigate } = useMotion();
-  return <Link href={href} className={className} {...props} onClick={(event) => { props.onClick?.(event); if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate(String(href), className?.includes('project-transition') ? (event.currentTarget.querySelector('.media-frame') as HTMLElement | null) : null); }}>{children}</Link>;
+  const preload = () => {
+    const path = String(href).split('#')[0];
+    let src = navItems.find((item) => item.href === path)?.image;
+    if (path.startsWith('/projects/')) {
+      const index = projectSlugs.findIndex((item) => item.slug === path.split('/')[2]);
+      if (index >= 0) src = projects[index]?.image;
+    }
+    if (src) { const image = new window.Image(); image.decoding = 'async'; image.src = src; }
+  };
+  return <Link href={href} className={className} {...props} onMouseEnter={(event) => { props.onMouseEnter?.(event); preload(); }} onFocus={(event) => { props.onFocus?.(event); preload(); }} onClick={(event) => { props.onClick?.(event); if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate(String(href), className?.includes('project-transition') ? (event.currentTarget.querySelector('.media-frame') as HTMLElement | null) : null); }}>{children}</Link>;
 }
 
 export function MediaFrame({ src, alt, caption, priority = false, className = '' }: { src?: string; alt: string; caption?: string; priority?: boolean; className?: string }) {
@@ -279,7 +305,7 @@ export function SceneReveal({ children, className = '', id, theme = 'ink', label
     if (ref.current.nextElementSibling?.classList.contains('orange-scene')) {
       gsap.to(ref.current, { backgroundColor: '#FFF6F1', ease: 'none', scrollTrigger: { trigger: ref.current, start: 'bottom 100%', end: 'bottom 35%', scrub: 0.8 } });
     }
-    ref.current.querySelectorAll<HTMLElement>('[data-photo]').forEach((photo) => {
+    ref.current.querySelectorAll<HTMLElement>('figure.media-frame').forEach((photo) => {
       gsap.fromTo(photo, { clipPath: 'inset(12% 7% 12% 7%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: photo, start: 'top 85%', end: 'center 48%', scrub: 0.8 } });
       const image = photo.querySelector('img');
       if (image) gsap.fromTo(image, { scale: 1.08, filter: 'grayscale(1) sepia(.45) saturate(.7)' }, { scale: 1, filter: 'grayscale(0) sepia(0) saturate(1.04)', ease: 'none', scrollTrigger: { trigger: photo, start: 'top 90%', end: 'center 48%', scrub: 0.8 } });
