@@ -77,3 +77,11 @@
 - QA limitation: the current environment does not provide a usable browser screenshot/recording runner; do not claim verified 360–1920px Playwright checks or measured 60fps. The production deployment can be checked through Vercel status, but visual/device QA still needs a browser/device pass.
 
 - Added direction-aware navbar behaviour: it recedes while scrolling down, returns when scrolling up, and gains a more solid backdrop after leaving the hero.
+
+
+## 2026-10-20 — Hero art direction and typography
+- Reworked the existing hero in place: architectural photography now carries the full-height right side on desktop and the lower half on mobile, with a warm-paper editorial field for legibility.
+- Replaced oversized geometric display lettering with a restrained, classic serif hierarchy and sentence case. Removed the Syncopate web-font import and normalized small navigation/eyebrow labels to the existing body sans-serif.
+- Preserved the orange-and-white brand direction, current company wording, existing photo asset path and scroll-led homepage architecture.
+- Added a clear “Discover our expertise” in-page action and refined the bottom location/scroll labels.
+- The hero image remains an illustrative placeholder until approved KaizerBrix photography is supplied.
