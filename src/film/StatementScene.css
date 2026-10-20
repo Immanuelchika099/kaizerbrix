@@ -116,3 +116,84 @@
     background-attachment: scroll;
   }
 }
+
+
+/* Scroll-progress statement scene: the wrapper supplies the scroll range;
+   the inner scene sticks naturally and releases when the wrapper ends. */
+.statement-scroll-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250vh;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.statement-scroll-wrapper > .statement-scene {
+  position: sticky !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100svh !important;
+  min-height: 100svh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  isolation: isolate;
+  background-image: none !important;
+  clip-path: inset(0 6% round 28px);
+  will-change: clip-path;
+}
+.statement-scene .statement-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url("https://images.pexels.com/photos/14704781/pexels-photo-14704781.jpeg?auto=compress&cs=tinysrgb&w=2400");
+  background-size: cover;
+  background-position: center 52%;
+  background-repeat: no-repeat;
+  transform: scale(1.15);
+  transform-origin: center center;
+  will-change: transform;
+}
+.statement-scroll-wrapper > .statement-scene::before {
+  z-index: -1;
+}
+.statement-scroll-wrapper .statement-rule,
+.statement-scroll-wrapper .statement-text,
+.statement-scroll-wrapper .statement-support,
+.statement-scroll-wrapper > .statement-scene > .film-outline-cta {
+  position: relative;
+}
+.statement-scroll-wrapper + .values-scene {
+  margin-top: 0 !important;
+}
+@media (max-width: 899px) {
+  .statement-scroll-wrapper {
+    height: 220svh;
+  }
+  .statement-scroll-wrapper > .statement-scene {
+    height: 100svh !important;
+    min-height: 100svh !important;
+    padding: 54px 22px !important;
+  }
+  .statement-scroll-wrapper .statement-background {
+    background-position: 43% center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .statement-scroll-wrapper {
+    height: auto !important;
+  }
+  .statement-scroll-wrapper > .statement-scene {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 420px !important;
+    clip-path: none !important;
+    will-change: auto !important;
+  }
+  .statement-scroll-wrapper .statement-background {
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
