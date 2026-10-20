@@ -28,7 +28,7 @@
 - Recovered the original profile PDF from the Library without another user upload. Extracted sixteen embedded 3D renders and the source project/site photographs; made a separate WebP asset pack with explicit source-page mapping.
 - Added a pre-rendered 256×256 grain tile, PNG iOS/Android icons and a PWA manifest to the asset pack.
 - Added the fixed low-opacity grain overlay, reduced-motion fallbacks for K portals, horizontal projects and pinned values, and separate Yenagoa render / built-photo plates until the client confirms a match.
-- Last completed CI run passed type-check and production build at `e6c1db9574e8f290d604cbabf2a7714d2fb0f2f5`. A newer run is required after the most recent source and motion changes.
+- Last completed CI run passed type-check and production build at `e6c1db9574e8f290d604cbabf2a7714d2fb0f2f5`. GitHub Actions passed type-check and production build on the latest code commit, `2b73146a4b9ba60c83a8c8a737751ed7605b8079` (run: https://github.com/Immanuelchika099/kaizerbrix/actions/runs/39349162055).
 
 ### Release gates remain
 - Merge `kaizerbrix-assets.zip` into the local repository and commit the binary assets; they cannot be committed through the text-only GitHub file writer.
