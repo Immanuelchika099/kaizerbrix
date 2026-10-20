@@ -1818,3 +1818,117 @@ html,body{overflow-x:clip}
 .contact-qr span{font:700 .8rem var(--display);letter-spacing:.08em}
 @media(min-width:900px){.contact-bottom{grid-template-columns:1.2fr .7fr 1fr auto 100px}}
 @media(max-width:899px){.contact-qr{grid-column:auto}.contact-qr img{width:72px;height:72px}}
+
+
+/* Mobile spacing correction: keep the pinned scenes' scroll runways proportional
+   to their actual animation timelines, and let the statement block fit its content. */
+@media (max-width: 899px) {
+  .expertise-scene {
+    scroll-margin-top: 84px;
+  }
+
+  .statement-scene {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: clamp(56px, 10vw, 72px) 24px 40px !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    scroll-margin-top: 84px;
+  }
+
+  .statement-rule {
+    height: 58px;
+    margin-bottom: 24px;
+    align-self: flex-start;
+  }
+
+  .statement-text {
+    width: 100%;
+    max-width: 12ch;
+    margin: 0 !important;
+    text-align: left !important;
+  }
+
+  .statement-support {
+    align-self: flex-start;
+    max-width: 46ch;
+    margin: 24px 0 0 !important;
+    text-align: left !important;
+  }
+
+  .statement-scene > .film-outline-cta {
+    align-self: flex-start;
+    margin: 24px 0 0 !important;
+  }
+
+  .values-scene {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 40px 24px 64px !important;
+    gap: 24px !important;
+    scroll-margin-top: 84px;
+  }
+
+  .values-heading {
+    top: auto !important;
+  }
+
+  .values-heading p {
+    margin-top: 20px;
+  }
+
+  .values-progress {
+    display: none;
+  }
+
+  .contact-scene {
+    min-height: 100svh;
+    height: auto !important;
+    justify-content: flex-start !important;
+    padding: 88px 24px 28px !important;
+    scroll-margin-top: 84px;
+  }
+
+  .contact-main {
+    margin-top: 24px !important;
+  }
+
+  .contact-bottom {
+    margin-top: 48px !important;
+    padding-top: 0 !important;
+    border-top: 0 !important;
+    gap: 22px 18px !important;
+  }
+
+  .contact-bottom > div {
+    min-width: 0;
+  }
+
+  .contact-bottom a {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* The email's underline is the single divider in the contact/footer area.
+   Keep the existing underline and remove the redundant footer-wide rule. */
+.contact-bottom {
+  padding-top: 0 !important;
+  border-top: 0 !important;
+}
+
+@media (min-width: 900px) {
+  .contact-bottom {
+    margin-top: 48px;
+  }
+}
+
+/* Anchor navigation should leave room below the fixed pill navigation. */
+#about,
+#vision,
+#expertise,
+#values,
+#projects,
+#standards,
+#contact {
+  scroll-margin-top: 88px;
+}
