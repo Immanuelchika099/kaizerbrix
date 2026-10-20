@@ -11,8 +11,8 @@
 - No stats, awards, testimonials, client logos, certifications, team profiles, prices or unsupported claims have been added.
 - Contact links use the email, phone and address supplied in the brief. The map link opens a Google Maps query and is not a verified embedded map pin.
 
-## Required photo assets — not yet committed to the repository
-The PDF has been located and inspected locally. Its page artwork is flattened at 2480 × 3508 px (300 dpi), but the binary image files cannot be committed through the currently available GitHub text-file write action. The source now references the filenames below. They must be cropped from the supplied PDF pages, exported to WebP/AVIF, and committed under `public/images/` before production launch. Until then these image URLs will return 404.
+## Photo asset status and required approvals
+The PDF has been located and inspected locally. Its page artwork is flattened at 2480 × 3508 px (300 dpi), but the binary image files cannot be committed through the currently available GitHub text-file write action. The original source images still need to be extracted/cropped from the supplied PDF and committed under `public/images/`. The homepage currently maps missing image filenames to external Unsplash reference photographs; the external pages also use illustrative photos. These are placeholders only, not verified KaizerBrix project photographs.
 
 - p2: `tower-hardhat-bw.webp` — B&W tower and red hard hat
 - p3: `engineer-blueprints.webp` — engineer in white coat with blueprints
@@ -28,11 +28,12 @@ The PDF has been located and inspected locally. Its page artwork is flattened at
 - p22: `project-bonny-island.webp`
 
 ## Technical checks still required
-- Add the extracted/cropped images and confirm all paths above.
-- Test the full film at 1440 × 900 and 390 × 844, including iOS Safari/PWA.
-- Confirm mobile ScrollTrigger behaviour, focus states, alt text, route rail, menu and reduced-motion fallback.
-- Run `npm run build` and Lighthouse mobile after assets are present.
-- Verify the final Vercel production deployment. Do not describe the website as production-ready while the image assets are missing.
+- Add the extracted/cropped images and confirm all paths above; external reference photos are not a final asset replacement.
+- Test the full film at desktop and Android-sized viewports, including 360×800, 390×844 and tablet breakpoints.
+- Verify direct refresh and navigation for `/about`, `/expertise`, `/projects` and `/contact` on the Vercel deployment.
+- Confirm mobile ScrollTrigger behaviour, focus states, alt text, menu, contact mailto handoff and reduced-motion fallback.
+- Run `npm run build`, lint and Lighthouse mobile.
+- Verify the final Vercel production deployment. Do not describe the website as production-ready until checks and client asset approvals are complete.
 
 
 ## 20 October 2026 implementation update
@@ -40,4 +41,5 @@ The PDF has been located and inspected locally. Its page artwork is flattened at
 - The 3D design archive has been removed from the rendered homepage until approved render assets can be supplied.
 - GSAP/ScrollTrigger animations are applied across the existing homepage scenes, including About, Vision/Mission, Expertise, Core Values, Projects, Quality/HSE and Contact—not only the hero. The latest update adds cross-section reveal and image movement choreography.
 - Next.js is not required for the current React + Vite app. React Router DOM is already installed and is sufficient for client-side routes; migrate only if server rendering or Next-specific features become a deliberate requirement.
-- Still required before production: implement and test dedicated routes for About, Expertise, Projects and Contact; run a local build; check all image requests and desktop/mobile layouts; verify deployment.
+- Added dedicated routes for About, Expertise, Projects and Contact with page transitions, responsive page layouts and a shared navigation/footer.
+- Still required before production: run a local build/lint, check all image requests and desktop/Android layouts, test direct route loads and form handoff, and verify deployment.
