@@ -53,3 +53,15 @@
 - Redesigned the seven quality-policy commitments as a restrained two-column editorial grid on desktop and a readable single-column list on mobile.
 - Replaced commitment number markers with Lucide icons, retaining the original commitment copy and orange brand accent. No emojis are used.
 - Source-side changes only; production deployment and real-device visual QA remain pending.
+
+
+## 2026-10-20 — Layout audit and spacing hardening
+- Audited the current repository source and fetched the deployed production HTML and CSS/JS assets. The live bundle still contains the older Mission and Quality Policy layout; it does not yet include the newer source-side mission/icon-grid changes.
+- Browser audit limitation: the current execution environment has no DNS/network access for a local Playwright run and exposes no remote browser/screenshot runner. No full-page screenshots, measured DOM overlap report, or zero-overflow claim is made. The viewport-by-viewport audit is recorded in the work notes in this conversation; browser verification remains pending.
+- Standardized section gutters, content widths, text wrapping and anchor scroll margins across the cinematic homepage and routed pages.
+- Rebuilt the desktop Vision/Mission composition as two clear cinematic beats inside a viewport-sized stage, while preserving natural content flow and stacking on mobile.
+- Increased homepage mobile body copy to at least 16px, made the mobile Expertise selector genuinely interactive, and ensured the image panel responds to the selected discipline rather than relying on a desktop-only pinned timeline.
+- Reduced crowding on short desktop/laptop heights, improved project and image aspect ratios, strengthened text wrapping for long addresses/emails, and kept horizontal project storytelling desktop-only.
+- Added reduced-motion layouts that restore content to normal flow instead of leaving absolute/overlapping animated rows.
+- Added consistent mobile copy sizing and section gutters to the external About, Expertise, Projects and Contact routes.
+- Changes are source-side. Production browser screenshots, programmatic overlap/overflow measurements and final deployment verification are still outstanding.
