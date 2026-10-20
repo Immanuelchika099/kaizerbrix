@@ -1932,3 +1932,10 @@ html,body{overflow-x:clip}
 #contact {
   scroll-margin-top: 88px;
 }
+
+/* Keep the last expertise content close to the following statement on phones. */
+@media (max-width: 899px) {
+  .expertise-scene {
+    padding-bottom: 32px !important;
+  }
+}
