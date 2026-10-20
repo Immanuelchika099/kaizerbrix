@@ -16,7 +16,7 @@ function RouteEffects() {
       '/projects': ['Selected Projects | KaizerBrix Consults', 'Explore residential projects recorded in the KaizerBrix Consults company profile.'],
       '/contact': ['Contact KaizerBrix Consults | Start a Project', 'Contact KaizerBrix Consults in Port Harcourt to discuss a construction, design or consultancy project.']
     };
-    const path = location.pathname.replace(/\\/+$/, '') || '/';
+    const path = location.pathname.replace(/\/+$/, '') || '/';
     const [title, description] = seo[path] || seo['/'];
     document.title = title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', description);
