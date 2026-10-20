@@ -70,3 +70,10 @@ body.film-menu-active{overflow:hidden}
 .film-menu-button[aria-expanded=true] i:after{transform:translateY(0) rotate(90deg)}
 @media(max-width:899px){.film-menu{padding:94px 24px 35px;grid-template-columns:1fr;max-height:100dvh;gap:0}.film-menu>a{font-size:clamp(2.8rem,9vw,4.5rem);padding:12px 0 14px}.film-menu-divider{margin-top:18px;padding-top:17px}.film-menu .film-menu-divider~a{font-size:2.1rem;padding:11px 0}.hero-scene{height:100svh;height:100dvh;min-height:660px;padding:98px 22px 44px;justify-content:flex-start}.hero-title{font-size:clamp(5.5rem,16.2vw,10rem);margin-top:28px;line-height:.82}.hero-photo-frame{top:45%;right:22px;width:46%;height:31%;max-height:270px}.hero-tagline{max-width:54%;margin-top:30px}.hero-bottom{bottom:18px}}
 @media(max-width:380px){.hero-title{font-size:clamp(5rem,15.5vw,6.1rem)}.hero-tagline{font-size:1.05rem;max-width:58%}.hero-photo-frame{top:47%;height:28%}}
+
+/* Footer alignment: keep contact details on a shared baseline */
+.contact-bottom{grid-template-columns:minmax(0,1.25fr) minmax(0,.7fr) minmax(0,1fr);gap:24px 32px;align-items:start}
+.contact-bottom>div{min-width:0}
+.contact-bottom a{font-size:1.2rem;overflow-wrap:anywhere}
+.contact-legal{grid-column:1/-1;padding-top:16px;border-top:1px solid #ffffff45;align-self:auto;white-space:normal}
+@media(max-width:899px){.contact-bottom{grid-template-columns:1fr 1fr;gap:20px 18px}.contact-bottom>div:first-child{grid-column:1/-1}.contact-bottom a{font-size:1.15rem}.contact-legal{grid-column:1/-1}.contact-main h2{max-width:12ch}.contact-email{max-width:100%;overflow-wrap:anywhere;font-size:1.35rem}}
