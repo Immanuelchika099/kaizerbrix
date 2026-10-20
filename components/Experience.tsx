@@ -87,7 +87,6 @@ export function MotionShell({ children }: { children: ReactNode }) {
   const [navPinned, setNavPinned] = useState(false);
   const [slate, setSlate] = useState('SC 01 / 08 — HOME');
   const [progress, setProgress] = useState(0);
-  const current = useMemo(() => navItems.find((item) => item.href === pathname)?.label ?? (pathname.startsWith('/projects/') ? 'Projects' : 'Home'), [pathname]);
 
   useGSAP(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -133,7 +132,12 @@ export function MotionShell({ children }: { children: ReactNode }) {
     gsap.set(plane, { clipPath: 'polygon(0 0,0 0,0 100%,0 100%)', visibility: 'visible' });
     const timeline = gsap.timeline({ onComplete: () => router.push(href) });
     timeline.to(plane, { clipPath: 'polygon(0 0,100% 0,100% 100%,0 100%)', duration: 0.7, ease: 'power3.inOut' });
-    if (mark) timeline.fromTo(mark, { opacity: 0, scale: 0.78, rotation: -7 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.3, ease: 'power3.out' }, 0.2);
+    if (mark) {
+      const paths = mark.querySelectorAll('path');
+      gsap.set(paths, { strokeDasharray: 520, strokeDashoffset: 520 });
+      timeline.fromTo(mark, { opacity: 0, scale: 0.78, rotation: -7 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.3, ease: 'power3.out' }, 0.2);
+      timeline.to(paths, { strokeDashoffset: 0, duration: 0.48, stagger: 0.06, ease: 'power2.out' }, 0.2);
+    }
   }, [pathname, router, transitionActive]);
 
   useEffect(() => {
@@ -147,7 +151,11 @@ export function MotionShell({ children }: { children: ReactNode }) {
       const hash = window.location.hash;
       if (hash) requestAnimationFrame(() => document.querySelector(hash)?.scrollIntoView({ behavior: 'auto', block: 'start' }));
     });
-    if (!transitionActive || !planeRef.current) return;
+    if (!transitionActive || !planeRef.current) {
+      const route = rootRef.current?.querySelector('.route-content');
+      if (route) gsap.fromTo(route, { opacity: 0 }, { opacity: 1, duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0.2 : 0.3, ease: 'power2.out' });
+      return;
+    }
     const finish = () => { setTransitionActive(false); pendingPath.current = null; lenisRef.current?.start(); };
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (pendingKind.current === 'project' && sharedCloneRef.current) {
@@ -248,6 +256,7 @@ export function TransitionLink({ href, children, className, ...props }: Componen
 
 export function MediaFrame({ src, alt, caption, priority = false, className = '' }: { src?: string; alt: string; caption?: string; priority?: boolean; className?: string }) {
   const [failed, setFailed] = useState(false);
+  useEffect(() => { setFailed(false); }, [src]);
   return <figure className={`media-frame ${className}`}>
     <div className="media-blueprint" aria-hidden="true"/>
     {src && !failed ? <Image src={src} alt={alt} fill sizes="(max-width: 760px) 100vw, 70vw" priority={priority} onError={() => setFailed(true)} /> : null}
@@ -264,6 +273,9 @@ export function SceneReveal({ children, className = '', id, theme = 'ink', label
     targets.forEach((target) => {
       gsap.fromTo(target, { y: 42, opacity: 0, clipPath: 'inset(0 0 12% 0)' }, { y: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.85, ease: 'power3.out', scrollTrigger: { trigger: target, start: 'top 84%', once: true } });
     });
+    if (ref.current.nextElementSibling?.classList.contains('orange-scene')) {
+      gsap.to(ref.current, { backgroundColor: '#FFF6F1', ease: 'none', scrollTrigger: { trigger: ref.current, start: 'bottom 100%', end: 'bottom 35%', scrub: 0.8 } });
+    }
     ref.current.querySelectorAll<HTMLElement>('[data-photo]').forEach((photo) => {
       gsap.fromTo(photo, { clipPath: 'inset(12% 7% 12% 7%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: photo, start: 'top 85%', end: 'center 48%', scrub: 0.8 } });
       const image = photo.querySelector('img');
@@ -273,7 +285,7 @@ export function SceneReveal({ children, className = '', id, theme = 'ink', label
       const track = ref.current.querySelector<HTMLElement>('.home-project-grid');
       if (track) {
         const distance = () => Math.max(0, track.scrollWidth - window.innerWidth + 2 * parseFloat(getComputedStyle(ref.current as HTMLElement).paddingLeft));
-        gsap.to(track, { x: () => -distance(), ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: () => '+=' + Math.max(window.innerHeight * 1.2, distance()), pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true } });
+        gsap.to(track, { x: () => -distance(), ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: () => '+=' + Math.max(window.innerHeight * 1.2, distance()), pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: (self) => gsap.to(track, { skewX: gsap.utils.clamp(-1.5, 1.5, self.getVelocity() / 1800), duration: 0.18, overwrite: true }), onScrubComplete: () => gsap.to(track, { skewX: 0, duration: 0.25, ease: 'power2.out' }) } });
       }
     }
   }, { scope: ref, dependencies: [id, className], revertOnUpdate: true });
