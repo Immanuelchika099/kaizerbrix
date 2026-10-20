@@ -75,3 +75,68 @@
  .kb-round-link{width:50px;height:50px;right:0;bottom:18px}
  .kb-footer-bottom{display:flex;align-items:flex-start;flex-direction:column;gap:14px}
 }
+
+
+/* Responsive audit pass: readable copy, consistent gutters, and safe anchors. */
+.kb-page{width:100%;max-width:100%;overflow-x:clip}
+.kb-page section[id],.kb-page footer[id]{scroll-margin-top:96px}
+.kb-page-intro,.kb-about-vision,.kb-values-section,.kb-expertise-lead,.kb-service-list,.kb-projects-intro,.kb-project-grid,.kb-contact-layout{min-width:0}
+.kb-page-intro-copy,.kb-page-intro-image,.kb-about-statement,.kb-vision-copy,.kb-service-copy,.kb-project-card-info,.kb-contact-copy,.kb-contact-form{min-width:0}
+.kb-page p,.kb-page li{overflow-wrap:anywhere}
+.kb-page-intro h1,.kb-about-statement>p,.kb-contact-copy h2,.kb-footer-top>p,.kb-project-card-info h2{text-wrap:balance}
+.kb-page-intro-copy>p,.kb-about-statement-foot,.kb-vision-copy p,.kb-values-grid p,.kb-service-copy li,.kb-project-card-info>p,.kb-project-scope p,.kb-projects-note p,.kb-contact-copy>p,.kb-form-note{max-width:68ch}
+@media(min-width:851px) and (max-height:820px){
+ .kb-page-intro{min-height:0;padding-top:100px;padding-bottom:65px}
+ .kb-page-intro h1{font-size:clamp(42px,5vw,68px)}
+ .kb-page-intro-image{height:clamp(300px,46svh,430px)}
+ .kb-about-statement{padding-block:70px}
+ .kb-about-vision{padding-block:75px;gap:4vw}
+ .kb-values-section{padding-block:75px}
+ .kb-contact-layout{padding-top:95px;padding-bottom:75px}
+ .kb-footer-top{min-height:0}
+}
+@media(max-width:850px){
+ .kb-page{overflow-x:clip}
+ .kb-page-intro{gap:28px;padding:70px 24px 65px}
+ .kb-page-intro h1{font-size:clamp(43px,10vw,68px);line-height:1.02;overflow-wrap:normal}
+ .kb-page-intro-copy>p,.kb-about-statement-foot,.kb-vision-copy p,.kb-values-grid p,.kb-service-copy li,.kb-project-card-info>p,.kb-project-scope p,.kb-projects-note p,.kb-contact-copy>p,.kb-form-note,.kb-contact-form label{font-size:16px;line-height:1.75}
+ .kb-about-statement{padding:76px 24px}
+ .kb-about-statement>p{font-size:clamp(34px,8vw,58px);line-height:1.12}
+ .kb-about-vision{padding:75px 24px;gap:30px}
+ .kb-vision-copy h2{font-size:clamp(24px,6vw,30px);line-height:1.35}
+ .kb-vision-image{height:auto;aspect-ratio:4/3;min-height:0}
+ .kb-values-section{padding:75px 24px}
+ .kb-values-grid{gap:14px}
+ .kb-values-grid article{padding:22px;min-width:0}
+ .kb-values-grid h3{font-size:16px;line-height:1.35}
+ .kb-expertise-lead{padding:75px 24px}
+ .kb-expertise-lead p{font-size:clamp(28px,7vw,38px);line-height:1.15}
+ .kb-service-list{padding:0 24px}
+ .kb-service-row{padding:32px 0;gap:18px}
+ .kb-service-copy h2{font-size:clamp(24px,6vw,32px);line-height:1.2}
+ .kb-service-image{height:auto;aspect-ratio:4/3;min-height:0}
+ .kb-projects-intro{padding:75px 24px 25px}
+ .kb-project-grid{padding:25px 24px 70px;gap:38px}
+ .kb-project-card-info h2{font-size:clamp(28px,7vw,36px);line-height:1.15}
+ .kb-project-card-image,.kb-project-card.is-featured .kb-project-card-image{height:auto;aspect-ratio:4/3;min-height:0}
+ .kb-projects-note{margin:0 24px 70px;gap:15px}
+ .kb-contact-layout{padding:75px 24px 80px;gap:36px}
+ .kb-contact-copy h2{font-size:clamp(38px,10vw,50px);line-height:1.06}
+ .kb-contact-form{padding:24px 20px}
+ .kb-contact-form input,.kb-contact-form textarea{font-size:16px;min-height:48px}
+ .kb-site-footer{padding:65px 24px calc(24px + env(safe-area-inset-bottom))}
+ .kb-footer-top>p{font-size:clamp(43px,10.5vw,72px);line-height:.98}
+ .kb-footer-bottom{font-size:12px;overflow-wrap:anywhere}
+}
+@media(max-width:390px){
+ .kb-page-intro,.kb-about-vision,.kb-contact-layout{padding-left:20px;padding-right:20px}
+ .kb-values-grid{grid-template-columns:minmax(0,1fr)}
+ .kb-values-grid article{min-height:0}
+ .kb-project-grid,.kb-projects-intro,.kb-expertise-lead,.kb-service-list{padding-left:20px;padding-right:20px}
+}
+@media(prefers-reduced-motion:reduce){
+ .kb-route-layer,.kb-project-rail{height:auto!important;min-height:0!important;overflow:visible!important}
+ .kb-project-rail .kb-project-grid{width:auto!important;transform:none!important;display:grid!important;grid-template-columns:1fr 1fr!important}
+ .kb-project-rail .kb-project-card,.kb-project-rail .kb-project-card.is-featured{width:auto!important;display:block!important;transform:none!important}
+ .kb-rail-progress,.kb-rail-caption{display:none!important}
+}
