@@ -649,3 +649,135 @@
 @media(prefers-reduced-motion:reduce){
   .kb-page .kb-3d-card,.kb-page .kb-3d-card-image img,.kb-page .kb-3d-card-shade,.kb-page .kb-3d-card-open svg,.kb-3d-lightbox,.kb-3d-lightbox-nav{transition:none!important;animation:none!important}
 }
+
+
+/* Interaction pass: the architectural cards now react to the pointer, not just sit in a grid. */
+.kb-page .kb-3d-card{
+  perspective:1100px;
+  animation:kb-3d-card-arrive .75s cubic-bezier(.2,.75,.25,1) both;
+  animation-delay:calc(var(--kb-card-index, 0) * 55ms);
+}
+@keyframes kb-3d-card-arrive{
+  from{opacity:0;transform:translate3d(0,28px,0) scale(.985)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+.kb-page .kb-3d-card-trigger{
+  transform:rotateX(var(--kb-tilt-x,0deg)) rotateY(var(--kb-tilt-y,0deg)) translateZ(0);
+  transform-style:preserve-3d;
+  transition:transform .22s ease,filter .35s ease;
+  border-radius:18px;
+  outline-offset:5px;
+}
+.kb-page .kb-3d-card-image{
+  border-radius:18px;
+  overflow:hidden;
+  isolation:isolate;
+  box-shadow:0 10px 34px #0000001c;
+  transition:box-shadow .45s ease,border-color .45s ease;
+}
+.kb-page .kb-3d-card-image:after{
+  content:'';
+  position:absolute;
+  z-index:2;
+  inset:0;
+  border:1px solid #ffffff20;
+  border-radius:inherit;
+  pointer-events:none;
+  transition:border-color .35s ease,box-shadow .35s ease;
+}
+.kb-page .kb-3d-card-image:before{
+  content:'';
+  position:absolute;
+  z-index:3;
+  inset:0;
+  background:radial-gradient(circle at var(--kb-pointer-x,50%) var(--kb-pointer-y,50%),#ffffff24 0,transparent 42%);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+}
+.kb-page .kb-3d-card-image img{
+  transform:scale(1.001);
+  transition:transform .85s cubic-bezier(.2,.75,.25,1),filter .5s ease;
+}
+.kb-page .kb-3d-card-shade{z-index:1;opacity:.36}
+.kb-page .kb-3d-card-explore{
+  position:absolute;
+  z-index:4;
+  left:18px;
+  bottom:18px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 14px;
+  border:1px solid #ffffff65;
+  border-radius:999px;
+  background:#171615a8;
+  color:#fff;
+  font-size:10px;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translateY(8px);
+  backdrop-filter:blur(12px);
+  transition:opacity .3s ease,transform .3s ease,background .3s ease;
+  pointer-events:none;
+}
+.kb-page .kb-3d-card-explore svg{color:#ff7047;transition:transform .3s ease}
+.kb-page .kb-3d-card-index{
+  position:absolute;
+  z-index:4;
+  top:16px;
+  right:16px;
+  display:grid;
+  place-items:center;
+  width:43px;
+  height:43px;
+  border:1px solid #ffffff78;
+  border-radius:50%;
+  background:#1716159c;
+  color:#fff;
+  font-size:11px;
+  letter-spacing:.04em;
+  backdrop-filter:blur(12px);
+  transform:scale(.82) rotate(-12deg);
+  opacity:.78;
+  transition:transform .35s cubic-bezier(.2,.75,.25,1),opacity .3s ease,background .3s ease;
+}
+.kb-page .kb-3d-card-meta{transition:color .3s ease}
+.kb-page .kb-3d-card-meta>span:first-child b{font-weight:400;color:#77716c}
+.kb-page .kb-3d-card-open{transition:letter-spacing .3s ease}
+@media(hover:hover) and (pointer:fine){
+  .kb-page .kb-3d-card:hover .kb-3d-card-trigger{filter:drop-shadow(0 20px 24px #00000028)}
+  .kb-page .kb-3d-card:hover .kb-3d-card-image{box-shadow:0 24px 55px #00000055}
+  .kb-page .kb-3d-card:hover .kb-3d-card-image:before{opacity:1}
+  .kb-page .kb-3d-card:hover .kb-3d-card-image:after{border-color:#df481d9c;box-shadow:inset 0 0 0 1px #df481d36}
+  .kb-page .kb-3d-card:hover .kb-3d-card-image img{transform:scale(1.065);filter:contrast(1.045) saturate(1.04)}
+  .kb-page .kb-3d-card:hover .kb-3d-card-shade{opacity:.82}
+  .kb-page .kb-3d-card:hover .kb-3d-card-explore{opacity:1;transform:translateY(0);background:#171615d9}
+  .kb-page .kb-3d-card:hover .kb-3d-card-explore svg{transform:translate(3px,-3px)}
+  .kb-page .kb-3d-card:hover .kb-3d-card-index{opacity:1;transform:scale(1) rotate(0);background:#df481d}
+  .kb-page .kb-3d-card:hover .kb-3d-card-open{letter-spacing:.16em}
+}
+.kb-page .kb-3d-card-trigger:active{transform:scale(.985)}
+.kb-page .kb-3d-card-trigger:focus-visible .kb-3d-card-image:after{border-color:#df481d;box-shadow:inset 0 0 0 2px #df481d}
+@media(max-width:850px){
+  .kb-page .kb-3d-card-trigger{transform:none!important}
+  .kb-page .kb-3d-card-image{border-radius:14px}
+  .kb-page .kb-3d-card-explore{
+    left:9px;
+    bottom:9px;
+    gap:5px;
+    padding:8px 10px;
+    font-size:8px;
+    opacity:1;
+    transform:none;
+    letter-spacing:.08em;
+  }
+  .kb-page .kb-3d-card-explore svg{width:15px;height:15px}
+  .kb-page .kb-3d-card-index{top:9px;right:9px;width:32px;height:32px;font-size:10px;opacity:1;transform:none}
+  .kb-page .kb-3d-card-meta{flex-direction:column;align-items:flex-start;gap:8px}
+  .kb-page .kb-3d-card-open{font-size:9px;letter-spacing:.08em}
+}
+@media(prefers-reduced-motion:reduce){
+  .kb-page .kb-3d-card{animation:none!important;opacity:1!important}
+  .kb-page .kb-3d-card-trigger,.kb-page .kb-3d-card-image,.kb-page .kb-3d-card-image img,.kb-page .kb-3d-card-image:before,.kb-page .kb-3d-card-image:after,.kb-page .kb-3d-card-explore,.kb-page .kb-3d-card-index,.kb-page .kb-3d-card-open{transition:none!important}
+}
