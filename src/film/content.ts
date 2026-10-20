@@ -5,7 +5,7 @@ export const services=[
 {name:'Surveying',lines:['Cadastral surveys','Laser scanning','Drone-based topographic mapping'],image:'/images/excavator-site.webp'},
 {name:'Town Planning',lines:['Sustainable urban and regional development','Zoning, land use, and transportation planning'],image:'/images/aerial-site-plan.webp'},
 {name:'Procurement',lines:['Cost control','Value engineering','Project management'],image:'/images/orange-loader.webp'}];
-export const projects=[
+export const projects: {status:string;name:string;detail?:string;location:string;year:string;image:string;scope:string[]}[]=[
 {status:'EXECUTED',name:'5 Bedroom Duplex',location:'Yenagoa, Bayelsa State',year:'2023',image:'/images/project-yenagoa.webp',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']},
 {status:'EXECUTED',name:'5 Bedroom Duplex',location:'Port Harcourt, Rivers State',year:'2023',image:'/images/project-port-harcourt.webp',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']},
 {status:'ONGOING',name:'5 Bedroom Duplex',detail:'Including 3 units of self contain, swimming pool and security house',location:'Bonny Island, Rivers State',year:'2024',image:'/images/project-bonny-island.webp',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']}];
