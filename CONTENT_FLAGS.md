@@ -33,3 +33,10 @@ The PDF has been located and inspected locally. Its page artwork is flattened at
 - Confirm mobile ScrollTrigger behaviour, focus states, alt text, route rail, menu and reduced-motion fallback.
 - Run `npm run build` and Lighthouse mobile after assets are present.
 - Verify the final Vercel production deployment. Do not describe the website as production-ready while the image assets are missing.
+
+
+## 20 October 2026 implementation update
+- Temporary external Unsplash architectural/construction photographs are mapped in `src/film/Film.jsx` for current missing image paths. They are illustrative stand-ins only, not company/project photography.
+- The 3D design archive has been removed from the rendered homepage until approved render assets can be supplied.
+- Next.js is not required for the current React + Vite app. React Router DOM is already installed and is sufficient for client-side routes; migrate only if server rendering or Next-specific features become a deliberate requirement.
+- Still required before production: implement and test dedicated routes for About, Expertise, Projects and Contact; run a local build; check every image and mobile viewport; verify deployment.
