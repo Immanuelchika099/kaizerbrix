@@ -1934,3 +1934,60 @@ html,body{overflow-x:clip}
     padding-bottom: 32px !important;
   }
 }
+
+
+
+/* Discipline scene transition polish — preserve the existing visual design while softening state changes. */
+.discipline-list li{
+  transition:border-color .45s ease, box-shadow .45s ease;
+}
+.discipline-list button{
+  transition:color .45s cubic-bezier(.22,1,.36,1), padding-left .45s cubic-bezier(.22,1,.36,1);
+}
+.discipline-list .active button{
+  padding-left:5px;
+}
+.orange-square{
+  transition:background-color .45s ease, transform .55s cubic-bezier(.22,1,.36,1);
+  transform-origin:center;
+}
+.discipline-list .active .orange-square{
+  transform:scale(1.3);
+}
+.discipline-list small{
+  transition:color .45s ease, opacity .45s ease;
+}
+.discipline-list li.active small{
+  color:var(--orange);
+}
+.service-counter,.service-active-name{
+  transition:color .35s ease, opacity .35s ease, transform .45s cubic-bezier(.22,1,.36,1);
+}
+.service-descriptions{
+  display:grid;
+  position:relative;
+}
+.service-descriptions p{
+  grid-area:1 / 1;
+  transition:opacity .45s ease, transform .55s cubic-bezier(.22,1,.36,1), filter .45s ease;
+  opacity:0;
+  transform:translateY(10px);
+  filter:blur(2px);
+  pointer-events:none;
+}
+.service-descriptions p.is-active{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+  pointer-events:auto;
+}
+.discipline-panel{
+  backface-visibility:hidden;
+  transform-origin:center center;
+}
+@media(prefers-reduced-motion:reduce){
+  .discipline-list li,.discipline-list button,.orange-square,.discipline-list small,
+  .service-counter,.service-active-name,.service-descriptions p{
+    transition:none!important;
+  }
+}
