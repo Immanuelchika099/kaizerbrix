@@ -38,5 +38,6 @@ The PDF has been located and inspected locally. Its page artwork is flattened at
 ## 20 October 2026 implementation update
 - Temporary external Unsplash architectural/construction photographs are mapped in `src/film/Film.jsx` for current missing image paths. They are illustrative stand-ins only, not company/project photography.
 - The 3D design archive has been removed from the rendered homepage until approved render assets can be supplied.
+- GSAP/ScrollTrigger animations are applied across the existing homepage scenes, including About, Vision/Mission, Expertise, Core Values, Projects, Quality/HSE and Contact—not only the hero. The latest update adds cross-section reveal and image movement choreography.
 - Next.js is not required for the current React + Vite app. React Router DOM is already installed and is sufficient for client-side routes; migrate only if server rendering or Next-specific features become a deliberate requirement.
-- Still required before production: implement and test dedicated routes for About, Expertise, Projects and Contact; run a local build; check every image and mobile viewport; verify deployment.
+- Still required before production: implement and test dedicated routes for About, Expertise, Projects and Contact; run a local build; check all image requests and desktop/mobile layouts; verify deployment.
