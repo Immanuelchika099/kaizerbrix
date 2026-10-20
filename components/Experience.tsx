@@ -216,20 +216,33 @@ export function MotionShell({ children }: { children: ReactNode }) {
       else setNavHidden(false);
       const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       setProgress(Math.min(1, Math.max(0, y / max)));
-      const scenes = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-theme]'));
-      const active = scenes.find((scene) => { const rect = scene.getBoundingClientRect(); return rect.top <= 90 && rect.bottom > 90; });
-      if (active) {
-        const theme = active.dataset.navTheme;
-        setNavTheme(theme === 'white' || theme === 'orange' ? theme : 'ink');
-        const label = active.dataset.sceneLabel;
-        if (label) setSlate(label);
-      } else setNavTheme('ink');
       lastY = y;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, [pathname, menuOpen]);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const scenes = Array.from(root.querySelectorAll<HTMLElement>('[data-nav-theme]'));
+    const applyScene = (scene: HTMLElement) => {
+      const theme = scene.dataset.navTheme;
+      setNavTheme(theme === 'white' || theme === 'orange' ? theme : 'ink');
+      if (scene.dataset.sceneLabel) setSlate(scene.dataset.sceneLabel);
+    };
+    const triggers = scenes.map((scene) => ScrollTrigger.create({
+      trigger: scene,
+      start: 'top 90px',
+      end: 'bottom 90px',
+      onEnter: () => applyScene(scene),
+      onEnterBack: () => applyScene(scene),
+    }));
+    const active = scenes.find((scene) => { const rect = scene.getBoundingClientRect(); return rect.top <= 90 && rect.bottom > 90; });
+    if (active) applyScene(active);
+    return () => triggers.forEach((trigger) => trigger.kill());
+  }, [pathname]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -310,6 +323,26 @@ export function SceneReveal({ children, className = '', id, theme = 'ink', label
       const image = photo.querySelector('img');
       if (image) gsap.fromTo(image, { scale: 1.08, filter: 'grayscale(1) sepia(.45) saturate(.7)' }, { scale: 1, filter: 'grayscale(0) sepia(0) saturate(1.04)', ease: 'none', scrollTrigger: { trigger: photo, start: 'top 90%', end: 'center 48%', scrub: 0.8 } });
     });
+    if (ref.current.classList.contains('home-competence') && window.matchMedia('(min-width: 761px)').matches) {
+      const rows = gsap.utils.toArray<HTMLElement>('.competence-row', ref.current);
+      if (rows.length > 1) {
+        gsap.set(rows.slice(1), { clipPath: 'inset(0 0 100% 0)', y: 22 });
+        const timeline = gsap.timeline();
+        rows.slice(1).forEach((row, i) => timeline.to(row, { clipPath: 'inset(0 0 0% 0)', y: 0, duration: 0.45, ease: 'none' }, i * 0.3));
+        ScrollTrigger.create({ trigger: ref.current, animation: timeline, start: 'top top', end: () => '+=' + window.innerHeight * 1.15, pin: true, scrub: 0.9, anticipatePin: 1, invalidateOnRefresh: true, snap: { snapTo: 1 / (rows.length - 1), duration: { min: 0.4, max: 0.75 }, ease: 'power2.inOut', directional: true } });
+      }
+    }
+    if (ref.current.classList.contains('service-chapter') && window.matchMedia('(min-width: 761px)').matches) {
+      const title = ref.current.querySelector<HTMLElement>('.service-chapter-grid h2');
+      const lines = gsap.utils.toArray<HTMLElement>('.service-lines li', ref.current);
+      if (title && lines.length) {
+        gsap.set(lines, { clipPath: 'inset(0 0 100% 0)' });
+        const timeline = gsap.timeline();
+        timeline.fromTo(title, { scale: 0.88 }, { scale: 1, duration: 0.45, ease: 'none' }, 0);
+        lines.forEach((line, i) => timeline.to(line, { clipPath: 'inset(0 0 0% 0)', duration: 0.4, ease: 'none' }, 0.25 + i * 0.35));
+        ScrollTrigger.create({ trigger: ref.current, animation: timeline, start: 'top top', end: () => '+=' + window.innerHeight * 1.05, pin: true, scrub: 0.9, anticipatePin: 1, invalidateOnRefresh: true, snap: { snapTo: 1 / (lines.length + 1), duration: { min: 0.4, max: 0.8 }, ease: 'power2.inOut', directional: true } });
+      }
+    }
     if (ref.current.classList.contains('home-projects') && window.matchMedia('(min-width: 761px)').matches) {
       const track = ref.current.querySelector<HTMLElement>('.home-project-grid');
       if (track) {
@@ -330,7 +363,13 @@ export function PageTitle({ number, title, eyebrow, description, image, imageAlt
 }
 
 export function Credits() {
-  return <footer className="credits" data-nav-theme="orange" data-scene-label="SC 08 / CREDITS">
+  const root = useRef<HTMLElement | null>(null);
+  useGSAP(() => {
+    if (!root.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const lines = Array.from(root.current.querySelectorAll<HTMLElement>('.credits-top, .credits-links a, .credits-bottom'));
+    gsap.fromTo(lines, { y: 42, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.035, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top 90%', end: 'top 20%', scrub: 0.7 } });
+  }, { scope: root, revertOnUpdate: true });
+  return <footer ref={root} className="credits" data-nav-theme="orange" data-scene-label="SC 08 / CREDITS">
     <div className="credits-top"><div><p className="scene-label">KAIZERBRIX CONSULTS / PORT HARCOURT</p><h2>BUILDING<br/>LEGACIES<span>.</span></h2></div><BrandMark className="credits-mark"/></div>
     <div className="credits-links">{navItems.map((item) => <TransitionLink key={item.href} href={item.href}>{item.label} ↗</TransitionLink>)}</div>
     <div className="credits-bottom"><span>{brand.address}</span><span><a href="tel:+2347073847960">+234 (0) 707 384 7960</a> · <a href="mailto:kaizerbrixconsults@gmail.com">kaizerbrixconsults@gmail.com</a></span><span>© {new Date().getFullYear()} KAIZERBRIX CONSULTS</span></div>
