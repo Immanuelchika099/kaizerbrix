@@ -1810,3 +1810,11 @@ html,body{overflow-x:clip}
   .film-nav .film-nav-mark{padding-inline:14px!important}
   .film-nav .film-nav-mark .film-nav-logo{width:clamp(120px,42vw,164px)!important;max-height:42px!important}
 }
+
+
+/* Supplied client QR code in the cinematic homepage footer. */
+.contact-qr{display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-width:0}
+.contact-qr img{display:block;width:76px;height:76px;object-fit:contain;background:#fff;padding:5px}
+.contact-qr span{font:700 .8rem var(--display);letter-spacing:.08em}
+@media(min-width:900px){.contact-bottom{grid-template-columns:1.2fr .7fr 1fr auto 100px}}
+@media(max-width:899px){.contact-qr{grid-column:auto}.contact-qr img{width:72px;height:72px}}
