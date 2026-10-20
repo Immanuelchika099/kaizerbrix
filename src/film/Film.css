@@ -1631,3 +1631,38 @@ html,body{overflow-x:clip}
     padding:34px 22px!important;
   }
 }
+
+
+/* Desktop statement alignment: one consistent left edge for the headline,
+   supporting copy, and CTA; keep the change scoped to this section. */
+@media (min-width: 900px) {
+  .statement-scene {
+    align-items: flex-start !important;
+    padding-left: max(var(--kb-section-gutter, 32px), calc((100vw - var(--kb-content-max, 1280px)) / 2)) !important;
+    padding-right: max(var(--kb-section-gutter, 32px), calc((100vw - var(--kb-content-max, 1280px)) / 2)) !important;
+  }
+
+  .statement-rule {
+    align-self: flex-start;
+  }
+
+  .statement-text {
+    width: 100%;
+    max-width: 12ch;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left;
+  }
+
+  .statement-support {
+    align-self: flex-start;
+    max-width: 46ch !important;
+    margin: clamp(24px, 2.2vw, 34px) 0 0 !important;
+    text-align: left;
+  }
+
+  .statement-scene > .film-outline-cta {
+    align-self: flex-start;
+    margin: 26px 0 0 !important;
+  }
+}
