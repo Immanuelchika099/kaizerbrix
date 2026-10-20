@@ -67,3 +67,11 @@
 - Changes are source-side. Production browser screenshots, programmatic overlap/overflow measurements and final deployment verification are still outstanding.
 
 - Follow-up safety pass: kept the fixed navigation/menu outside root-level overflow clipping, and explicitly restored normal-flow Vision/Mission and project layouts for reduced-motion users so hidden/absolute content cannot collapse the section.
+
+
+## 2026-10-20 — Pinned service act and image-source honesty
+- Extended the existing cinematic pin system to the title card and the Expertise act on mobile, with shorter mobile pin distances; kept long About, policy and contact copy in natural flow on small screens.
+- Reworked service transitions so each outgoing discipline is clipped away before the next panel becomes visible. Expanded the existing service list from five to six using the requested Construction discipline and current project-scope wording; updated the counter to 06.
+- Removed generic external stock-photo substitutions. Missing local image assets now render a clearly marked “IMAGE NEEDED” placeholder with the expected filename instead of silently substituting unrelated imagery.
+- Existing React + Vite, GSAP/ScrollTrigger and Lenis infrastructure remains in place. This is source-side until the new Vercel deployment and browser checks complete.
+- QA limitation: the current environment does not provide a usable browser screenshot/recording runner; do not claim verified 360–1920px Playwright checks or measured 60fps. The production deployment can be checked through Vercel status, but visual/device QA still needs a browser/device pass.
