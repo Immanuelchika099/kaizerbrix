@@ -122,3 +122,9 @@
 - Set revealed About words to the brand's ink colour (#171516) to restore strong contrast.
 - Removed the orange curtain/line reveal from the intro sequence. The logo draws, then fades out; the full-screen overlay fades away with it.
 - Committed to main. Verify the live pinned start and contrast on a real phone/desktop after deployment.
+
+
+## About paragraph scroll reveal
+- Reworked the existing About descriptive paragraphs to use the portfolio-style pinned reveal: words slide in from the left while sharpening from blur to clear as the visitor scrolls.
+- Reuses the current About section and its existing copy; no additional text block or new section was added.
+- Added a reduced-motion fallback and tuned the reveal for desktop and mobile.
