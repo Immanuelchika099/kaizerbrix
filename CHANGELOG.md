@@ -153,3 +153,8 @@
 
 - Build follow-up: corrected a missing closing brace in the shared Nav component's homepage-only side-rail condition. Vercel's failed build had identified this JSX parse error in src/film/Film.jsx; the fix is committed.
 - Deployment verification is currently blocked by Vercel's API deployment limit (HTTP 402: over 100 deployments in the daily window). The live site therefore remains on its last READY deployment until Vercel permits another build.
+
+## 2026-10-20 — About page whitespace correction
+- Reduced the Point of View section's top/bottom padding and the oversized margins around its statement.
+- Tightened the following vision section's spacing and capped the image height on desktop and mobile so the image is followed by the next content without an excessive blank stretch.
+- CSS source committed; live appearance still needs a fresh Vercel deployment and browser verification.
