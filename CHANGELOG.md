@@ -75,3 +75,5 @@
 - Removed generic external stock-photo substitutions. Missing local image assets now render a clearly marked “IMAGE NEEDED” placeholder with the expected filename instead of silently substituting unrelated imagery.
 - Existing React + Vite, GSAP/ScrollTrigger and Lenis infrastructure remains in place. This is source-side until the new Vercel deployment and browser checks complete.
 - QA limitation: the current environment does not provide a usable browser screenshot/recording runner; do not claim verified 360–1920px Playwright checks or measured 60fps. The production deployment can be checked through Vercel status, but visual/device QA still needs a browser/device pass.
+
+- Added direction-aware navbar behaviour: it recedes while scrolling down, returns when scrolling up, and gains a more solid backdrop after leaving the hero.
