@@ -1109,3 +1109,36 @@ html,body{overflow-x:clip}
 /* Final polish: keep the scroll-reactive orange rule, remove its static ash track. */
 .quality-commitments{border-top:0!important}
 .quality-commitments article{border-bottom:0!important}
+
+
+/* Typography accessibility pass: keep editorial labels crisp, but never microscopic. */
+.film-chip{font-size:1.05rem;line-height:1.45}
+.film-nav-wordmark{font-size:1.2rem}
+.film-nav-wordmark sup{font-size:.9rem}
+.film-nav-wordmark span{font-size:.95rem}
+.film-menu a span,.film-menu-divider{font-size:1.1rem}
+.film-menu .film-menu-divider~a{font-size:clamp(1.6rem,2.5vw,2.1rem)}
+.film-rail button span{font-size:.95rem}
+.hero-bottom,.project-status,.film-project-copy>span,.project-scope span,.projects-scroll-hint,
+.designs-title>span,.design-plate-caption span,.quality-commitments article>span,
+.contact-bottom span,.contact-legal,.about-photo-wrap figcaption,.discipline-panel>span,
+.values-photo span{font-size:1rem;line-height:1.5}
+.about-copy p,.statement-support,.value-copy p,.quality-panel>p,.quality-commitments p,
+.hse-copy p,.contact-main>p,.film-project-copy>p{font-size:max(1.4rem, 1em)}
+.quality-commitments h3{font-size:max(1.6rem, 1em)}
+.contact-bottom a{font-size:1.2rem;line-height:1.6}
+@media(max-width:899px){
+ .film-chip{font-size:1.05rem}
+ .microline{font-size:1rem}
+ .hero-tagline{font-size:1.5rem}
+ .hero-bottom{font-size:1rem}
+ .film-menu a span,.film-menu-divider{font-size:1.05rem}
+ .film-menu .film-menu-divider~a{font-size:1.7rem}
+ .about-copy p,.statement-support,.value-copy p,.quality-panel>p,.quality-commitments p,
+ .hse-copy p,.contact-main>p,.film-project-copy>p{font-size:1.5rem;line-height:1.75}
+ .value-copy h3,.value-row h3{font-size:1.7rem}
+ .quality-commitments h3{font-size:1.55rem}
+ .quality-commitments article>span{font-size:1.05rem}
+ .contact-bottom a{font-size:1.25rem}
+ .project-scope,.projects-top p{font-size:1.3rem}
+}
