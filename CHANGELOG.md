@@ -1,12 +1,12 @@
 # Changelog — KaizerBrix Consults
 
-## 2026-10-20 — Cinematic site implementation
-- Preserved the existing React + Vite application and cinematic homepage rather than migrating frameworks or starting over.
-- Added dedicated routes for About, Expertise, Projects and Contact, with shared page navigation, footer and restrained page-entry transitions.
-- Added responsive editorial layouts and a consistent warm-white, charcoal and company-orange palette.
-- Added externally hosted architectural/construction reference photography on the new pages so unavailable company images do not leave broken image frames.
-- The Projects page uses project names, locations, status and scope described in the company profile; external photos are explicitly labelled as illustrative and are not represented as actual client project photography.
-- Avoided adding invented statistics, testimonials, certifications or claims.
-- The 3D design archive is intentionally deferred per instruction until genuine assets are available.
-- Assumption: existing React Router DOM is used for page routes. Next.js is not required for this implementation and has not been added.
-- Verification note: source changes were committed through GitHub. A local dependency install, production build, browser QA and Vercel deployment must still be run/confirmed before claiming the site is production-verified.
+## 2026-10-20 — Cinematic scroll implementation update
+- Preserved the existing React + Vite cinematic homepage rather than rebuilding from scratch or migrating frameworks.
+- Extended GSAP/ScrollTrigger choreography beyond the hero: word-by-word About reveal, parallax imagery, pinned Vision/Mission sequence, pinned Expertise discipline transitions, statement typography, Core Values reveals, horizontal project storytelling on desktop, Quality/HSE reveals and Contact mark movement.
+- Added shared scroll-triggered reveals for section labels, section headings/content blocks, project cards and image zoom/parallax, respecting the reduced-motion preference through the existing animation matchMedia setup.
+- Added external Unsplash architectural/construction image fallbacks for existing missing image paths. These are temporary illustrative references, not actual KaizerBrix project photographs.
+- Removed the 3D design archive from the rendered homepage until genuine approved renders are available.
+- Kept company content grounded in the supplied PDF; no unverified statistics, testimonials or credentials were added.
+- Next.js is not required for the current React/Vite build. Existing React Router DOM can support multi-page routing without migrating frameworks.
+- Important status: the cinematic homepage has been updated, but the requested dedicated About, Expertise, Projects and Contact routes have NOT yet been implemented/verified. Do not claim full completion.
+- Not yet verified: local dependency install, production build, desktop/mobile browser QA, external image availability, or Vercel production deployment.
