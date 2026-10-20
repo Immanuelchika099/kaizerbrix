@@ -210,3 +210,10 @@
 - Added an accessible full-screen image viewer with previous/next controls, Escape-to-close, arrow-key navigation, and body-scroll locking.
 - Assumption: the 3D section belongs below the existing selected-projects content on the current Projects route; the other 16 company-profile images remain unmapped and untouched.
 - Verification limitation: source changes were committed through GitHub, but this environment cannot run the local Vite build or browser/device visual checks. Verify with `npm run build` and review the route on desktop and mobile before treating visual QA as complete.
+
+
+## 2026-10-20 — 3D gallery interaction refinement
+- Strengthened the 3D gallery cards with staggered entrance motion, pointer-following perspective tilt and spotlight on desktop, image zoom, animated orange edge treatment, a visible explore affordance, and a numbered hover badge.
+- Kept the image composition intact with `object-fit: contain`; added persistent explore cues on touch layouts so the interaction is discoverable without hover.
+- Added focus/pressed states and reduced-motion handling. Full-screen viewing and previous/next navigation remain unchanged.
+- Verification limitation: code was committed to `main`; local Vite build and browser/device visual QA have not been run in this environment.
