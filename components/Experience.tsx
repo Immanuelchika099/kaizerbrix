@@ -270,7 +270,7 @@ export function TransitionLink({ href, children, className, ...props }: Componen
   const { navigate } = useMotion();
   const preload = () => {
     const path = String(href).split('#')[0];
-    let src = navItems.find((item) => item.href === path)?.image;
+    let src: string | undefined = navItems.find((item) => item.href === path)?.image;
     if (path.startsWith('/projects/')) {
       const index = projectSlugs.findIndex((item) => item.slug === path.split('/')[2]);
       if (index >= 0) src = projects[index]?.image;
