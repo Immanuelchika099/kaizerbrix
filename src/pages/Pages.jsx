@@ -111,9 +111,9 @@ export function ProjectsPage(){
       </div>
       <div className="kb-3d-gallery-grid">
         {threeDImages.map((image,index)=><article className={'kb-3d-card kb-3d-card--'+(index%5+1)} key={image.filename} style={{'--kb-card-index':index}}>
-          <button type="button" className="kb-3d-card-trigger" onClick={()=>setActiveImage(index)} aria-label={'Open architectural visualisation '+image.number}>
-            <span className="kb-3d-card-image"><img src={image.src} alt={'KaizerBrix architectural 3D visualisation '+image.number} loading="lazy" decoding="async"/><span className="kb-3d-card-shade"/></span>
-            <span className="kb-3d-card-meta"><span><i>{image.number}</i> / 15</span><span className="kb-3d-card-open">VIEW DESIGN <ArrowUpRight size={17}/></span></span>
+          <button type="button" className="kb-3d-card-trigger" onClick={()=>setActiveImage(index)} onMouseMove={event=>{const r=event.currentTarget.getBoundingClientRect();const x=(event.clientX-r.left)/r.width;const y=(event.clientY-r.top)/r.height;event.currentTarget.style.setProperty('--kb-tilt-x',((.5-y)*5)+'deg');event.currentTarget.style.setProperty('--kb-tilt-y',((x-.5)*6)+'deg');event.currentTarget.style.setProperty('--kb-pointer-x',(x*100)+'%');event.currentTarget.style.setProperty('--kb-pointer-y',(y*100)+'%')}} onMouseLeave={event=>{event.currentTarget.style.setProperty('--kb-tilt-x','0deg');event.currentTarget.style.setProperty('--kb-tilt-y','0deg');event.currentTarget.style.setProperty('--kb-pointer-x','50%');event.currentTarget.style.setProperty('--kb-pointer-y','50%')}} aria-label={'Open architectural visualisation '+image.number+' in full-screen viewer'}>
+            <span className="kb-3d-card-image"><img src={image.src} alt={'KaizerBrix architectural 3D visualisation '+image.number} loading="lazy" decoding="async"/><span className="kb-3d-card-shade"/><span className="kb-3d-card-explore"><span>EXPLORE DESIGN</span><ArrowUpRight size={20}/></span><span className="kb-3d-card-index">{image.number}</span></span>
+            <span className="kb-3d-card-meta"><span><i>{image.number}</i> <b>/ 15</b></span><span className="kb-3d-card-open">OPEN FULL VIEW <ArrowUpRight size={17}/></span></span>
           </button>
         </article>)}
       </div>
