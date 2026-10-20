@@ -134,3 +134,11 @@
 - Rebuilt the vision/mission transition as one shared pinned scroll timeline for desktop and mobile, so the section begins its reveal on arrival and stays part of the continuous film journey.
 - Added a smooth blur-to-clear, upward text reveal for the vision statement, then transitions into the mission copy and a clipped image reveal.
 - Removed legacy forced transform/opacity overrides that prevented the GSAP motion from displaying correctly, and centered the copy with responsive image sizing to avoid text hugging the top edge.
+
+
+## 2026-10-20 — External pages typography and shared navigation
+- Removed the external routes' separate inline navigation so they use the same floating cinematic navbar and menu as the homepage.
+- Kept route navigation (Home, About, Expertise, Projects and Contact) in the shared menu; the homepage-only section index and side rail are hidden on external routes.
+- Increased reading sizes and line-height across page introductions, service descriptions, project details, value cards and contact form fields, with mobile-first readable sizing.
+- Rebalanced section padding, content gaps and image heights to reduce awkward blank stretches while preserving intentional editorial breathing room.
+- Source changes are committed to main; production deployment and real-device visual QA remain pending.
