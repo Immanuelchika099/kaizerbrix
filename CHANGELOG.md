@@ -149,3 +149,7 @@
 - Raised supporting copy to comfortable reading sizes and balanced the Vision/Mission, service rows, project gallery and contact form spacing.
 - Preserved the shared homepage cinematic navbar and existing route structure; no redesign or placeholder-image replacement was included.
 - Source committed to main. Production deployment and browser/device visual QA remain pending.
+
+
+- Build follow-up: corrected a missing closing brace in the shared Nav component's homepage-only side-rail condition. Vercel's failed build had identified this JSX parse error in src/film/Film.jsx; the fix is committed.
+- Deployment verification is currently blocked by Vercel's API deployment limit (HTTP 402: over 100 deployments in the daily window). The live site therefore remains on its last READY deployment until Vercel permits another build.
