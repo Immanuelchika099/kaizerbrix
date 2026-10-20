@@ -210,7 +210,7 @@ html,body{overflow-x:clip}
 /* Responsive spacing and scroll choreography hardening */
 :root{--section-space:clamp(5.6rem,9vw,10rem);--content-max:1280px;--nav-safe:9rem}
 #home,#about,#vision,#expertise,#values,#projects,#standards,#contact,[id^="discipline-"]{scroll-margin-top:calc(var(--nav-safe) + 1.6rem)}
-.film-root{max-width:100%;overflow:clip}
+.film-root{max-width:100%;overflow:visible}html,body{max-width:100%;overflow-x:clip}
 .hero-scene,.about-scene,.vision-scene,.expertise-scene,.statement-scene,.values-scene,.projects-scene,.standards-scene,.contact-scene{min-width:0}
 .about-copy,.vision-copy,.mission-copy,.expertise-left,.quality-panel,.hse-copy,.contact-main{min-width:0}
 .about-copy h2,.vision-copy h2,.mission-copy h3,.expertise-intro,.statement-text,.values-heading p,.quality-panel>h2,.hse-copy h2,.contact-main h2{text-wrap:balance}
@@ -261,7 +261,7 @@ html,body{overflow-x:clip}
 @media(max-width:899px){
  :root{--nav-safe:7rem}
  html,body{max-width:100%;overflow-x:clip}
- .film-root{width:100%;overflow:clip}
+ .film-root{width:100%;overflow:visible}
  .film-scene{max-width:100%;scroll-margin-top:7.5rem}
  .hero-scene{height:auto;min-height:100svh;min-height:100dvh;max-height:none;padding:100px 22px 64px}
  .hero-copy{width:100%;max-width:100%;padding-right:0}
@@ -364,4 +364,25 @@ html,body{overflow-x:clip}
  .film-project{width:100%;height:auto}
  .projects-horizontal{width:100%;height:auto}
  .film-nav,.film-menu-button{animation:none!important;transition:none!important}
+}
+
+
+/* Keep the fixed menu above the page and make every section usable without motion. */
+@media(prefers-reduced-motion:reduce){
+ .vision-scene{display:flex!important;flex-direction:column!important;justify-content:center;gap:28px;padding:clamp(56px,8vw,90px) var(--gutter)!important;overflow:visible!important}
+ .vision-copy,.mission-copy{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;transform:none!important;width:100%!important;max-width:100%!important;margin:0!important}
+ .vision-copy{min-height:0!important}
+ .vision-copy h2{max-width:15ch}
+ .mission-copy{grid-template-columns:minmax(0,1fr) minmax(180px,.7fr);gap:20px 28px}
+ .mission-copy .film-chip{grid-column:1/-1}
+ .mission-copy img{height:auto;aspect-ratio:4/3;min-height:0}
+ .projects-horizontal{display:block!important;width:100%!important;height:auto!important;margin-top:25px}
+ .projects-scene{overflow:visible!important}
+ .film-project{width:100%!important;height:auto!important;min-height:0!important;grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}
+}
+@media(max-width:899px) and (prefers-reduced-motion:reduce){
+ .vision-scene{padding:72px 24px!important}
+ .mission-copy{grid-template-columns:minmax(0,1fr)!important}
+ .mission-copy .film-chip{grid-column:auto}
+ .film-project{grid-template-columns:minmax(0,1fr)!important}
 }
