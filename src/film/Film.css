@@ -1063,7 +1063,7 @@ html,body{overflow-x:clip}
 .hero-legacies{margin-left:0!important}
 .hero-tagline{max-width:310px;margin-top:28px!important;font-size:1.6rem!important;line-height:1.5!important;font-weight:600}
 .hero-tagline i{height:28px!important}
-.hero-photo-frame{top:12%!important;right:5%!important;width:46%!important;height:76%!important;max-height:none!important;clip-path:inset(0)!important;border-radius:24px!important;overflow:hidden;box-shadow:0 22px 70px rgba(23,21,22,.13)!important;background:#e8e4df}
+.hero-photo-frame{top:12%!important;right:5%!important;width:46%!important;height:76%!important;max-height:none!important;overflow:hidden}
 .hero-photo{border-radius:24px;object-position:center 42%;filter:saturate(.82) contrast(1.03)!important}
 .hero-bottom{font-size:1rem!important;letter-spacing:.06em!important;color:#514b47;z-index:5}
 .hero-bottom span:first-child{display:flex;align-items:center;gap:10px}
