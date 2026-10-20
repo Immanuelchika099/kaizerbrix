@@ -1720,3 +1720,26 @@ html,body{overflow-x:clip}
 .film-nav.is-light .film-nav-mark:after{content:none!important;display:none!important}
 .film-nav .film-nav-mark .film-nav-logo{display:block!important;width:clamp(145px,17vw,220px)!important;max-width:100%!important;height:auto!important;max-height:54px!important;object-fit:contain!important;object-position:left center!important;flex:0 1 auto!important}
 @media(max-width:520px){.film-nav .film-nav-mark,.film-nav.is-light .film-nav-mark{max-width:62vw!important}.film-nav .film-nav-mark .film-nav-logo{width:clamp(132px,43vw,180px)!important;max-height:46px!important}}
+
+
+/* Use the supplied standalone brand mark in the Vision/Mission and footer sections. */
+.vision-scene .vision-giant-mark,
+.contact-scene .contact-giant-mark{
+  object-fit:contain!important;
+  object-position:center!important;
+  pointer-events:none!important;
+}
+
+/* Keep the desktop navigation panel independently scrollable without a visible scrollbar. */
+@media (min-width:900px){
+  .film-menu{
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    max-height:calc(100dvh - 110px)!important;
+    overscroll-behavior-y:contain;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y!important;
+    scrollbar-width:none;
+  }
+  .film-menu::-webkit-scrollbar{display:none;width:0;height:0}
+}
