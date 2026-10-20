@@ -1711,3 +1711,12 @@ html,body{overflow-x:clip}
     transform: none !important;
   }
 }
+
+
+/* Use the supplied original KaizerBrix wordmark in the navbar. */
+.film-nav .film-nav-mark,
+.film-nav.is-light .film-nav-mark{display:flex!important;align-items:center!important;flex:0 1 auto!important;min-width:0!important;width:auto!important;max-width:min(58vw,250px)!important;overflow:visible!important;gap:0!important}
+.film-nav .film-nav-mark:after,
+.film-nav.is-light .film-nav-mark:after{content:none!important;display:none!important}
+.film-nav .film-nav-mark .film-nav-logo{display:block!important;width:clamp(145px,17vw,220px)!important;max-width:100%!important;height:auto!important;max-height:54px!important;object-fit:contain!important;object-position:left center!important;flex:0 1 auto!important}
+@media(max-width:520px){.film-nav .film-nav-mark,.film-nav.is-light .film-nav-mark{max-width:62vw!important}.film-nav .film-nav-mark .film-nav-logo{width:clamp(132px,43vw,180px)!important;max-height:46px!important}}
