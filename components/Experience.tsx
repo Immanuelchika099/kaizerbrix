@@ -269,6 +269,9 @@ export function SceneReveal({ children, className = '', id, theme = 'ink', label
   useGSAP(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced || !ref.current) return;
+    ref.current.querySelectorAll<HTMLElement>('[data-weight-scrub]').forEach((target) => {
+      gsap.fromTo(target, { fontWeight: 200 }, { fontWeight: 800, ease: 'none', scrollTrigger: { trigger: target, start: 'top 70%', end: 'center 42%', scrub: 0.8 } });
+    });
     const targets = ref.current.querySelectorAll<HTMLElement>('[data-reveal]');
     targets.forEach((target) => {
       gsap.fromTo(target, { y: 42, opacity: 0, clipPath: 'inset(0 0 12% 0)' }, { y: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.85, ease: 'power3.out', scrollTrigger: { trigger: target, start: 'top 84%', once: true } });
