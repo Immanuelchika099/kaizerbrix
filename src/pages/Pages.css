@@ -340,3 +340,24 @@
     height:clamp(230px,64vw,340px)!important;
   }
 }
+
+/* Contact form finish: soft rounded card, pill CTA, centered button label/icon. */
+.kb-page .kb-contact-form{
+  border-radius:24px!important;
+  overflow:hidden;
+}
+.kb-page .kb-contact-form button{
+  min-height:56px;
+  border-radius:999px!important;
+  justify-content:center!important;
+  text-align:center;
+  gap:12px!important;
+  padding:17px 28px!important;
+}
+.kb-page .kb-contact-form button svg{
+  flex:0 0 auto;
+}
+@media(max-width:850px){
+  .kb-page .kb-contact-form{border-radius:20px!important}
+  .kb-page .kb-contact-form button{min-height:54px}
+}
