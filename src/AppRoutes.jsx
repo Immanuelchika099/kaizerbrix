@@ -5,12 +5,12 @@ import Film from './film/Film.jsx';
 import './pages.css';
 
 const photos = {
-  architecture: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=85',
-  tower: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85',
-  construction: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=85',
-  site: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=85',
-  interior: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85',
-  blueprint: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=85',
+  architecture: '/images/IMG_1645.PNG',
+  tower: '/images/IMG_1642.PNG',
+  construction: '/images/IMG_1663.PNG',
+  site: '/images/IMG_1662.PNG',
+  interior: '/images/IMG_1641.PNG',
+  blueprint: '/images/IMG_1666.PNG',
 };
 const services = [
   ['Architecture','Design that balances place, purpose and possibility.','architecture'],
