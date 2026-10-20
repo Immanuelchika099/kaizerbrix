@@ -158,3 +158,9 @@
 - Reduced the Point of View section's top/bottom padding and the oversized margins around its statement.
 - Tightened the following vision section's spacing and capped the image height on desktop and mobile so the image is followed by the next content without an excessive blank stretch.
 - CSS source committed; live appearance still needs a fresh Vercel deployment and browser verification.
+
+## 2026-10-20 — Contact form finish and animated intro visibility
+- Rounded the contact form card and converted the Prepare Enquiry action to a centered pill button.
+- The animated KaizerBrix logo intro had not been removed; it was gated to display only once per browser tab session using sessionStorage. Removed that gate so it displays on each fresh homepage load.
+- Kept the existing failsafe that reveals the site if the logo animation fails or stalls. The console message in the catch block is diagnostic for an actual GSAP intro failure, not the reason the intro was hidden on repeat visits.
+- Source changes committed; a production build and Vercel deployment still need verification.
