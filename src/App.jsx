@@ -26,7 +26,7 @@ function RouteCurtain() {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     };
     const frame = window.requestAnimationFrame(scrollToTop);
-    const settle = window.setTimeout(scrollToTop, 80);
+    const settle = window.setTimeout(scrollToTop, 240);
 
     if (!routeChanged || reduce) {
       return () => {
