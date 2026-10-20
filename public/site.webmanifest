@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "Kaizerbrix Consults",
-  "short_name": "Kaizerbrix",
+  "name": "KaizerBrix Consults",
+  "short_name": "KaizerBrix",
   "description": "Multidisciplinary consultancy for architecture, civil engineering, surveying, town planning and construction solutions.",
   "start_url": "/",
   "scope": "/",
@@ -10,15 +10,15 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/apple-touch-icon.svg",
+      "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/apple-touch-icon.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml",
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ]
