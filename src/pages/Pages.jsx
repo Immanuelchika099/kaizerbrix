@@ -73,4 +73,48 @@ export function ProjectsPage(){
     <section className="kb-projects-note"><span>* IMAGE NOTE</span><p>Images are visual references used while authentic project photographs are being collected. They should not be interpreted as photographs of the listed KaizerBrix projects.</p></section>
   </PageFrame>
 }
-export function ContactPage(){const[submitted,setSubmitted]=useState(false);return <PageFrame><PageIntro number="04" kicker="LET'S TALK" title="Start with" accent="a conversation." body="Tell us a little about what you want to build, plan or improve. We’ll take it from there." image={photos.plans}/><section className="kb-contact-layout"><div className="kb-contact-copy"><Eyebrow>GET IN TOUCH</Eyebrow><h2>Good work begins with a <em>good conversation.</em></h2><p>Reach out directly or send a project enquiry using the form. The form opens a prefilled email so your enquiry can be sent through your own mail app.</p><a className="kb-contact-direct" href={'mailto:'+brand.email}>{brand.email}<ArrowUpRight/></a><a className="kb-contact-direct" href="tel:+2347073847960">+234 707 384 7960<ArrowUpRight/></a><div className="kb-contact-address"><span>VISIT US</span><p>{brand.address}</p><a href="https://maps.google.com/?q=67+Mgbuoshimini+Road,+Rumueme,+Port+Harcourt,+Rivers+State" target="_blank" rel="noreferrer">Open in Maps <ArrowUpRight size={15}/></a></div></div><form className="kb-contact-form" onSubmit={e=>{e.preventDefault();const data=new FormData(e.currentTarget);const subject=encodeURIComponent('Project enquiry — '+data.get('name'));const body=encodeURIComponent('Name: '+data.get('name')+'\nEmail: '+data.get('email')+'\nProject type: '+data.get('type')+'\n\nProject details:\n'+data.get('message'));window.location.href='mailto:'+brand.email+'?subject='+subject+'&body='+body;setSubmitted(true)}}><Eyebrow>PROJECT ENQUIRY</Eyebrow><label>Your name<input name="name" autoComplete="name" required placeholder="Full name"/></label><label>Email address<input name="email" type="email" autoComplete="email" required placeholder="you@example.com"/></label><label>What are you planning?<select name="type" defaultValue="" required><option value="" disabled>Select a project type</option>{services.map(s=><option key={s.name}>{s.name}</option>)}<option>Other / not sure yet</option></select></label><label>Tell us about it<textarea name="message" required rows="5" placeholder="Location, scope, timeline — anything helpful."/></label><button type="submit">Prepare enquiry <ArrowUpRight/></button>{submitted&&<p className="kb-form-note" role="status">Your email app should open with the enquiry prepared. If it doesn't, email us directly at {brand.email}.</p>}<small>This form uses your device's email app; it does not submit data to a server.</small></form></section></PageFrame>}
+export function ContactPage(){
+  const [status,setStatus]=useState('idle');
+  const [statusMessage,setStatusMessage]=useState('');
+
+  async function handleEnquirySubmit(event){
+    event.preventDefault();
+    if(status==='sending')return;
+    const form=event.currentTarget;
+    const data=new FormData(form);
+    const payload={
+      name:String(data.get('name')||'').trim(),
+      email:String(data.get('email')||'').trim(),
+      project_type:String(data.get('type')||'').trim(),
+      message:String(data.get('message')||'').trim()
+    };
+
+    setStatus('sending');
+    setStatusMessage('');
+    try{
+      const response=await fetch('https://pqaxmjckirtxnihvxavq.supabase.co/rest/v1/kaizerbrix_enquiries',{
+        method:'POST',
+        headers:{
+          apikey:'sb_publishable_DHtpTZ0bLT0oCd1OCJxE-w_QuopmU7m',
+          Authorization:'Bearer sb_publishable_DHtpTZ0bLT0oCd1OCJxE-w_QuopmU7m',
+          'Content-Type':'application/json',
+          Prefer:'return=minimal'
+        },
+        body:JSON.stringify(payload)
+      });
+      if(!response.ok){
+        const detail=await response.text().catch(()=> '');
+        throw new Error(detail||'The enquiry could not be saved.');
+      }
+      form.reset();
+      setStatus('success');
+      setStatusMessage('Your enquiry has been sent successfully. Thank you for contacting KaizerBrix.');
+    }catch(error){
+      console.error('[KaizerBrix] Enquiry submission failed:',error);
+      setStatus('error');
+      setStatusMessage('We could not send your enquiry right now. Please try again, or contact us directly at '+brand.email+'.');
+    }
+  }
+
+  return <PageFrame><PageIntro number="04" kicker="LET'S TALK" title="Start with" accent="a conversation." body="Tell us a little about what you want to build, plan or improve. We’ll take it from there." image={photos.plans}/><section className="kb-contact-layout"><div className="kb-contact-copy"><Eyebrow>GET IN TOUCH</Eyebrow><h2>Good work begins with a <em>good conversation.</em></h2><p>Reach out directly or send a project enquiry using the form. Your message is sent securely to our enquiry records so our team can follow up.</p><a className="kb-contact-direct" href={'mailto:'+brand.email}>{brand.email}<ArrowUpRight/></a><a className="kb-contact-direct" href="tel:+2347073847960">+234 707 384 7960<ArrowUpRight/></a><div className="kb-contact-address"><span>VISIT US</span><p>{brand.address}</p><a href="https://maps.google.com/?q=67+Mgbuoshimini+Road,+Rumueme,+Port+Harcourt,+Rivers+State" target="_blank" rel="noreferrer">Open in Maps <ArrowUpRight size={15}/></a></div></div><form className="kb-contact-form" onSubmit={handleEnquirySubmit}><Eyebrow>PROJECT ENQUIRY</Eyebrow><label>Your name<input name="name" autoComplete="name" required maxLength={120} placeholder="Full name"/></label><label>Email address<input name="email" type="email" autoComplete="email" required maxLength={320} placeholder="you@example.com"/></label><label>What are you planning?<select name="type" defaultValue="" required><option value="" disabled>Select a project type</option>{services.map(s=><option key={s.name}>{s.name}</option>)}<option>Other / not sure yet</option></select></label><label>Tell us about it<textarea name="message" required minLength={1} maxLength={5000} rows="5" placeholder="Location, scope, timeline — anything helpful."/></label><button type="submit" disabled={status==='sending'}>{status==='sending'?'Sending enquiry…':status==='success'?'Enquiry sent':'Send enquiry'} <ArrowUpRight/></button>{statusMessage&&<p className={'kb-form-note '+(status==='error'?'is-error':'is-success')} role="status" aria-live="polite">{statusMessage}</p>}<small>Your details are used only to respond to this enquiry.</small></form></section></PageFrame>
+}
