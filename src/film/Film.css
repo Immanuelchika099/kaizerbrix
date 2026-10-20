@@ -1337,3 +1337,14 @@ html,body{overflow-x:clip}
  .discipline-list{mask-image:linear-gradient(to right,#000 0%,#000 calc(100% - 28px),transparent 100%);-webkit-mask-image:linear-gradient(to right,#000 0%,#000 calc(100% - 28px),transparent 100%)}
  .expertise-left:has(.discipline-list):after{display:none!important}
 }
+
+/* Match project header and card gutters exactly at tablet and desktop widths. */
+@media(min-width:768px){
+ .projects-top{width:100%!important;max-width:none!important;padding-left:max(var(--kb-section-gutter),calc((100vw - var(--kb-content-max))/2))!important;padding-right:max(var(--kb-section-gutter),calc((100vw - var(--kb-content-max))/2))!important}
+}
+@media(min-width:900px){
+ .film-project{padding-left:max(var(--kb-section-gutter),calc((100vw - var(--kb-content-max))/2))!important;padding-right:max(var(--kb-section-gutter),calc((100vw - var(--kb-content-max))/2))!important}
+ .service-detail-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;align-items:start}
+ .service-active-name{grid-column:1;grid-row:1}
+ .service-detail-copy p{grid-column:2;grid-row:1;margin-top:0!important}
+}
