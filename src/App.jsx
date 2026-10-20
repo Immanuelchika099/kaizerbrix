@@ -1,13 +1,10 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { AboutPage, ExpertisePage, ProjectsPage, ContactPage } from './pages/Pages.jsx';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import './pages/Pages.css';
 
 const Film = lazy(() => import('./film/Film.jsx'));
-const AboutPage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.AboutPage })));
-const ExpertisePage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.ExpertisePage })));
-const ProjectsPage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.ProjectsPage })));
-const ContactPage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.ContactPage })));
 
 function RouteCurtain() {
   const location = useLocation();
@@ -99,7 +96,7 @@ function RoutedPages() {
       animate={{ opacity: 1, transition: { duration: reduce ? 0 : 0.38, ease: [0.22, 1, 0.36, 1] } }}
       exit={reduce ? { opacity: 1 } : { opacity: 0, transition: { duration: 0.14 } }}
     >
-      <Suspense fallback={<LoadingFilm />}>{route}</Suspense>
+      {location.pathname === '/' ? <Suspense fallback={<LoadingFilm />}>{route}</Suspense> : route}
     </motion.div>
   </AnimatePresence>;
 }
