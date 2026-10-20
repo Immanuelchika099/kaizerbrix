@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react';
 import { about, brand, projects, services, values } from '../film/content.ts';
@@ -15,7 +15,22 @@ const photos = {
 const navItems = [['About','/about'],['Expertise','/expertise'],['Projects','/projects'],['Contact','/contact']];
 function SiteNav(){const[open,setOpen]=useState(false);const location=useLocation();useEffect(()=>{setOpen(false);window.scrollTo(0,0);},[location.pathname]);return <header className="kb-site-nav"><Link className="kb-brand" to="/" aria-label="KaizerBrix home"><img src="/kaizerbrix-logo.svg" alt="KaizerBrix Consults"/></Link><nav className={open?'kb-nav-links is-open':'kb-nav-links'} aria-label="Main navigation"><NavLink to="/" end>Film</NavLink>{navItems.map(([label,path])=><NavLink key={path} to={path}>{label}</NavLink>)}<Link className="kb-nav-cta" to="/contact">Start a project <ArrowUpRight size={16}/></Link></nav><button className="kb-nav-toggle" onClick={()=>setOpen(v=>!v)} aria-label={open?'Close navigation':'Open navigation'} aria-expanded={open}>{open?<X/>:<Menu/>}</button></header>}
 function SiteFooter(){return <footer className="kb-site-footer"><div className="kb-footer-top"><span className="kb-eyebrow">KAIZERBRIX CONSULTS / PORT HARCOURT</span><p>Let's make something<br/><em>that lasts.</em></p><Link to="/contact" className="kb-round-link" aria-label="Contact KaizerBrix"><ArrowUpRight/></Link></div><div className="kb-footer-bottom"><Link to="/" className="kb-footer-brand">KB<span>.</span> CONSULTS</Link><a href={'mailto:'+brand.email}>{brand.email}</a><a href="tel:+2347073847960">+234 707 384 7960</a><span>© {new Date().getFullYear()} KAIZERBRIX CONSULTS</span></div></footer>}
-function PageFrame({children}){return <div className="kb-page"><SiteNav/>{children}<SiteFooter/></div>}
+function PageFrame({children}){
+  const frame=useRef(null);
+  useEffect(()=>{
+    const root=frame.current;
+    if(!root)return;
+    const selector='.kb-page-intro-copy,.kb-page-intro-image,.kb-about-statement>p,.kb-about-statement-foot,.kb-vision-image,.kb-vision-copy article,.kb-section-heading,.kb-values-grid article,.kb-expertise-lead p,.kb-service-row,.kb-service-end,.kb-projects-intro>p,.kb-project-card,.kb-projects-note,.kb-contact-copy,.kb-contact-form,.kb-footer-top';
+    const targets=[...root.querySelectorAll(selector)];
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){targets.forEach(el=>el.classList.add('is-in-view'));return;}
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('is-in-view');observer.unobserve(entry.target);}
+    }),{threshold:0.12,rootMargin:'0px 0px -7% 0px'});
+    targets.forEach((el,index)=>{el.style.setProperty('--reveal-index',String(index%4));observer.observe(el);});
+    return()=>observer.disconnect();
+  },[]);
+  return <div className="kb-page" ref={frame}><SiteNav/>{children}<SiteFooter/></div>
+}
 function Eyebrow({children}){return <span className="kb-eyebrow"><i/>{children}</span>}
 function PageIntro({number,kicker,title,accent,body,image}){return <section className="kb-page-intro"><div className="kb-page-intro-copy"><Eyebrow>{number} / {kicker}</Eyebrow><h1>{title} <em>{accent}</em></h1>{body&&<p>{body}</p>}</div>{image&&<div className="kb-page-intro-image"><img src={image} alt="" fetchPriority="high"/><span>KAIZERBRIX CONSULTS <i>— {number}</i></span></div>}<span className="kb-intro-index">{number}</span></section>}
 export function AboutPage(){return <PageFrame><PageIntro number="01" kicker="THE COMPANY" title="Built on purpose." accent="Made to endure." body={about.paragraphs[0]+' '+about.paragraphs[1]} image={photos.architecture}/><section className="kb-about-statement"><Eyebrow>OUR POINT OF VIEW</Eyebrow><p>Good buildings don't happen by accident. They are the result of <em>clear thinking, considered design,</em> and care at every stage.</p><div className="kb-about-statement-foot"><span>DESIGN / ENGINEERING / DELIVERY</span><span>01 — 03</span></div></section><section className="kb-about-vision"><div className="kb-vision-image"><img src={photos.plans} alt="Design plans being reviewed" loading="lazy"/><span>THE WORK BEGINS BEFORE THE BUILD.</span></div><div className="kb-vision-copy"><article><Eyebrow>OUR VISION</Eyebrow><h2>{about.vision}</h2></article><article><Eyebrow>OUR MISSION</Eyebrow><h2>{about.mission}</h2></article></div></section><section className="kb-values-section"><div className="kb-section-heading"><Eyebrow>WHAT GUIDES US</Eyebrow><h2>Principles that shape<br/><em>every decision.</em></h2></div><div className="kb-values-grid">{values.map((v,i)=><article key={v.name}><span>0{i+1}</span><h3>{v.name}</h3><p>{v.text}</p><i/></article>)}</div></section></PageFrame>}
