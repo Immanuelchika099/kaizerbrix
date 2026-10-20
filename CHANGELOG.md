@@ -22,3 +22,14 @@
 - Added dedicated scalable Android app-icon SVGs, an app manifest, and robots.txt.
 - Vercel build logs confirm a prior deployment completed successfully, but later commits are not deployed yet: the Vercel API returned a 402 daily deployment limit. The GitHub Vercel status check reports the same deployment-rate-limit failure. Do not claim the newest changes are live until a subsequent deployment reaches READY.
 - Not verified from this environment: physical Android/iOS device QA, fresh install/build, lint, final image requests, or final production deployment.
+
+
+## 2026-10-20 — Navigation, pinning and footer refinement
+- Confirmed the external React Router pages are wired at `/about`, `/expertise`, `/projects` and `/contact`; direct refresh still depends on the Vercel SPA rewrite and needs deployment verification.
+- Reworked the homepage menu as a full-screen editorial overlay, with a two-column desktop index, a single-column mobile list, Escape-to-close, accessible labels and background-scroll locking.
+- Reworked the external-page mobile navigation into a full-screen overlay while retaining inline desktop links.
+- Pinned the homepage hero on mobile with a shorter scroll distance, adjusted the hero to the dynamic Android viewport, and added viewport/orientation refresh handling for ScrollTrigger.
+- Changed Vision/Mission to mobile-local reveal triggers rather than a long scrub timeline without a pin.
+- Removed overflow clipping from the homepage and external-page roots where it could interfere with fixed/pinned ScrollTrigger scenes.
+- Re-aligned the homepage contact footer into a stable three-column desktop grid and a two-column mobile layout; refined the external-page footer spacing and wrapping.
+- Not yet verified: production build, Android browser testing, route refresh on deployed Vercel, or live visual review. Vercel's daily deployment limit remains a blocker for verifying the newest commit live.
