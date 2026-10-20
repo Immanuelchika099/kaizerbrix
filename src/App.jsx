@@ -1,8 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import Film from './film/Film.jsx';
-import { AboutPage, ExpertisePage, ProjectsPage, ContactPage } from './pages/Pages.jsx';
+
+const Film = lazy(() => import('./film/Film.jsx'));
+const AboutPage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.AboutPage })));
+const ExpertisePage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.ExpertisePage })));
+const ProjectsPage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.ProjectsPage })));
+const ContactPage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.ContactPage })));
 
 function RouteCurtain() {
   const location = useLocation();
@@ -28,19 +32,31 @@ function RouteCurtain() {
   />;
 }
 
+function LoadingFilm() {
+  return <div className="kb-route-loading" aria-label="Loading KaizerBrix"><span>KAIZERBRIX</span><i /></div>;
+}
+
 function RoutedPages() {
   const location = useLocation();
   const reduce = useReducedMotion();
-  if (location.pathname === '/') return <Film />;
+  const route = <Routes location={location}>
+    <Route path="/" element={<Film />} />
+    <Route path="/about" element={<AboutPage />} />
+    <Route path="/expertise" element={<ExpertisePage />} />
+    <Route path="/projects" element={<ProjectsPage />} />
+    <Route path="/contact" element={<ContactPage />} />
+    <Route path="*" element={<Film />} />
+  </Routes>;
+
   return <AnimatePresence mode="wait" initial={false}>
-    <motion.div key={location.pathname} initial={reduce ? { opacity: 1 } : { opacity: 0, y: 14, clipPath: 'inset(0 0 7% 0)' }} animate={{ opacity: 1, y: 0, clipPath: 'inset(0 0 0 0)', transition: { duration: reduce ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] } }} exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8, transition: { duration: 0.2 } }}>
-      <Routes location={location}>
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/expertise" element={<ExpertisePage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="*" element={<Film />} />
-      </Routes>
+    <motion.div
+      key={location.pathname}
+      className="kb-route-layer"
+      initial={reduce ? { opacity: 1 } : { opacity: 0, y: 12, clipPath: 'inset(0 0 5% 0)' }}
+      animate={{ opacity: 1, y: 0, clipPath: 'inset(0 0 0 0)', transition: { duration: reduce ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] } }}
+      exit={reduce ? { opacity: 1 } : { opacity: 0, y: -6, transition: { duration: 0.16 } }}
+    >
+      <Suspense fallback={<LoadingFilm />}>{route}</Suspense>
     </motion.div>
   </AnimatePresence>;
 }
