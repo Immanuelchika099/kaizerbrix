@@ -600,3 +600,8 @@ html,body{overflow-x:clip}
  .hero-bottom{font-size:.61rem}
 }
 @media(prefers-reduced-motion:reduce){.film-menu{animation:none}}
+
+
+/* Temporary remote photography + pinned About word reveal */
+.about-copy .word-reveal span{color:#bdb8b2;opacity:.3;transition:color .2s ease}
+@media(prefers-reduced-motion:reduce){.about-copy .word-reveal span{color:#171516!important;opacity:1!important}}
