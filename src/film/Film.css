@@ -1968,6 +1968,7 @@ html,body{overflow-x:clip}
   position:relative;
 }
 .service-descriptions p{
+  visibility:visible!important;
   grid-area:1 / 1;
   transition:opacity .45s ease, transform .55s cubic-bezier(.22,1,.36,1), filter .45s ease;
   opacity:0;
