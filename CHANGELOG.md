@@ -99,3 +99,9 @@
 - Extended the desktop About section's pinned scroll sequence so the page holds its composition while the headline words progressively transition from faint grey to full ink, then releases back into normal page flow.
 - Kept a non-pinned progressive word reveal on smaller screens to avoid trapping a tall stacked section inside a mobile viewport. Reduced-motion users see readable, fully visible text.
 - Source changes are committed; live deployment and visual browser QA remain unverified.
+
+
+## 2026-10-20 — Cinematic About reveal expanded
+- The pinned desktop About sequence now reveals every word in the headline and both supporting paragraphs, not just the heading. Words start faint and progressively transition to full ink as scroll advances; the image reveals during the same pinned sequence.
+- Increased supporting-copy size on mobile for more comfortable reading while preserving word-by-word scroll reveal without a sticky pin on small screens.
+- Source committed; visual browser QA is still pending.
