@@ -1,0 +1,6 @@
+"use client";
+import {useEffect,useRef} from "react";
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+export function KPortal({triggerId}:{triggerId:string|null}){const ref=useRef<HTMLDivElement>(null);useEffect(()=>{if(!triggerId||!ref.current||matchMedia("(prefers-reduced-motion: reduce)").matches)return;const trigger=document.getElementById(triggerId);if(!trigger)return;const ctx=gsap.context(()=>{gsap.set(ref.current,{autoAlpha:0});gsap.set(".portal-mark",{scale:.15,transformOrigin:"50% 50%"});gsap.timeline({scrollTrigger:{trigger,start:"bottom 72%",end:"bottom 8%",scrub:true,invalidateOnRefresh:true}}).to(ref.current,{autoAlpha:1,duration:.08,ease:"none"}).to(".portal-mark",{scale:16,duration:.84,ease:"none"}).to(ref.current,{autoAlpha:0,duration:.08,ease:"none"});},ref);return()=>ctx.revert()},[triggerId]);if(!triggerId)return null;return <div className="k-portal" ref={ref} aria-hidden="true"><svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice"><defs><mask id="k-portal-mask"><rect width="1000" height="1000" fill="white"/><g className="portal-mark" fill="black"><path d="M180 80H355V385L640 80H875L565 495L900 920H665L355 610V920H180Z"/></g></mask></defs><rect width="1000" height="1000" fill="#fff" mask="url(#k-portal-mask)"/></svg></div>}

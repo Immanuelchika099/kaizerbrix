@@ -1,0 +1,1 @@
+import type { Metadata } from "next"; import { HomePage } from "@/components/pages"; export const metadata:Metadata={title:"Building enduring legacies",description:"Architecture, civil engineering, surveying, town planning and procurement in Port Harcourt, Nigeria."}; export default function Page(){return <HomePage/>}

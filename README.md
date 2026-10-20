@@ -1,33 +1,26 @@
 # KaizerBrix Consults
 
-A cinematic, responsive website for KaizerBrix Consults, a multidisciplinary construction consultancy based in Port Harcourt, Nigeria. The supplied company profile PDF remains the source of truth for company language, services and listed projects.
+Multi-page cinematic website for KaizerBrix Consults. White is the base canvas; orange (#DF481D) is reserved for selected scenes and transitions. Content should remain grounded in the supplied company-profile PDF and `lib/content.ts`.
 
-## Experience
-- Cinematic scroll-led homepage built with GSAP, ScrollTrigger and Lenis.
-- Responsive layouts, editorial typography, reduced-motion support and accessible focus states.
-- Warm white, charcoal and restrained company-orange design system.
-- External architectural/construction photography is used as temporary illustrative imagery where approved company images are unavailable. These are not represented as real KaizerBrix project photos.
-- The 3D design archive is temporarily deferred until genuine render assets are available.
-
-## Stack
-React 19 · Vite · React Router DOM · GSAP · ScrollTrigger · Lenis · Framer Motion · Lucide React · CSS
-
-## Development
+## Local development
 ```bash
 npm install
 npm run dev
 ```
+Open http://localhost:3000.
 
-## Production build
+## Production
 ```bash
 npm run build
-npm run preview
+npm run start
 ```
+Deploy to Vercel with the Next.js framework preset. Set `NEXT_PUBLIC_SITE_URL` to the canonical production origin before launch.
 
-## Content and asset policy
-Use `KAIZERBRIX company profile FINAL UPDATE1.pdf` as the content and visual reference. Do not invent projects, statistics, certifications, testimonials or company history. Replace temporary external photography with approved company imagery when supplied.
+## Routes
+Home, About, Services, Projects and three project detail slugs, 3D Designs, Standards, Contact. Sitemap, robots, metadata and a branded not-found view are included.
 
-## Before launch
-- Add and verify all approved project photography.
-- Confirm logo, favicon, Android/iOS home-screen icon and social preview assets against the supplied brand files.
-- Run `npm install`, `npm run build`, responsive browser QA and a production deployment check.
+## Temporary imagery
+The current image links are AI-generated preview visuals, not actual KaizerBrix project evidence. Replace them with client-approved local AVIF/WebP assets under `public/images/` and update `lib/content.ts` before launch. See `CONTENT_NEEDED.md`.
+
+## QA
+GSAP and Lenis are configured for shared motion/navigation. Reduced-motion users receive simplified transitions. Run a production build and test at 1440×900, 390×844, iOS Safari and a mid-range Android device before launch; Lighthouse and device performance have not yet been verified.

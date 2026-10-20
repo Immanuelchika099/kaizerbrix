@@ -41,3 +41,9 @@ The PDF has been located and inspected locally. Its page artwork is flattened at
 - GSAP/ScrollTrigger animations are applied across the existing homepage scenes, including About, Vision/Mission, Expertise, Core Values, Projects, Quality/HSE and Contact—not only the hero. The latest update adds cross-section reveal and image movement choreography.
 - Next.js is not required for the current React + Vite app. React Router DOM is already installed and is sufficient for client-side routes; migrate only if server rendering or Next-specific features become a deliberate requirement.
 - Still required before production: implement and test dedicated routes for About, Expertise, Projects and Contact; run a local build; check all image requests and desktop/mobile layouts; verify deployment.
+
+
+## Next.js migration note — 20 October 2026
+- The active Next.js App Router implementation reads its site content from `lib/content.ts`. The older `src/film/content.ts` and Vite component tree remain as archived source during migration and are not used by the App Router.
+- AI-generated preview imagery is currently referenced by hosted URLs in `lib/content.ts` so the new layouts are not filled with broken `/images` paths. These are temporary and may expire; download approved preview assets locally or, preferably, replace them with client-provided originals before launch. See `CONTENT_NEEDED.md`.
+- The new build has not been locally compiled or visually QA'd in 1440×900 / 390×844 because this connector session cannot run the repo. Vercel reports a build-rate-limit failure, so no live deployment is claimed.
