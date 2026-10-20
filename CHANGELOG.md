@@ -114,3 +114,11 @@
 - Reshaped the floating navbar and its menu button into rounded pills with a restrained translucent glass finish.
 - Added a warm architectural hero field, cinematic photo grading, layered gradient lighting and a slim KaizerBrix-orange edge accent while retaining the existing image and content.
 - Source committed to main. Live visual QA on phone and desktop is still required; no claim of verified browser behaviour until checked.
+
+
+## 2026-10-20 — About pin timing, legible reveal and logo-only preloader
+- Corrected the About copy's whitespace split so the heading and both supporting paragraphs render as individually animated words rather than one unbroken span.
+- Started the About pin earlier, with a navbar-safe offset (88px desktop / 76px mobile), so the heading does not slide behind the fixed pill navigation before the pinned sequence begins.
+- Set revealed About words to the brand's ink colour (#171516) to restore strong contrast.
+- Removed the orange curtain/line reveal from the intro sequence. The logo draws, then fades out; the full-screen overlay fades away with it.
+- Committed to main. Verify the live pinned start and contrast on a real phone/desktop after deployment.
