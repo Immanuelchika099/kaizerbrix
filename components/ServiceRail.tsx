@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 import { services } from '@/app/data';
 
 export function ServiceRail() {
