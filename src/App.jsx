@@ -1,7 +1,32 @@
+import { useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Film from './film/Film.jsx';
 import { AboutPage, ExpertisePage, ProjectsPage, ContactPage } from './pages/Pages.jsx';
+
+function RouteCurtain() {
+  const location = useLocation();
+  const reduce = useReducedMotion();
+  const previousPath = useRef(location.pathname);
+  const [cover, setCover] = useState(false);
+
+  useEffect(() => {
+    if (previousPath.current === location.pathname) return;
+    previousPath.current = location.pathname;
+    if (reduce) return;
+    setCover(true);
+    const reveal = window.setTimeout(() => setCover(false), 55);
+    return () => window.clearTimeout(reveal);
+  }, [location.pathname, reduce]);
+
+  return <motion.div
+    aria-hidden="true"
+    className="kb-route-curtain"
+    initial={false}
+    animate={{ clipPath: cover ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)' }}
+    transition={{ duration: reduce ? 0 : 0.62, ease: [0.76, 0, 0.24, 1] }}
+  />;
+}
 
 function RoutedPages() {
   const location = useLocation();
@@ -21,5 +46,5 @@ function RoutedPages() {
 }
 
 export default function App() {
-  return <BrowserRouter><RoutedPages /></BrowserRouter>;
+  return <BrowserRouter><RouteCurtain /><RoutedPages /></BrowserRouter>;
 }
