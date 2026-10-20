@@ -1,0 +1,1 @@
+import Link from "next/link"; export default function NotFound(){return <section className="not-found scene"><p className="eyebrow">404 / Page not found</p><h1>NOT<br/>HERE.</h1><p>The page you’re looking for may have moved. Return to the KaizerBrix home film.</p><Link href="/" className="view-all">Back to home ↗</Link></section>}
