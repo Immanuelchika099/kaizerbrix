@@ -120,7 +120,11 @@ export function MotionShell({ children }: { children: ReactNode }) {
     setMenuOpen(false);
     lenisRef.current?.scrollTo(0, { immediate: true, force: true });
     window.scrollTo({ top: 0, behavior: 'auto' });
-    requestAnimationFrame(() => ScrollTrigger.refresh());
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+      const hash = window.location.hash;
+      if (hash) requestAnimationFrame(() => document.querySelector(hash)?.scrollIntoView({ behavior: 'auto', block: 'start' }));
+    });
     if (!transitionActive || !planeRef.current) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) {
@@ -235,7 +239,14 @@ export function SceneReveal({ children, className = '', id, theme = 'ink', label
       const image = photo.querySelector('img');
       if (image) gsap.fromTo(image, { scale: 1.08, filter: 'grayscale(1) sepia(.45) saturate(.7)' }, { scale: 1, filter: 'grayscale(0) sepia(0) saturate(1.04)', ease: 'none', scrollTrigger: { trigger: photo, start: 'top 90%', end: 'center 48%', scrub: 0.8 } });
     });
-  }, { scope: ref, dependencies: [id], revertOnUpdate: true });
+    if (ref.current.classList.contains('home-projects') && window.matchMedia('(min-width: 761px)').matches) {
+      const track = ref.current.querySelector<HTMLElement>('.home-project-grid');
+      if (track) {
+        const distance = () => Math.max(0, track.scrollWidth - window.innerWidth + 2 * parseFloat(getComputedStyle(ref.current as HTMLElement).paddingLeft));
+        gsap.to(track, { x: () => -distance(), ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: () => '+=' + Math.max(window.innerHeight * 1.2, distance()), pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true } });
+      }
+    }
+  }, { scope: ref, dependencies: [id, className], revertOnUpdate: true });
   return <section ref={ref} id={id} className={`scene ${className}`} data-nav-theme={theme} data-scene-label={label}>{children}</section>;
 }
 
