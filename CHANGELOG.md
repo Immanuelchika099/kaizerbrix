@@ -128,3 +128,9 @@
 - Reworked the existing About descriptive paragraphs to use the portfolio-style pinned reveal: words slide in from the left while sharpening from blur to clear as the visitor scrolls.
 - Reuses the current About section and its existing copy; no additional text block or new section was added.
 - Added a reduced-motion fallback and tuned the reveal for desktop and mobile.
+
+
+## 2026-10-20 — Vision and mission cinematic pin
+- Rebuilt the vision/mission transition as one shared pinned scroll timeline for desktop and mobile, so the section begins its reveal on arrival and stays part of the continuous film journey.
+- Added a smooth blur-to-clear, upward text reveal for the vision statement, then transitions into the mission copy and a clipped image reveal.
+- Removed legacy forced transform/opacity overrides that prevented the GSAP motion from displaying correctly, and centered the copy with responsive image sizing to avoid text hugging the top edge.
