@@ -1743,3 +1743,14 @@ html,body{overflow-x:clip}
   }
   .film-menu::-webkit-scrollbar{display:none;width:0;height:0}
 }
+
+
+/* Give the Vision and Mission blocks more breathing room inside the orange section. */
+.vision-scene .vision-beats{
+  row-gap:clamp(48px,7vh,88px)!important;
+}
+@media(max-width:899px){
+  .vision-scene .vision-beats{
+    gap:clamp(38px,7vw,56px)!important;
+  }
+}
