@@ -1,16 +1,19 @@
 # CONTENT_NEEDED — KaizerBrix Consults
 
-The current website can present verified text and layout, but these items are required before final visual sign-off:
+## Assets prepared from the supplied profile
 
-## Required media
-- Export the original profile imagery as WebP/AVIF into `public/images/`: hero golden tower; B&W tower/hard hat; engineer with blueprints; orange loader; rebar crew; excavation; aerial site plan; HSE worker; all sixteen architectural renders; and the three project photos for Yenagoa, Port Harcourt and Bonny Island.
-- Request original high-resolution HSE and render files where the flattened PDF source is too small for large viewport crops.
-- Confirm whether the 3D render on PDF page 20 depicts the same property as the completed Yenagoa project. Until confirmed, keep them as separate plates.
+The 23-page PDF was recovered from the ChatGPT Library. The companion `kaizerbrix-assets.zip` contains 28 optimized WebP images extracted from the real profile (including all sixteen embedded design renders), a pre-rendered 256px film-grain tile, PNG Apple/Android icons, and an updated web manifest.
 
-- Configure `NEXT_PUBLIC_SITE_URL` with the approved canonical domain before enabling absolute sitemap URLs and final canonical metadata. No company domain has been confirmed in the source materials.\n\n## Optional factual details
-- Confirm whether the company wants to resolve the conflicting history statements in the profile (“incorporated ... in 2022” and “journey began in 2002”). The site avoids presenting either as a single founding-year claim.
-- Supply any additional project photos and approved factual project descriptions, if the client wants case pages to go beyond location, year, status and listed scope.
-- Supply approved OG/social-share photography if the logo alone is not preferred.
-- Provide an email service and credentials only if a server-submitted contact form is required. Current contact actions use verified email/telephone links; no credentials are assumed.
+**The binary asset pack is separate from the GitHub branch** because the connected repository write interface cannot commit binary files. Extract the ZIP's `public/` folder into the local repository root, merge it with the existing `public/` folder, and commit the files on `feature/kaizerbrix-cinematic-multipage`. Until then, the app intentionally displays a blueprint fallback instead of fabricated imagery.
 
-No stats, awards, client names/logos, testimonials, team biographies, budgets, project dimensions or certifications should be added without client-supplied evidence.
+The PDF flattens several photos into page artwork. The crops are suitable for the current composition, but original camera files would improve large hero crops and offer more flexibility for final photo grading.
+
+## Client details still needed
+
+- Set `NEXT_PUBLIC_SITE_URL` to the approved canonical website domain before sitemap URLs and absolute Open Graph metadata are considered final. No domain was confirmed in the profile.
+- Confirm whether the profile's two history statements (“incorporated ... in 2022” and “journey began in 2002”) should be reconciled. Neither is presented as a single founding-year claim.
+- Confirm whether the Yenagoa 3D render corresponds to the completed Yenagoa property. Until confirmed, the render and built photograph are separate plates and no render-to-built wipe is used.
+- Provide additional completed/ongoing project photographs if the client wants more than the profile currently supplies, particularly a clear built-property photo for the ongoing Bonny Island project. Current Bonny Island media shows construction activity from that project page, not a completed-house photo.
+- Provide an email service and credentials only if a server-submitted contact form is required. Current contact actions use verified email, phone and map links.
+
+No statistics, awards, client logos, testimonials, team biographies, budgets, project dimensions or certifications should be added without approved evidence.
