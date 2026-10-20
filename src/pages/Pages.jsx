@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { about, brand, projects, services, values } from '../film/content.ts';
@@ -50,6 +50,13 @@ export function ProjectsPage(){
   const rail=useRef(null);
   const track=useRef(null);
   const progress=useRef(null);
+  const [activeImage,setActiveImage]=useState(null);
+  const threeDImages=Array.from({length:15},(_,index)=>({
+    src:'/images/IMG_'+(1646+index)+'.PNG',
+    number:String(index+1).padStart(2,'0'),
+    filename:'IMG_'+(1646+index)+'.PNG'
+  }));
+
   useEffect(()=>{
     const media=gsap.matchMedia();
     media.add('(min-width: 851px) and (prefers-reduced-motion: no-preference)',()=>{
@@ -63,6 +70,23 @@ export function ProjectsPage(){
     });
     return()=>media.revert();
   },[]);
+
+  useEffect(()=>{
+    if(activeImage===null)return;
+    const previousOverflow=document.body.style.overflow;
+    document.body.style.overflow='hidden';
+    function handleKeyDown(event){
+      if(event.key==='Escape')setActiveImage(null);
+      if(event.key==='ArrowRight')setActiveImage(current=>(current+1)%threeDImages.length);
+      if(event.key==='ArrowLeft')setActiveImage(current=>(current-1+threeDImages.length)%threeDImages.length);
+    }
+    window.addEventListener('keydown',handleKeyDown);
+    return()=>{
+      document.body.style.overflow=previousOverflow;
+      window.removeEventListener('keydown',handleKeyDown);
+    };
+  },[activeImage,threeDImages.length]);
+
   return <PageFrame>
     <PageIntro number="03" kicker="SELECTED PROJECTS" title="Work with" accent="purpose." body="A selection of residential design and construction work from the KaizerBrix image archive." image={photos.site}/>
     <section className="kb-projects-intro"><Eyebrow>PROJECT RECORD / 03</Eyebrow><p>Every project is a commitment to function, craft and the people who will use the space.</p></section>
@@ -75,6 +99,35 @@ export function ProjectsPage(){
       <span className="kb-rail-caption">SCROLL TO EXPLORE <b>—</b> 03 PROJECTS</span>
     </section>
     <section className="kb-projects-note"><span>* IMAGE NOTE</span><p>Project imagery has been selected from the supplied KaizerBrix image archive. The archive includes both on-site photographs and architectural visualisations; visualisations represent design concepts rather than completed-site photography.</p></section>
+
+    <section className="kb-3d-gallery" id="3d-images" aria-labelledby="kb-3d-gallery-title">
+      <div className="kb-3d-gallery-heading">
+        <div>
+          <Eyebrow>DESIGN ARCHIVE / 15 VISUALISATIONS</Eyebrow>
+          <h2 id="kb-3d-gallery-title">3D <em>Images.</em></h2>
+        </div>
+        <p>Explore the buildings before they’re built. A collection of architectural visualisations from the KaizerBrix design archive.</p>
+      </div>
+      <div className="kb-3d-gallery-grid">
+        {threeDImages.map((image,index)=><article className={'kb-3d-card kb-3d-card--'+(index%5+1)} key={image.filename} style={{'--kb-card-index':index}}>
+          <button type="button" className="kb-3d-card-trigger" onClick={()=>setActiveImage(index)} aria-label={'Open architectural visualisation '+image.number}>
+            <span className="kb-3d-card-image"><img src={image.src} alt={'KaizerBrix architectural 3D visualisation '+image.number} loading="lazy" decoding="async"/><span className="kb-3d-card-shade"/></span>
+            <span className="kb-3d-card-meta"><span><i>{image.number}</i> / 15</span><span className="kb-3d-card-open">VIEW DESIGN <ArrowUpRight size={17}/></span></span>
+          </button>
+        </article>)}
+      </div>
+      <div className="kb-3d-gallery-foot"><span>KAIZERBRIX CONSULTS</span><span>ARCHITECTURE / VISUALISATION</span><span>15 DESIGNS <i>↗</i></span></div>
+    </section>
+
+    {activeImage!==null&&<div className="kb-3d-lightbox" role="dialog" aria-modal="true" aria-label={'Architectural visualisation '+threeDImages[activeImage].number} onClick={()=>setActiveImage(null)}>
+      <button type="button" className="kb-3d-lightbox-close" onClick={()=>setActiveImage(null)} aria-label="Close image viewer"><X size={24}/><span>ESC</span></button>
+      <button type="button" className="kb-3d-lightbox-nav kb-3d-lightbox-prev" onClick={event=>{event.stopPropagation();setActiveImage(current=>(current-1+threeDImages.length)%threeDImages.length)}} aria-label="Previous design"><ArrowLeft size={22}/></button>
+      <div className="kb-3d-lightbox-content" onClick={event=>event.stopPropagation()}>
+        <img src={threeDImages[activeImage].src} alt={'KaizerBrix architectural 3D visualisation '+threeDImages[activeImage].number}/>
+        <div className="kb-3d-lightbox-caption"><span>KAIZERBRIX / 3D IMAGES</span><strong>{threeDImages[activeImage].number} <i>/ 15</i></strong><span>{threeDImages[activeImage].filename}</span></div>
+      </div>
+      <button type="button" className="kb-3d-lightbox-nav kb-3d-lightbox-next" onClick={event=>{event.stopPropagation();setActiveImage(current=>(current+1)%threeDImages.length)}} aria-label="Next design"><ArrowRight size={22}/></button>
+    </div>}
   </PageFrame>
 }
 export function ContactPage(){
