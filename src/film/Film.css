@@ -1085,7 +1085,7 @@ html,body{overflow-x:clip}
  .hero-enduring{margin-left:4vw!important}
  .hero-legacies{margin-left:0!important}
  .hero-tagline{max-width:100%;margin-top:18px!important;font-size:1.5rem!important}
- .hero-photo-frame{top:auto!important;right:5%!important;bottom:9%!important;width:90%!important;height:38%!important;max-height:none!important;border-radius:20px!important;clip-path:inset(0)!important}
+ .hero-photo-frame{top:auto!important;right:5%!important;bottom:9%!important;width:90%!important;height:38%!important;max-height:none!important;border-radius:28px;clip-path:inset(0 round 28px)}
  .hero-photo{border-radius:20px}
  .hero-bottom{left:22px!important;right:22px!important;bottom:12px!important;font-size:.9rem!important;letter-spacing:.03em!important;gap:12px}
  .hero-bottom span:first-child{max-width:58%;flex-wrap:wrap;gap:5px;line-height:1.4}
