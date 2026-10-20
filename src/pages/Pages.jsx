@@ -10,14 +10,18 @@ import { Nav } from '../film/Film.jsx';
 gsap.registerPlugin(ScrollTrigger);
 
 const photos = {
-  architecture: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2000&q=85',
-  tower: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85',
-  plans: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=85',
-  site: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=85',
-  interiors: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85',
-  engineer: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=85',
+  architecture: '/images/IMG_1645.PNG',
+  tower: '/images/IMG_1642.PNG',
+  plans: '/images/IMG_1666.PNG',
+  site: '/images/IMG_1662.PNG',
+  completedHome: '/images/IMG_1641.PNG',
+  engineer: '/images/IMG_1640.PNG',
+  team: '/images/IMG_1638.PNG',
+  machinery: '/images/IMG_1663.PNG',
+  development: '/images/IMG_1651.PNG',
+  constructionTeam: '/images/IMG_1644.PNG',
 };
-function SiteFooter(){return <footer className="kb-site-footer"><div className="kb-footer-top"><span className="kb-eyebrow">KAIZERBRIX CONSULTS / PORT HARCOURT</span><p>Let's make something<br/><em>that lasts.</em></p><Link to="/contact" className="kb-round-link" aria-label="Contact KaizerBrix"><ArrowUpRight/></Link></div><div className="kb-footer-bottom"><Link to="/" className="kb-footer-brand">KB<span>.</span> CONSULTS</Link><a href={'mailto:'+brand.email}>{brand.email}</a><a href="tel:+2347073847960">+234 707 384 7960</a><span>© {new Date().getFullYear()} KAIZERBRIX CONSULTS</span></div></footer>}
+function SiteFooter(){return <footer className="kb-site-footer"><div className="kb-footer-top"><span className="kb-eyebrow">KAIZERBRIX CONSULTS / PORT HARCOURT</span><p>Let's make something<br/><em>that lasts.</em></p><Link to="/contact" className="kb-round-link" aria-label="Contact KaizerBrix"><ArrowUpRight/></Link></div><div className="kb-footer-bottom"><Link to="/" className="kb-footer-brand">KB<span>.</span> CONSULTS</Link><a href={'mailto:'+brand.email}>{brand.email}</a><a href="tel:+2347073847960">+234 707 384 7960</a><div className="kb-footer-qr"><img src="/images/IMG_1637.PNG" alt="KaizerBrix supplied QR code"/><span>SCAN TO CONNECT</span></div><span>© {new Date().getFullYear()} KAIZERBRIX CONSULTS</span></div></footer>}
 function PageFrame({children}){
   const frame=useRef(null);
   useEffect(()=>{
@@ -41,7 +45,7 @@ function PageFrame({children}){
 function Eyebrow({children}){return <span className="kb-eyebrow"><i/>{children}</span>}
 function PageIntro({number,kicker,title,accent,body,image}){return <section className="kb-page-intro"><div className="kb-page-intro-copy"><Eyebrow>{number} / {kicker}</Eyebrow><h1>{title} <em>{accent}</em></h1>{body&&<p>{body}</p>}</div>{image&&<div className="kb-page-intro-image"><img src={image} alt="" fetchPriority="high"/><span>KAIZERBRIX CONSULTS <i>— {number}</i></span></div>}<span className="kb-intro-index">{number}</span></section>}
 export function AboutPage(){return <PageFrame><PageIntro number="01" kicker="THE COMPANY" title="Built on purpose." accent="Made to endure." body={about.paragraphs[0]+' '+about.paragraphs[1]} image={photos.architecture}/><section className="kb-about-statement"><Eyebrow>OUR POINT OF VIEW</Eyebrow><p>Good buildings don't happen by accident. They are the result of <em>clear thinking, considered design,</em> and care at every stage.</p><div className="kb-about-statement-foot"><span>DESIGN / ENGINEERING / DELIVERY</span><span>01 — 03</span></div></section><section className="kb-about-vision"><div className="kb-vision-image"><img src={photos.plans} alt="Design plans being reviewed" loading="lazy"/><span>THE WORK BEGINS BEFORE THE BUILD.</span></div><div className="kb-vision-copy"><article><Eyebrow>OUR VISION</Eyebrow><h2>{about.vision}</h2></article><article><Eyebrow>OUR MISSION</Eyebrow><h2>{about.mission}</h2></article></div></section><section className="kb-values-section"><div className="kb-section-heading"><Eyebrow>WHAT GUIDES US</Eyebrow><h2>Principles that shape<br/><em>every decision.</em></h2></div><div className="kb-values-grid">{values.map((v,i)=><article key={v.name}><span>0{i+1}</span><h3>{v.name}</h3><p>{v.text}</p><i/></article>)}</div></section></PageFrame>}
-export function ExpertisePage(){return <PageFrame><PageIntro number="02" kicker="OUR EXPERTISE" title="Five disciplines." accent="One vision." body="Integrated consultancy across the built environment, bringing design, technical rigour and delivery into one considered process." image={photos.tower}/><section className="kb-expertise-lead"><Eyebrow>FROM FIRST IDEA TO FINISHED PLACE</Eyebrow><p>Each discipline brings a different perspective. Together, they make the whole project stronger.</p></section><section className="kb-service-list">{services.map((s,i)=><article className="kb-service-row" key={s.name}><div className="kb-service-meta"><span>0{i+1}</span><span>DISCIPLINE</span></div><div className="kb-service-copy"><h2>{s.name}<ArrowUpRight/></h2><ul>{s.lines.map(line=><li key={line}>{line}</li>)}</ul></div><div className="kb-service-image"><img src={i===0?photos.architecture:i===1?photos.site:i===2?photos.engineer:i===3?photos.tower:photos.plans} alt={s.name+' illustrative reference photography'} loading="lazy"/><span>ILLUSTRATIVE REFERENCE</span></div></article>)}</section></PageFrame>}
+export function ExpertisePage(){return <PageFrame><PageIntro number="02" kicker="OUR EXPERTISE" title="Five disciplines." accent="One vision." body="Integrated consultancy across the built environment, bringing design, technical rigour and delivery into one considered process." image={photos.tower}/><section className="kb-expertise-lead"><Eyebrow>FROM FIRST IDEA TO FINISHED PLACE</Eyebrow><p>Each discipline brings a different perspective. Together, they make the whole project stronger.</p></section><section className="kb-service-list">{services.map((s,i)=><article className="kb-service-row" key={s.name}><div className="kb-service-meta"><span>0{i+1}</span><span>DISCIPLINE</span></div><div className="kb-service-copy"><h2>{s.name}<ArrowUpRight/></h2><ul>{s.lines.map(line=><li key={line}>{line}</li>)}</ul></div><div className="kb-service-image"><img src={i===0?photos.architecture:i===1?photos.constructionTeam:i===2?photos.machinery:i===3?photos.development:i===4?photos.team:photos.site} alt={'KaizerBrix supplied image illustrating '+s.name} loading="lazy"/><span>KAIZERBRIX / {s.name.toUpperCase()}</span></div></article>)}</section></PageFrame>}
 export function ProjectsPage(){
   const rail=useRef(null);
   const track=useRef(null);
@@ -60,17 +64,17 @@ export function ProjectsPage(){
     return()=>media.revert();
   },[]);
   return <PageFrame>
-    <PageIntro number="03" kicker="SELECTED PROJECTS" title="Work with" accent="purpose." body="A snapshot of residential work recorded in the KaizerBrix company profile. Project photography shown here is illustrative, not verified site photography." image={photos.site}/>
+    <PageIntro number="03" kicker="SELECTED PROJECTS" title="Work with" accent="purpose." body="A selection of residential design and construction work from the KaizerBrix image archive." image={photos.site}/>
     <section className="kb-projects-intro"><Eyebrow>PROJECT RECORD / 03</Eyebrow><p>Every project is a commitment to function, craft and the people who will use the space.</p></section>
     <section className="kb-project-rail" ref={rail} aria-label="Selected project filmstrip">
       <div className="kb-project-grid" ref={track}>{projects.map((p,i)=><article className={'kb-project-card '+(i===0?'is-featured':'')} key={p.location}>
-        <div className="kb-project-card-image"><img src={i===0?photos.interiors:i===1?photos.architecture:photos.site} alt={'Illustrative reference for '+p.name+' in '+p.location} loading="lazy"/><span className={p.status==='ONGOING'?'kb-status is-ongoing':'kb-status'}>{p.status}</span><span className="kb-project-number">0{i+1}</span></div>
+        <div className="kb-project-card-image"><img src={i===0?photos.completedHome:i===1?photos.tower:photos.site} alt={'KaizerBrix supplied project image for '+p.name+' in '+p.location} loading="lazy"/><span className={p.status==='ONGOING'?'kb-status is-ongoing':'kb-status'}>{p.status}</span><span className="kb-project-number">0{i+1}</span></div>
         <div className="kb-project-card-info"><span>{p.location} <i> / </i> {p.year}</span><h2>{p.name}</h2>{p.detail&&<p>{p.detail}</p>}<div className="kb-project-scope"><span>SCOPE</span><p>{p.scope.join(' · ')}</p></div></div>
       </article>)}</div>
       <div className="kb-rail-progress" aria-hidden="true"><i ref={progress}/></div>
       <span className="kb-rail-caption">SCROLL TO EXPLORE <b>—</b> 03 PROJECTS</span>
     </section>
-    <section className="kb-projects-note"><span>* IMAGE NOTE</span><p>Images are visual references used while authentic project photographs are being collected. They should not be interpreted as photographs of the listed KaizerBrix projects.</p></section>
+    <section className="kb-projects-note"><span>* IMAGE NOTE</span><p>Project imagery has been selected from the supplied KaizerBrix image archive. The archive includes both on-site photographs and architectural visualisations; visualisations represent design concepts rather than completed-site photography.</p></section>
   </PageFrame>
 }
 export function ContactPage(){
