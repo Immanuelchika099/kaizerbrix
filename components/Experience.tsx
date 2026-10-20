@@ -250,7 +250,7 @@ export function MotionShell({ children }: { children: ReactNode }) {
   const contextValue = useMemo(() => ({ navigate, lenis: lenisRef }), [navigate]);
   return <MotionContext.Provider value={contextValue}>
     <div className="site-root" ref={rootRef}><SessionPreloader/>
-      <div className="site-progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
+      <div className="site-progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" /><div className="film-grain-overlay" aria-hidden="true"/>
       <header className="site-nav" data-theme={navTheme} data-hidden={navHidden && !menuOpen} data-pinned={navPinned}>
         <div className="nav-left"><Link href="/" aria-label="KaizerBrix Consults home" onClick={(e) => { e.preventDefault(); navigate('/'); }}><BrandMark className="k-mark" /></Link></div>
         <div className="nav-right"><span className="nav-slate">{slate}</span><Link className="nav-contact" href="/contact" onClick={(e) => { e.preventDefault(); navigate('/contact'); }}>CONTACT</Link><button className="nav-menu" type="button" aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => setMenuOpen((value) => !value)}><span>{menuOpen ? 'CLOSE' : 'MENU'}</span><span className="menu-lines" aria-hidden="true"><i/><i/></span></button></div>
