@@ -36,7 +36,7 @@ export function KPortal({ label = 'K portal transition' }: { label?: string }) {
     gsap.set(group.current, { scale: 1, transformOrigin: '50% 50%', transformBox: 'fill-box' });
     gsap.to(group.current, { scale: 8.5, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top top', end: '+=90%', scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true } });
   }, { scope: root, revertOnUpdate: true });
-  return <section ref={root} className="k-portal" aria-label={label} data-nav-theme="ink" data-scene-label="K / PORTAL"><svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><defs><mask id={maskId}><rect width="1000" height="1000" fill="white"/><g ref={group} fill="black"><path d="M275 170H410V435L615 210H790L550 470L815 830H640L445 575L410 615V830H275Z"/></g></mask></defs><rect width="1000" height="1000" fill="#DF481D" mask={\`url(#\${maskId})\`}/></svg></section>;
+  return <section ref={root} className="k-portal" aria-label={label} data-nav-theme="ink" data-scene-label="K / PORTAL"><svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><defs><mask id={maskId}><rect width="1000" height="1000" fill="white"/><g ref={group} fill="black"><path d="M275 170H410V435L615 210H790L550 470L815 830H640L445 575L410 615V830H275Z"/></g></mask></defs><rect width="1000" height="1000" fill="#DF481D" mask={"url(#" + maskId + ")"}/></svg></section>;
 }
 
 function SessionPreloader() {
