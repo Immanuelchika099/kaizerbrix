@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';import{ScrollTrigger}from'gsap/ScrollTrigger';import Lenis from'lenis';
 import{brand,services,projects,designPlates,values,qualityPolicy,hsePolicy,about}from'./content.ts';import'./Film.css';
 gsap.registerPlugin(ScrollTrigger);
-const links=[['01','Home','#home'],['02','About','#about'],['03','Vision','#vision'],['04','Expertise','#expertise'],['05','Values','#values'],['06','Projects','#projects'],['08','Standards','#standards'],['09','Contact','#contact']];
+const links=[['01','Home','#home'],['02','About','#about'],['03','Vision','#vision'],['04','Expertise','#expertise'],['05','Values','#values'],['06','Projects','#projects'],['07','Standards','#standards'],['08','Contact','#contact']];
 function Mark({className=''}){return <svg className={className} viewBox="0 0 130 110" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="square" strokeLinejoin="round"><path d="M24 100V43L57 10Q72 -1 83 12Q94 25 80 39L57 62V100"/><path d="M51 100V57L84 24Q97 11 109 24Q121 37 107 51L84 74V100"/></g></svg>}
 function Chip({children}){return <span className="film-chip">{children}</span>}
 const referencePhotos={
