@@ -1108,3 +1108,4 @@ html,body{overflow-x:clip}
 
 /* Final polish: keep the scroll-reactive orange rule, remove its static ash track. */
 .quality-commitments{border-top:0!important}
+.quality-commitments article{border-bottom:0!important}
