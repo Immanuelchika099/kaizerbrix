@@ -1,24 +1,33 @@
-# KeizaBrix Construction
+# KaizerBrix Consults
 
-**Building with precision. Creating with purpose.**
+A cinematic, responsive website for KaizerBrix Consults, a multidisciplinary construction consultancy based in Port Harcourt, Nigeria. The supplied company profile PDF remains the source of truth for company language, services and listed projects.
 
-KeizaBrix Construction is a modern construction company website designed to showcase the company's brand, services, and projects through a premium digital experience.
+## Experience
+- Cinematic scroll-led homepage built with GSAP, ScrollTrigger and Lenis.
+- Responsive layouts, editorial typography, reduced-motion support and accessible focus states.
+- Warm white, charcoal and restrained company-orange design system.
+- External architectural/construction photography is used as temporary illustrative imagery where approved company images are unavailable. These are not represented as real KaizerBrix project photos.
+- The 3D design archive is temporarily deferred until genuine render assets are available.
 
-The website combines a clean corporate identity, cinematic scrolling, smooth animations, and responsive design to communicate professionalism, build client confidence, and create a memorable online presence.
+## Stack
+React 19 · Vite · React Router DOM · GSAP · ScrollTrigger · Lenis · Framer Motion · Lucide React · CSS
 
-### Features
+## Development
+```bash
+npm install
+npm run dev
+```
 
-- Premium, modern corporate design
-- Responsive experience across desktop, tablet, and mobile
-- Cinematic scrolling and smooth animations
-- Company and services presentation
-- Construction project showcase
-- Client enquiry and contact experience
+## Production build
+```bash
+npm run build
+npm run preview
+```
 
-### Tech Stack
+## Content and asset policy
+Use `KAIZERBRIX company profile FINAL UPDATE1.pdf` as the content and visual reference. Do not invent projects, statistics, certifications, testimonials or company history. Replace temporary external photography with approved company imagery when supplied.
 
-React · Vite · JavaScript · CSS · Framer Motion · Lenis · React Router
-
----
-
-**KeizaBrix Construction** — Building with precision. Creating with purpose.
+## Before launch
+- Add and verify all approved project photography.
+- Confirm logo, favicon, Android/iOS home-screen icon and social preview assets against the supplied brand files.
+- Run `npm install`, `npm run build`, responsive browser QA and a production deployment check.
