@@ -45,3 +45,11 @@
 - Refined the hero image treatment and added a soft directional white overlay so oversized type remains legible while the photography still carries atmosphere.
 - Adjusted mobile hero sizing and spacing around dynamic viewport units, short-screen typography, image placement, and safe-area footer controls to reduce awkward pin entry on Android-sized screens.
 - Live Android/desktop QA remains outstanding until a fresh Vercel deployment is available; changes are source-side and have not been represented as device-tested.
+
+
+### Mission and quality policy refinement
+- Simplified the mission statement while preserving the source profile's themes: close client collaboration, innovation, quality, functionality, responsible practice and lasting value.
+- Reworked the homepage Vision/Mission scene into a more breathable, content-led layout. The mission statement and supporting image now have a clear hierarchy and stack naturally on mobile instead of competing in a cramped two-column composition.
+- Redesigned the seven quality-policy commitments as a restrained two-column editorial grid on desktop and a readable single-column list on mobile.
+- Replaced commitment number markers with Lucide icons, retaining the original commitment copy and orange brand accent. No emojis are used.
+- Source-side changes only; production deployment and real-device visual QA remain pending.
