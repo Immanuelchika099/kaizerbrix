@@ -736,3 +736,18 @@ html,body{overflow-x:clip}
  .about-scene .about-copy h2{color:#171516}
  .about-scene .about-copy .about-reveal-word{color:#171516}
 }
+
+
+/* About descriptive paragraphs use the same pinned, blur-to-sharp sliding reveal
+   as the portfolio's experimental text: existing copy only, no added text block. */
+.about-body-copy .about-reveal-word{
+  will-change:filter,transform,opacity;
+  backface-visibility:hidden;
+}
+@media(prefers-reduced-motion:reduce){
+  .about-body-copy .about-reveal-word{
+    filter:none!important;
+    transform:none!important;
+    opacity:1!important;
+  }
+}
