@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { about, brand, projects, services, values } from '../film/content.ts';
 import './Pages.css';
+import { Nav } from '../film/Film.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,8 +17,6 @@ const photos = {
   interiors: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85',
   engineer: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=85',
 };
-const navItems = [['About','/about'],['Expertise','/expertise'],['Projects','/projects'],['Contact','/contact']];
-function SiteNav(){const[open,setOpen]=useState(false);const location=useLocation();useEffect(()=>{setOpen(false);window.scrollTo(0,0);},[location.pathname]);useEffect(()=>{const onKey=e=>{if(e.key==='Escape')setOpen(false)};document.addEventListener('keydown',onKey);document.body.classList.toggle('kb-menu-active',open);return()=>{document.removeEventListener('keydown',onKey);document.body.classList.remove('kb-menu-active')}},[open]);return <header className={open?"kb-site-nav is-menu-open":"kb-site-nav"}><Link className="kb-brand" to="/" aria-label="KaizerBrix home"><img src="/kaizerbrix-logo.svg" alt="KaizerBrix Consults"/></Link><nav className={open?'kb-nav-links is-open':'kb-nav-links'} aria-label="Main navigation"><NavLink to="/" end>Film</NavLink>{navItems.map(([label,path])=><NavLink key={path} to={path}>{label}</NavLink>)}<Link className="kb-nav-cta" to="/contact">Start a project <ArrowUpRight size={16}/></Link></nav><button className="kb-nav-toggle" onClick={()=>setOpen(v=>!v)} aria-label={open?'Close navigation':'Open navigation'} aria-expanded={open}>{open?<X/>:<Menu/>}</button></header>}
 function SiteFooter(){return <footer className="kb-site-footer"><div className="kb-footer-top"><span className="kb-eyebrow">KAIZERBRIX CONSULTS / PORT HARCOURT</span><p>Let's make something<br/><em>that lasts.</em></p><Link to="/contact" className="kb-round-link" aria-label="Contact KaizerBrix"><ArrowUpRight/></Link></div><div className="kb-footer-bottom"><Link to="/" className="kb-footer-brand">KB<span>.</span> CONSULTS</Link><a href={'mailto:'+brand.email}>{brand.email}</a><a href="tel:+2347073847960">+234 707 384 7960</a><span>© {new Date().getFullYear()} KAIZERBRIX CONSULTS</span></div></footer>}
 function PageFrame({children}){
   const frame=useRef(null);
@@ -37,7 +36,7 @@ function PageFrame({children}){
     const revealFailsafe=window.setTimeout(()=>targets.forEach(el=>el.classList.add('is-in-view')),1800);
     return()=>{window.clearTimeout(revealFailsafe);observer.disconnect();root.classList.remove('kb-motion-ready');};
   },[]);
-  return <div className="kb-page" ref={frame}><SiteNav/>{children}<SiteFooter/></div>
+  return <div className="kb-page" ref={frame}><Nav external />{children}<SiteFooter/></div>
 }
 function Eyebrow({children}){return <span className="kb-eyebrow"><i/>{children}</span>}
 function PageIntro({number,kicker,title,accent,body,image}){return <section className="kb-page-intro"><div className="kb-page-intro-copy"><Eyebrow>{number} / {kicker}</Eyebrow><h1>{title} <em>{accent}</em></h1>{body&&<p>{body}</p>}</div>{image&&<div className="kb-page-intro-image"><img src={image} alt="" fetchPriority="high"/><span>KAIZERBRIX CONSULTS <i>— {number}</i></span></div>}<span className="kb-intro-index">{number}</span></section>}
