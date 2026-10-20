@@ -15,5 +15,5 @@ export const viewport: Viewport = { themeColor: '#FFFFFF', colorScheme: 'light',
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const jsonLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'KaizerBrix Consults', address: { '@type': 'PostalAddress', streetAddress: '67 Mgbuoshimini Road, Rumueme', addressLocality: 'Port Harcourt', addressRegion: 'Rivers State', addressCountry: 'NG' }, telephone: '+2347073847960', email: 'kaizerbrixconsults@gmail.com' };
-  return <html lang="en-NG"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><MotionShell>{children}</MotionShell></body></html>;
+  return <html lang="en-NG"><head><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/></head><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><MotionShell>{children}</MotionShell></body></html>;
 }
