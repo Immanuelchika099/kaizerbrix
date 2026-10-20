@@ -15,7 +15,7 @@ function RouteCurtain() {
     previousPath.current = location.pathname;
     if (reduce) return;
     setCover(true);
-    const reveal = window.setTimeout(() => setCover(false), 55);
+    const reveal = window.setTimeout(() => setCover(false), 630);
     return () => window.clearTimeout(reveal);
   }, [location.pathname, reduce]);
 
