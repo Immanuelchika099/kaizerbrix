@@ -1,2 +1,3 @@
-import Film from './film/Film.jsx';
-export default function App(){return <Film/>}
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './AppRoutes.jsx';
+export default function App(){return <BrowserRouter><AppRoutes/></BrowserRouter>}
