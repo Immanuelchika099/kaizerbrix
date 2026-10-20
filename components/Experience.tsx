@@ -80,6 +80,7 @@ export function MotionShell({ children }: { children: ReactNode }) {
   const [preview, setPreview] = useState<string>('/images/golden-tower.webp');
   const [navTheme, setNavTheme] = useState<'ink' | 'white' | 'orange'>('ink');
   const [navHidden, setNavHidden] = useState(false);
+  const [navPinned, setNavPinned] = useState(false);
   const [slate, setSlate] = useState('SC 01 / 08 — HOME');
   const [progress, setProgress] = useState(0);
   const current = useMemo(() => navItems.find((item) => item.href === pathname)?.label ?? (pathname.startsWith('/projects/') ? 'Projects' : 'Home'), [pathname]);
@@ -157,7 +158,9 @@ export function MotionShell({ children }: { children: ReactNode }) {
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
-      if (!menuOpen) setNavHidden(y > 130 && y > lastY + 3);
+      const pinned = Boolean(document.querySelector('.pin-spacer > [data-nav-theme]')) && Array.from(document.querySelectorAll<HTMLElement>('.pin-spacer > [data-nav-theme]')).some((scene) => { const rect = scene.getBoundingClientRect(); return rect.top <= 90 && rect.bottom > 90; });
+      setNavPinned(pinned);
+      if (!menuOpen && !pinned) setNavHidden(y > 130 && y > lastY + 3);
       else setNavHidden(false);
       const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       setProgress(Math.min(1, Math.max(0, y / max)));
@@ -196,11 +199,11 @@ export function MotionShell({ children }: { children: ReactNode }) {
   return <MotionContext.Provider value={contextValue}>
     <div className="site-root" ref={rootRef}><SessionPreloader/>
       <div className="site-progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
-      <header className="site-nav" data-theme={navTheme} data-hidden={navHidden && !menuOpen}>
+      <header className="site-nav" data-theme={navTheme} data-hidden={navHidden && !menuOpen} data-pinned={navPinned}>
         <div className="nav-left"><Link href="/" aria-label="KaizerBrix Consults home" onClick={(e) => { e.preventDefault(); navigate('/'); }}><BrandMark className="k-mark" /></Link></div>
         <div className="nav-right"><span className="nav-slate">{slate}</span><Link className="nav-contact" href="/contact" onClick={(e) => { e.preventDefault(); navigate('/contact'); }}>CONTACT</Link><button className="nav-menu" type="button" aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => setMenuOpen((value) => !value)}><span>{menuOpen ? 'CLOSE' : 'MENU'}</span><span className="menu-lines" aria-hidden="true"><i/><i/></span></button></div>
       </header>
-      <nav id="site-menu" className={`menu-overlay ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation" aria-hidden={!menuOpen}>
+      <nav id="site-menu" className={`menu-overlay ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation" aria-hidden={!menuOpen} inert={!menuOpen}>
         <div className="menu-links">{navItems.map((item, i) => <Link key={item.href} href={item.href} tabIndex={menuOpen ? 0 : -1} aria-current={pathname === item.href ? 'page' : undefined} className="menu-link" onMouseEnter={() => item.image && setPreview(item.image)} onFocus={() => item.image && setPreview(item.image)} onClick={(e) => { e.preventDefault(); navigate(item.href); }}><small>{String(i + 1).padStart(2, '0')}</small><span>{item.label}</span></Link>)}</div>
         <div className="menu-preview" aria-hidden="true"><MediaFrame src={preview} alt="Architectural preview" priority={false} /></div>
         <div className="menu-bottom"><span>{brand.address}</span><a href="tel:+2347073847960">+234 (0) 707 384 7960</a><a href="mailto:kaizerbrixconsults@gmail.com">kaizerbrixconsults@gmail.com</a></div>
