@@ -4,7 +4,8 @@ export const services=[
 {name:'Civil Engineering',lines:['Rigorous structural analysis','Geotechnical investigations','Hydraulic modeling'],image:'/images/rebar-crew.webp'},
 {name:'Surveying',lines:['Cadastral surveys','Laser scanning','Drone-based topographic mapping'],image:'/images/excavator-site.webp'},
 {name:'Town Planning',lines:['Sustainable urban and regional development','Zoning, land use, and transportation planning'],image:'/images/aerial-site-plan.webp'},
-{name:'Procurement',lines:['Cost control','Value engineering','Project management'],image:'/images/orange-loader.webp'}];
+{name:'Procurement',lines:['Cost control','Value engineering','Project management'],image:'/images/orange-loader.webp'},
+{name:'Construction',lines:['Construction','Finishing'],image:'/images/rebar-crew.webp'}];
 export const projects=[
 {status:'EXECUTED',name:'5 Bedroom Duplex',location:'Yenagoa, Bayelsa State',year:'2023',image:'/images/project-yenagoa.webp',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']},
 {status:'EXECUTED',name:'5 Bedroom Duplex',location:'Port Harcourt, Rivers State',year:'2023',image:'/images/project-port-harcourt.webp',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']},
