@@ -10,8 +10,9 @@
 
 /* Editorial film choreography for the inner pages */
 @media(prefers-reduced-motion:no-preference){
+  /* Content is visible by default; scroll reveals may enhance but never gate access. */
   .kb-page.kb-motion-ready .kb-page-intro-copy,.kb-page.kb-motion-ready .kb-page-intro-image,.kb-page.kb-motion-ready .kb-about-statement>p,.kb-page.kb-motion-ready .kb-about-statement-foot,.kb-page.kb-motion-ready .kb-vision-image,.kb-page.kb-motion-ready .kb-vision-copy article,.kb-page.kb-motion-ready .kb-section-heading,.kb-page.kb-motion-ready .kb-values-grid article,.kb-page.kb-motion-ready .kb-expertise-lead p,.kb-page.kb-motion-ready .kb-service-row,.kb-page.kb-motion-ready .kb-service-end,.kb-page.kb-motion-ready .kb-projects-intro>p,.kb-page.kb-motion-ready .kb-project-card,.kb-page.kb-motion-ready .kb-projects-note,.kb-page.kb-motion-ready .kb-contact-copy,.kb-page.kb-motion-ready .kb-contact-form,.kb-page.kb-motion-ready .kb-footer-top{
-    opacity:0;transform:translate3d(0,34px,0);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);will-change:auto
+    opacity:1;transform:none;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);will-change:auto
   }
   .kb-page.kb-motion-ready .kb-page-intro-image{clip-path:inset(0 0 10% 0);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),clip-path 1.1s cubic-bezier(.22,1,.36,1)}
   .kb-page-intro-image img,.kb-vision-image img,.kb-service-image img,.kb-project-card-image img{transform:scale(1.065);transition:transform 1.35s cubic-bezier(.2,.7,.1,1)}
@@ -360,4 +361,38 @@
 @media(max-width:850px){
   .kb-page .kb-contact-form{border-radius:20px!important}
   .kb-page .kb-contact-form button{min-height:54px}
+}
+
+
+/* About route hardening: content never depends on an observer firing. */
+.kb-page .kb-about-statement .kb-eyebrow{color:#fff!important;opacity:1;font-size:14px}
+.kb-page .kb-about-statement>p{opacity:1;visibility:visible;transform:none;filter:none}
+.kb-page .kb-about-statement-foot{opacity:1;visibility:visible;transform:none;display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:14px;line-height:1.5}
+.kb-page .kb-about-statement-foot>span:first-child{min-width:0}
+.kb-page .kb-about-statement-foot>span:last-child{white-space:nowrap;margin-left:auto}
+.kb-page .kb-vision-image,.kb-page .kb-vision-copy article,.kb-page .kb-section-heading,.kb-page .kb-values-grid article{opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important}
+.kb-page .kb-vision-image{width:100%;min-width:0}
+.kb-page .kb-vision-image img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.kb-page .kb-vision-image span{font-size:14px;max-width:calc(100% - 36px);line-height:1.4}
+.kb-page .kb-section-heading .kb-eyebrow{font-size:14px}
+.kb-page .kb-values-grid{align-items:stretch}
+.kb-page .kb-values-grid article{min-height:0}
+.kb-page .kb-values-grid article>span,.kb-page .kb-values-grid p{font-size:14px;line-height:1.65}
+.kb-page .kb-values-grid h3{font-size:16px}
+.kb-page .kb-values-grid article>i{pointer-events:none}
+.kb-page .kb-about-vision,.kb-page .kb-values-section{scroll-margin-top:96px}
+.kb-page .kb-about-vision{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media(max-width:850px){
+  .kb-page .kb-about-vision{grid-template-columns:minmax(0,1fr);padding-top:42px!important;padding-bottom:46px!important;gap:28px!important}
+  .kb-page .kb-vision-copy{gap:32px}
+  .kb-page .kb-vision-copy article+article{padding-top:26px}
+  .kb-page .kb-vision-image{height:auto!important;aspect-ratio:4/3;min-height:0}
+  .kb-page .kb-vision-image img{height:100%;aspect-ratio:4/3}
+  .kb-page .kb-values-section{padding-top:56px!important;padding-bottom:60px!important}
+  .kb-page .kb-section-heading h2{margin-bottom:32px}
+  .kb-page .kb-values-grid{grid-template-columns:minmax(0,1fr);border-left:0}
+  .kb-page .kb-values-grid article{border-left:1px solid #d4d0ca;padding:24px 22px!important}
+  .kb-page .kb-values-grid h3{margin:18px 0 10px}
+  .kb-page .kb-about-statement>p{font-size:clamp(28px,8vw,40px);margin-top:24px!important;margin-bottom:30px!important}
+  .kb-page .kb-about-statement-foot{align-items:flex-start}
 }
