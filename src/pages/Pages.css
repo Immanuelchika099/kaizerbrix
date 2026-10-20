@@ -7,3 +7,21 @@
 .kb-route-curtain{position:fixed;inset:0;z-index:1500;pointer-events:none;background:#df481d;clip-path:inset(0 0 100% 0)}
 
 @media(max-width:850px){.kb-service-copy li{font-size:14px}.kb-project-scope p{font-size:12.5px}.kb-projects-note p{font-size:13px}.kb-contact-copy>p{font-size:15px}.kb-contact-form label{font-size:13px}.kb-footer-bottom{font-size:11px}}
+
+/* Editorial film choreography for the inner pages */
+@media(prefers-reduced-motion:no-preference){
+  .kb-page-intro-copy,.kb-page-intro-image,.kb-about-statement>p,.kb-about-statement-foot,.kb-vision-image,.kb-vision-copy article,.kb-section-heading,.kb-values-grid article,.kb-expertise-lead p,.kb-service-row,.kb-service-end,.kb-projects-intro>p,.kb-project-card,.kb-projects-note,.kb-contact-copy,.kb-contact-form,.kb-footer-top{
+    opacity:0;transform:translate3d(0,34px,0);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--reveal-index,0)*75ms);will-change:opacity,transform
+  }
+  .kb-page-intro-image{clip-path:inset(0 0 10% 0);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),clip-path 1.1s cubic-bezier(.22,1,.36,1)}
+  .kb-page-intro-image img,.kb-vision-image img,.kb-service-image img,.kb-project-card-image img{transform:scale(1.065);transition:transform 1.35s cubic-bezier(.2,.7,.1,1)}
+  .kb-page-intro-image.is-in-view{clip-path:inset(0)}
+  .kb-page-intro-image.is-in-view img,.kb-vision-image.is-in-view img,.kb-service-row.is-in-view .kb-service-image img,.kb-project-card.is-in-view .kb-project-card-image img{transform:scale(1)}
+  .kb-page .is-in-view{opacity:1;transform:translate3d(0,0,0)}
+}
+.kb-route-layer{min-height:100vh}
+.kb-route-loading{min-height:100svh;background:#171516;color:#fff;display:grid;place-content:center;justify-items:center;gap:18px;font:700 11px/1.2 'Manrope',sans-serif;letter-spacing:.22em}
+.kb-route-loading i{display:block;width:46px;height:2px;background:#ffffff25;overflow:hidden;position:relative}
+.kb-route-loading i:after{content:'';position:absolute;inset:0;background:#DF481D;transform:translateX(-100%);animation:kb-loading-sweep 1.2s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes kb-loading-sweep{to{transform:translateX(100%)}}
+@media(prefers-reduced-motion:reduce){.kb-route-loading i:after{animation:none;transform:none}.kb-page-intro-copy,.kb-page-intro-image,.kb-about-statement>p,.kb-about-statement-foot,.kb-vision-image,.kb-vision-copy article,.kb-section-heading,.kb-values-grid article,.kb-expertise-lead p,.kb-service-row,.kb-service-end,.kb-projects-intro>p,.kb-project-card,.kb-projects-note,.kb-contact-copy,.kb-contact-form,.kb-footer-top{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}}
