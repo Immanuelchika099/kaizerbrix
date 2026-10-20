@@ -10,14 +10,14 @@
 
 /* Editorial film choreography for the inner pages */
 @media(prefers-reduced-motion:no-preference){
-  .kb-page-intro-copy,.kb-page-intro-image,.kb-about-statement>p,.kb-about-statement-foot,.kb-vision-image,.kb-vision-copy article,.kb-section-heading,.kb-values-grid article,.kb-expertise-lead p,.kb-service-row,.kb-service-end,.kb-projects-intro>p,.kb-project-card,.kb-projects-note,.kb-contact-copy,.kb-contact-form,.kb-footer-top{
+  .kb-page.kb-motion-ready .kb-page-intro-copy,.kb-page.kb-motion-ready .kb-page-intro-image,.kb-page.kb-motion-ready .kb-about-statement>p,.kb-page.kb-motion-ready .kb-about-statement-foot,.kb-page.kb-motion-ready .kb-vision-image,.kb-page.kb-motion-ready .kb-vision-copy article,.kb-page.kb-motion-ready .kb-section-heading,.kb-page.kb-motion-ready .kb-values-grid article,.kb-page.kb-motion-ready .kb-expertise-lead p,.kb-page.kb-motion-ready .kb-service-row,.kb-page.kb-motion-ready .kb-service-end,.kb-page.kb-motion-ready .kb-projects-intro>p,.kb-page.kb-motion-ready .kb-project-card,.kb-page.kb-motion-ready .kb-projects-note,.kb-page.kb-motion-ready .kb-contact-copy,.kb-page.kb-motion-ready .kb-contact-form,.kb-page.kb-motion-ready .kb-footer-top{
     opacity:0;transform:translate3d(0,34px,0);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);will-change:auto
   }
-  .kb-page-intro-image{clip-path:inset(0 0 10% 0);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),clip-path 1.1s cubic-bezier(.22,1,.36,1)}
+  .kb-page.kb-motion-ready .kb-page-intro-image{clip-path:inset(0 0 10% 0);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),clip-path 1.1s cubic-bezier(.22,1,.36,1)}
   .kb-page-intro-image img,.kb-vision-image img,.kb-service-image img,.kb-project-card-image img{transform:scale(1.065);transition:transform 1.35s cubic-bezier(.2,.7,.1,1)}
-  .kb-page-intro-image.is-in-view{clip-path:inset(0)}
-  .kb-page-intro-image.is-in-view img,.kb-vision-image.is-in-view img,.kb-service-row.is-in-view .kb-service-image img,.kb-project-card.is-in-view .kb-project-card-image img{transform:scale(1)}
-  .kb-page .is-in-view{opacity:1;transform:translate3d(0,0,0)}
+  .kb-page.kb-motion-ready .kb-page-intro-image.is-in-view{clip-path:inset(0)}
+  .kb-page.kb-motion-ready .kb-page-intro-image.is-in-view img,.kb-page.kb-motion-ready .kb-vision-image.is-in-view img,.kb-page.kb-motion-ready .kb-service-row.is-in-view .kb-service-image img,.kb-page.kb-motion-ready .kb-project-card.is-in-view .kb-project-card-image img{transform:scale(1)}
+  .kb-page.kb-motion-ready .is-in-view{opacity:1;transform:translate3d(0,0,0)}
 }
 .kb-route-layer{min-height:100vh}
 .kb-route-loading{min-height:100svh;background:#171516;color:#fff;display:grid;place-content:center;justify-items:center;gap:18px;font:700 11px/1.2 'Manrope',sans-serif;letter-spacing:.22em}
