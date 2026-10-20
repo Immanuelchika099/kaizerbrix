@@ -1012,3 +1012,7 @@ html,body{overflow-x:clip}
   .hero-tagline,.about-copy p,.about-body-copy p,.service-detail,.service-detail li,.statement-support,.value-copy p,.projects-top p,.film-project-copy>p,.project-scope,.quality-panel>p,.quality-commitments p,.quality-close,.hse-copy p,.contact-main>p,.contact-bottom a{font-size:clamp(1.8rem,1.15vw,2rem)!important;line-height:1.55!important}
 }
 .value-copy h3,.section-vertical,.film-nav .film-nav-mark:after,.film-nav .film-menu-button span,.hero-cta,.quality-commitments h3,.quality-commitments article>span,.contact-bottom>div>span{font-size:max(1.4rem,1em)!important}
+
+@media(max-width:899px){
+  .expertise-scene{padding-top:86px!important}
+}
