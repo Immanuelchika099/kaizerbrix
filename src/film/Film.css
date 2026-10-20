@@ -117,3 +117,11 @@ html,body{overflow-x:clip}
  @keyframes kb-menu-reveal-mobile{from{clip-path:circle(0% at calc(100% - 5.7rem) 3.5rem)}to{clip-path:circle(150% at calc(100% - 5.7rem) 3.5rem)}}
 }
 @media(prefers-reduced-motion:reduce){.film-menu,.film-menu>a{animation:none;opacity:1;clip-path:none}}
+
+
+/* Brand lockup generated beside the existing KaizerBrix monogram */
+.film-nav .film-nav-mark{width:auto;display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.film-nav .film-nav-mark svg{width:27px;height:30px;flex:0 0 auto}
+.film-nav .film-nav-mark:after{content:'KAIZERBRIX  /  CONSULTS';display:block;color:currentColor;font:700 1rem var(--display);letter-spacing:.045em;white-space:nowrap}
+.film-nav .film-menu-button{margin-left:auto}
+@media(max-width:899px){.film-nav .film-nav-mark{gap:9px}.film-nav .film-nav-mark svg{width:23px;height:26px}.film-nav .film-nav-mark:after{font-size:.83rem;letter-spacing:.025em}}
