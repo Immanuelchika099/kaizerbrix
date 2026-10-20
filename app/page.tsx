@@ -24,7 +24,7 @@ export default function HomePage() {
 
     <SceneReveal className="home-competence section-pad" theme="ink" label="SC 04 / COMPETENCE">
       <div className="competence-intro"><p className="scene-label" data-reveal>03 / OUR COMPETENCE</p><h2 className="display" data-reveal>Five disciplines.<br/><span>One built</span><br/>environment.</h2><p data-reveal>Explore the disciplines that bring our built-environment work together.</p><TransitionLink href="/services" className="text-link">ALL SERVICES <span>↗</span></TransitionLink></div>
-      <div className="competence-list">{services.map((service,i)=><a key={service.name} href={`/services#${service.name.toLowerCase().replaceAll(' ','-')}`} className="competence-row" data-reveal><span className="counter">{String(i+1).padStart(2,'0')}</span><h3>{service.name}</h3><span className="orange-square"/><span className="competence-arrow">↗</span></a>)}</div>
+      <div className="competence-list">{services.map((service,i)=><a key={service.name} href={`/services#${service.name.toLowerCase().replaceAll(' ','-')}`} className="competence-row"><span className="counter">{String(i+1).padStart(2,'0')}</span><h3>{service.name}</h3><span className="orange-square"/><span className="competence-arrow">↗</span></a>)}</div>
     </SceneReveal>
 
     <SceneReveal className="home-statement section-pad" theme="ink" label="SC 05 / STATEMENT">
