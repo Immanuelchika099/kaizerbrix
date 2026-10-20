@@ -9,7 +9,7 @@ export const navItems = [
   { label: 'Projects', href: '/projects', image: '/images/project-yenagoa.webp' },
   { label: '3D Designs', href: '/designs', image: '/images/design-5-bedroom-01.webp' },
   { label: 'Standards', href: '/standards', image: '/images/hse-worker-rebar.webp' },
-  { label: 'Contact', href: '/contact', image: '' },
+  { label: 'Contact', href: '/contact', image: '/images/engineer-blueprints.webp' },
 ] as const;
 
 export const projectSlugs = [
