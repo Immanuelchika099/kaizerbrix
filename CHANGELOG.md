@@ -21,3 +21,17 @@
 ### Verification status
 - This GitHub-connected workflow can inspect and change repository files but has not provided an interactive browser to capture 1440×900 or 390×844 screenshots. Therefore, no visual viewport audit is claimed as completed.
 - Build, lint, iOS Safari, Android scrolling, Lighthouse and Vercel deployment still need to be run after dependency installation and image recovery. Vercel previously reported a build-rate-limit failure.
+
+
+## 2026-10-20 — source asset recovery and final motion pass
+
+- Recovered the original profile PDF from the Library without another user upload. Extracted sixteen embedded 3D renders and the source project/site photographs; made a separate WebP asset pack with explicit source-page mapping.
+- Added a pre-rendered 256×256 grain tile, PNG iOS/Android icons and a PWA manifest to the asset pack.
+- Added the fixed low-opacity grain overlay, reduced-motion fallbacks for K portals, horizontal projects and pinned values, and separate Yenagoa render / built-photo plates until the client confirms a match.
+- Last completed CI run passed type-check and production build at `e6c1db9574e8f290d604cbabf2a7714d2fb0f2f5`. A newer run is required after the most recent source and motion changes.
+
+### Release gates remain
+- Merge `kaizerbrix-assets.zip` into the local repository and commit the binary assets; they cannot be committed through the text-only GitHub file writer.
+- Verify 1440×900 and 390×844 screenshots, iOS Safari/PWA, Android scrolling, browser back/forward, focus trapping, anchor/hash navigation and image decode/CLS behavior.
+- Run mobile Lighthouse and confirm a Vercel deployment after the earlier build-rate-limit issue is resolved.
+- Configure the approved canonical domain in `NEXT_PUBLIC_SITE_URL`. No live viewport screenshots or device tests are claimed complete.
