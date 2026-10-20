@@ -9,6 +9,12 @@ import { Nav } from '../film/Film.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const threeDImages = Array.from({length:15},(_,index)=>({
+  src:'/images/IMG_'+(1646+index)+'.PNG',
+  number:String(index+1).padStart(2,'0'),
+  filename:'IMG_'+(1646+index)+'.PNG'
+}));
+
 const photos = {
   architecture: '/images/IMG_1645.PNG',
   tower: '/images/IMG_1642.PNG',
@@ -51,11 +57,6 @@ export function ProjectsPage(){
   const track=useRef(null);
   const progress=useRef(null);
   const [activeImage,setActiveImage]=useState(null);
-  const threeDImages=Array.from({length:15},(_,index)=>({
-    src:'/images/IMG_'+(1646+index)+'.PNG',
-    number:String(index+1).padStart(2,'0'),
-    filename:'IMG_'+(1646+index)+'.PNG'
-  }));
 
   useEffect(()=>{
     const media=gsap.matchMedia();
