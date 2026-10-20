@@ -6,13 +6,14 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Flip } from 'gsap/Flip';
 import { useGSAP } from '@gsap/react';
 import Lenis from 'lenis';
 import { brand, navItems } from '@/app/data';
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(ScrollTrigger, Flip, useGSAP);
 
-type MotionContextValue = { navigate: (href: string) => void; lenis: MutableRefObject<Lenis | null> };
+type MotionContextValue = { navigate: (href: string, source?: HTMLElement | null) => void; lenis: MutableRefObject<Lenis | null> };
 const MotionContext = createContext<MotionContextValue | null>(null);
 export function useMotion() {
   const value = useContext(MotionContext);
@@ -75,6 +76,8 @@ export function MotionShell({ children }: { children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
   const previousPath = useRef(pathname);
   const pendingPath = useRef<string | null>(null);
+  const pendingKind = useRef<'standard' | 'project'>('standard');
+  const sharedCloneRef = useRef<HTMLElement | null>(null);
   const [transitionActive, setTransitionActive] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [preview, setPreview] = useState<string>('/images/golden-tower.webp');
@@ -99,14 +102,31 @@ export function MotionShell({ children }: { children: ReactNode }) {
     }
   }, { scope: rootRef });
 
-  const navigate = useCallback((href: string) => {
+  const navigate = useCallback((href: string, source?: HTMLElement | null) => {
     if (href === pathname || transitionActive) { setMenuOpen(false); return; }
     setMenuOpen(false);
     pendingPath.current = href;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced || !planeRef.current) { setTransitionActive(true); router.push(href); return; }
+    pendingKind.current = source && !reduced ? 'project' : 'standard';
+    if (reduced || !planeRef.current) {
+      setTransitionActive(true);
+      gsap.to(rootRef.current, { opacity: 0, duration: 0.1, onComplete: () => router.push(href) });
+      return;
+    }
     setTransitionActive(true);
     lenisRef.current?.stop();
+    if (source) {
+      const rect = source.getBoundingClientRect();
+      const clone = source.cloneNode(true) as HTMLElement;
+      clone.classList.add('shared-transition-clone');
+      Object.assign(clone.style, { position: 'fixed', top: rect.top + 'px', left: rect.left + 'px', width: rect.width + 'px', height: rect.height + 'px', margin: '0', zIndex: '250', pointerEvents: 'none', transformOrigin: 'top left' });
+      document.body.appendChild(clone);
+      sharedCloneRef.current = clone;
+      const state = Flip.getState(clone);
+      gsap.set(clone, { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight });
+      Flip.from(state, { duration: 0.72, ease: 'power3.inOut', absolute: true, scale: true, onComplete: () => router.push(href) });
+      return;
+    }
     const plane = planeRef.current;
     const mark = markRef.current;
     gsap.set(plane, { clipPath: 'polygon(0 0,0 0,0 100%,0 100%)', visibility: 'visible' });
@@ -127,9 +147,15 @@ export function MotionShell({ children }: { children: ReactNode }) {
       if (hash) requestAnimationFrame(() => document.querySelector(hash)?.scrollIntoView({ behavior: 'auto', block: 'start' }));
     });
     if (!transitionActive || !planeRef.current) return;
+    const finish = () => { setTransitionActive(false); pendingPath.current = null; lenisRef.current?.start(); };
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (pendingKind.current === 'project' && sharedCloneRef.current) {
+      const clone = sharedCloneRef.current;
+      gsap.to(clone, { opacity: 0, duration: 0.2, delay: 0.05, onComplete: () => { clone.remove(); sharedCloneRef.current = null; finish(); } });
+      return;
+    }
     if (reduced) {
-      gsap.to(rootRef.current, { opacity: 1, duration: 0.2, onComplete: () => { setTransitionActive(false); pendingPath.current = null; lenisRef.current?.start(); } });
+      gsap.fromTo(rootRef.current, { opacity: 0 }, { opacity: 1, duration: 0.2, onComplete: finish });
       return;
     }
     gsap.to(markRef.current, { opacity: 0, scale: 1.08, duration: 0.18, ease: 'power2.in' });
@@ -216,7 +242,7 @@ export function MotionShell({ children }: { children: ReactNode }) {
 
 export function TransitionLink({ href, children, className, ...props }: ComponentProps<typeof Link>) {
   const { navigate } = useMotion();
-  return <Link href={href} className={className} {...props} onClick={(event) => { props.onClick?.(event); if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate(String(href)); }}>{children}</Link>;
+  return <Link href={href} className={className} {...props} onClick={(event) => { props.onClick?.(event); if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate(String(href), className?.includes('project-transition') ? (event.currentTarget.querySelector('.media-frame') as HTMLElement | null) : null); }}>{children}</Link>;
 }
 
 export function MediaFrame({ src, alt, caption, priority = false, className = '' }: { src?: string; alt: string; caption?: string; priority?: boolean; className?: string }) {
