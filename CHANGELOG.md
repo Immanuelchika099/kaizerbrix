@@ -185,3 +185,11 @@
 - The frontend uses the project's publishable key (not a service-role secret), disables repeat submits while saving, resets the form after success, and shows a success or failure message.
 - Verified the table exists, RLS is enabled, the expected columns are present, and insert/read/delete policies are installed. A live browser form submission has not yet been run.
 - Enquiries can be viewed in the Supabase Table Editor under `public.kaizerbrix_enquiries`. This stores enquiries; it does not by itself send email or push notifications.
+
+
+## 2026-10-20 — Replace remote stock imagery with supplied KaizerBrix assets
+- Replaced the Unsplash image set on the About, Expertise, Projects and Contact pages with the supplied files in `public/images`.
+- Replaced homepage image fallbacks with a local mapping to the supplied KaizerBrix team, site-work, residential-building and design-visualisation assets. No remote stock-image URLs remain in the homepage or inner-page image code.
+- Added the supplied QR image (`IMG_1637.PNG`) to both the homepage contact footer and shared inner-page footer, preserving a white quiet zone for scanning.
+- Updated project-image notes to distinguish on-site photographs from architectural visualisations. The exact destination encoded by the QR image has not been independently verified.
+- Images were inspected from the repository and mapped by visual content; responsive rendering and live deployment still require a browser/build check.
