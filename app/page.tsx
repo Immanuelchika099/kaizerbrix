@@ -33,7 +33,7 @@ export default function HomePage() {
 
     <SceneReveal className="home-projects section-pad" theme="ink" label="SC 06 / PROJECTS">
       <div className="section-heading"><div><p className="scene-label" data-reveal>06 / PROJECT RECORD</p><h2 className="display" data-reveal>Selected<br/>projects<span className="orange-period">.</span></h2></div><TransitionLink className="text-link" href="/projects">VIEW ALL PROJECTS <span>↗</span></TransitionLink></div>
-      <div className="home-project-grid">{projects.map((project,i)=><article className={`home-project home-project-${i+1}`} key={project.location}><MediaFrame src={project.image} alt={`${project.name}, ${project.location}`} caption={`0${i+1} / ${project.status}`}/><div className="home-project-caption"><span className="micro">{project.location} / {project.year}</span><h3>{project.name}</h3><TransitionLink href={`/projects/${i===0?'5-bedroom-duplex-yenagoa':i===1?'5-bedroom-duplex-port-harcourt':'5-bedroom-duplex-bonny-island'}`}>PROJECT RECORD ↗</TransitionLink></div></article>)}</div>
+      <div className="home-project-grid">{projects.map((project,i)=><article className={`home-project home-project-${i+1}`} key={project.location}><MediaFrame src={project.image} alt={project.imageAlt ?? `${project.name}, ${project.location}`} caption={`0${i+1} / ${project.status}`}/><div className="home-project-caption"><span className="micro">{project.location} / {project.year}</span><h3>{project.name}</h3><TransitionLink href={`/projects/${i===0?'5-bedroom-duplex-yenagoa':i===1?'5-bedroom-duplex-port-harcourt':'5-bedroom-duplex-bonny-island'}`}>PROJECT RECORD ↗</TransitionLink></div></article>)}</div>
     </SceneReveal>
 
     <SceneReveal className="home-designs section-pad" theme="ink" label="SC 07 / 3D DESIGNS">
