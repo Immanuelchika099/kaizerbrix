@@ -14,3 +14,6 @@
 
 .film-menu-divider{padding:24px 0 7px;border-bottom:1px solid #ffffff55;font-size:.9rem;letter-spacing:.16em;color:#ffffffa8;font-weight:700}
 .film-menu .film-menu-divider~a span{color:#ffffff9c}
+
+/* Android and compact-screen readability refinements */
+@media(max-width:899px){.about-copy p{font-size:1.4rem}.quality-panel>p,.hse-copy p,.contact-main>p,.film-project-copy>p{font-size:1.35rem}.quality-commitments p{font-size:1.25rem}.quality-commitments h3{font-size:1.4rem}.contact-bottom a{font-size:1.2rem}.service-detail li{font-size:1.25rem;line-height:1.7}}
