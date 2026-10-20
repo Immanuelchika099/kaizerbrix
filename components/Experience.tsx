@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ComponentProps, type MutableRefObject, type ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,7 +12,7 @@ import { brand, navItems } from '@/app/data';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-type MotionContextValue = { navigate: (href: string) => void; lenis: React.MutableRefObject<Lenis | null> };
+type MotionContextValue = { navigate: (href: string) => void; lenis: MutableRefObject<Lenis | null> };
 const MotionContext = createContext<MotionContextValue | null>(null);
 export function useMotion() {
   const value = useContext(MotionContext);
@@ -24,7 +24,7 @@ function BrandMark({ className = '' }: { className?: string }) {
   return <svg className={className} viewBox="0 0 130 110" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="square" strokeLinejoin="round"><path d="M24 100V43L57 10Q72 -1 83 12Q94 25 80 39L57 62V100"/><path d="M51 100V57L84 24Q97 11 109 24Q121 37 107 51L84 74V100"/></g></svg>;
 }
 
-export function MotionShell({ children }: { children: React.ReactNode }) {
+export function MotionShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -37,6 +37,7 @@ export function MotionShell({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [preview, setPreview] = useState<string>('/images/golden-tower.webp');
   const [navTheme, setNavTheme] = useState<'ink' | 'white' | 'orange'>('ink');
+  const [navHidden, setNavHidden] = useState(false);
   const [slate, setSlate] = useState('SC 01 / 08 — HOME');
   const [progress, setProgress] = useState(0);
   const current = useMemo(() => navItems.find((item) => item.href === pathname)?.label ?? (pathname.startsWith('/projects/') ? 'Projects' : 'Home'), [pathname]);
@@ -110,6 +111,8 @@ export function MotionShell({ children }: { children: React.ReactNode }) {
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
+      if (!menuOpen) setNavHidden(y > 130 && y > lastY + 3);
+      else setNavHidden(false);
       const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       setProgress(Math.min(1, Math.max(0, y / max)));
       const scenes = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-theme]'));
@@ -125,7 +128,7 @@ export function MotionShell({ children }: { children: React.ReactNode }) {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
-  }, [pathname]);
+  }, [pathname, menuOpen]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -147,7 +150,7 @@ export function MotionShell({ children }: { children: React.ReactNode }) {
   return <MotionContext.Provider value={contextValue}>
     <div className="site-root" ref={rootRef}>
       <div className="site-progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
-      <header className="site-nav" data-theme={navTheme}>
+      <header className="site-nav" data-theme={navTheme} data-hidden={navHidden && !menuOpen}>
         <div className="nav-left"><Link href="/" aria-label="KaizerBrix Consults home" onClick={(e) => { e.preventDefault(); navigate('/'); }}><BrandMark className="k-mark" /></Link></div>
         <div className="nav-right"><span className="nav-slate">{slate}</span><Link className="nav-contact" href="/contact" onClick={(e) => { e.preventDefault(); navigate('/contact'); }}>CONTACT</Link><button className="nav-menu" type="button" aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => setMenuOpen((value) => !value)}><span>{menuOpen ? 'CLOSE' : 'MENU'}</span><span className="menu-lines" aria-hidden="true"><i/><i/></span></button></div>
       </header>
@@ -162,7 +165,7 @@ export function MotionShell({ children }: { children: React.ReactNode }) {
   </MotionContext.Provider>;
 }
 
-export function TransitionLink({ href, children, className, ...props }: React.ComponentProps<typeof Link>) {
+export function TransitionLink({ href, children, className, ...props }: ComponentProps<typeof Link>) {
   const { navigate } = useMotion();
   return <Link href={href} className={className} {...props} onClick={(event) => { props.onClick?.(event); if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate(String(href)); }}>{children}</Link>;
 }
@@ -176,7 +179,7 @@ export function MediaFrame({ src, alt, caption, priority = false, className = ''
   </figure>;
 }
 
-export function SceneReveal({ children, className = '', id, theme = 'ink', label, as = 'section' }: { children: React.ReactNode; className?: string; id?: string; theme?: 'ink' | 'white' | 'orange'; label?: string; as?: 'section' | 'div' }) {
+export function SceneReveal({ children, className = '', id, theme = 'ink', label }: { children: ReactNode; className?: string; id?: string; theme?: 'ink' | 'white' | 'orange'; label?: string }) {
   const ref = useRef<HTMLElement | null>(null);
   useGSAP(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -191,8 +194,7 @@ export function SceneReveal({ children, className = '', id, theme = 'ink', label
       if (image) gsap.fromTo(image, { scale: 1.08, filter: 'grayscale(1) sepia(.45) saturate(.7)' }, { scale: 1, filter: 'grayscale(0) sepia(0) saturate(1.04)', ease: 'none', scrollTrigger: { trigger: photo, start: 'top 90%', end: 'center 48%', scrub: 0.8 } });
     });
   }, { scope: ref, dependencies: [id], revertOnUpdate: true });
-  const Tag = as;
-  return <Tag ref={ref as never} id={id} className={`scene ${className}`} data-nav-theme={theme} data-scene-label={label}>{children}</Tag>;
+  return <section ref={ref} id={id} className={`scene ${className}`} data-nav-theme={theme} data-scene-label={label}>{children}</section>;
 }
 
 export function PageTitle({ number, title, eyebrow, description, image, imageAlt }: { number: string; title: string; eyebrow: string; description: string; image?: string; imageAlt?: string }) {
