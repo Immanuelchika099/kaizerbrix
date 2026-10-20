@@ -830,3 +830,180 @@ html,body{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){
   .vision-copy,.mission-copy,.mission-copy img{filter:none!important}
 }
+
+
+/* October 2026 stability pass: Vision/Mission, pinned-scene spacing, and type floor. */
+.vision-scene{
+  --vision-orange:#C83A16;
+  position:relative!important;
+  height:100svh!important;
+  height:100dvh!important;
+  min-height:640px!important;
+  max-height:none!important;
+  padding:0!important;
+  display:block!important;
+  overflow:hidden!important;
+  isolation:isolate;
+  background:#fff!important;
+  color:#fff!important;
+}
+.vision-orange-plane{
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background:var(--vision-orange)!important;
+  clip-path:inset(100% 0 0 0);
+  pointer-events:none;
+}
+.vision-cut{display:none!important}
+.vision-giant-mark{
+  z-index:1;
+  color:#fff;
+  opacity:.1;
+  pointer-events:none;
+}
+.vision-beats{
+  position:absolute;
+  z-index:2;
+  inset:calc(82px + 16px) clamp(24px,5vw,82px) 24px;
+  display:grid;
+  place-items:center;
+  min-width:0;
+  pointer-events:none;
+}
+.vision-copy,.mission-copy{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  max-width:1160px!important;
+  height:100%;
+  margin:0 auto!important;
+  padding:clamp(8px,2vh,24px) 0!important;
+  display:flex!important;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  color:#fff!important;
+  transform:none;
+}
+.vision-copy .film-chip,.mission-copy .film-chip{
+  background:#fff!important;
+  color:var(--vision-orange)!important;
+  font-size:1.4rem!important;
+  line-height:1.35;
+  padding:8px 12px;
+  margin-bottom:clamp(18px,3vh,30px);
+}
+.vision-copy h2{
+  max-width:17ch!important;
+  margin:0!important;
+  font-size:clamp(3rem,4.7vw,6.8rem)!important;
+  font-weight:700!important;
+  line-height:1.08!important;
+  letter-spacing:-.045em!important;
+  text-wrap:balance;
+}
+.vision-line,.mission-line{display:block;will-change:transform,opacity}
+.mission-copy{
+  display:flex!important;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  gap:0!important;
+}
+.mission-copy h3{
+  max-width:66ch!important;
+  margin:0!important;
+  font-size:clamp(2rem,2.25vw,3rem)!important;
+  font-weight:600!important;
+  line-height:1.34!important;
+  letter-spacing:-.025em!important;
+  text-wrap:balance;
+}
+.mission-copy img{
+  display:block;
+  width:min(34%,360px)!important;
+  height:clamp(140px,23vh,230px)!important;
+  min-height:0!important;
+  margin-top:clamp(18px,3vh,28px);
+  object-fit:cover;
+  clip-path:none!important;
+}
+.mission-copy:not(:has(img)){display:flex!important}
+.mission-copy:not(:has(img)) h3{max-width:68ch!important}
+@media(max-width:899px){
+  .vision-beats{inset:calc(68px + 16px) 24px 24px}
+  .vision-copy,.mission-copy{padding:10px 0!important}
+  .vision-copy h2{font-size:clamp(3rem,8.4vw,4.4rem)!important;line-height:1.1!important;max-width:15ch!important}
+  .mission-copy h3{font-size:clamp(1.8rem,4.9vw,2.15rem)!important;line-height:1.35!important;max-width:36ch!important}
+  .mission-copy img{width:min(100%,360px)!important;height:clamp(120px,19svh,190px)!important}
+}
+@media(max-width:390px){
+  .vision-beats{inset:calc(68px + 16px) 22px 22px}
+  .vision-copy h2{font-size:clamp(2.9rem,8.2vw,3.5rem)!important}
+  .mission-copy h3{font-size:1.8rem!important;line-height:1.32!important}
+}
+@media(min-width:900px) and (max-height:800px){
+  .vision-beats{inset:98px clamp(32px,5vw,72px) 20px}
+  .vision-copy h2{font-size:clamp(3rem,4.2vw,5.3rem)!important}
+  .mission-copy h3{font-size:clamp(1.8rem,2.1vw,2.5rem)!important}
+  .mission-copy img{height:clamp(120px,19vh,180px)!important}
+}
+/* A failed local image and failed remote fallback disappear; no placeholder card or reserved gap. */
+.film-photo-placeholder{display:none!important}
+.mission-copy:not(:has(img)){grid-template-columns:minmax(0,1fr)!important}
+.mission-copy:not(:has(img)) h3{grid-column:1/-1}
+/* Scene duration is intentionally shorter on mobile; no orphaned scene index. */
+.statement-number{display:none!important}
+/* The fixed nav remains opaque even over orange sections, so content never bleeds through. */
+.film-nav,.film-nav.is-light,.film-nav.is-scrolled,.film-nav:not(.is-light):not(.menu-open){
+  background:#fff!important;
+  color:#171516!important;
+  border-color:#e5e1dd!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  box-shadow:0 8px 24px rgba(23,21,22,.08);
+}
+.film-nav .film-nav-mark:after,.film-nav.is-light .film-nav-mark:after{color:#171516!important}
+.film-nav .film-menu-button,.film-nav.is-light .film-menu-button{background:#fff!important;color:#171516!important;border-color:#d8d3cf!important}
+.film-nav .film-menu-button i,.film-nav .film-menu-button i:after{background:#171516!important}
+.film-chip{font-size:max(1.4rem,1em)!important;letter-spacing:.04em}
+.microline,.frame-index,.hero-bottom,.hero-cta,.film-nav .film-nav-mark:after,.film-menu-button span,.film-menu-divider,.film-menu>a span,.film-rail button span,
+.statement-number,.discipline-panel>span,.project-image-index,.project-status,.film-project-copy>span,.project-scope span,.projects-scroll-hint,
+.values-photo span,.quality-commitments article>span,.contact-bottom>div>span,.contact-legal,.film-photo-placeholder span,.film-photo-placeholder small{
+  font-size:max(1.4rem,1em)!important;
+}
+.hero-tagline,.about-copy p,.about-body-copy p,.service-detail,.service-detail li,.statement-support,.value-copy p,.projects-top p,.film-project-copy>p,.project-scope,
+.quality-panel>p,.quality-commitments p,.quality-close,.hse-copy p,.contact-main>p,.contact-bottom a{
+  font-size:clamp(1.7rem,1.15vw,2rem)!important;
+  line-height:1.55!important;
+}
+.discipline-list button,.discipline-list small,.service-detail>span,.film-menu-divider,.film-menu .film-menu-divider~a,
+.quality-commitments h3,.contact-bottom>div>span{font-size:max(1.4rem,1em)!important}
+@media(max-width:899px){
+  .hero-tagline,.about-copy p,.about-body-copy p,.service-detail,.service-detail li,.statement-support,.value-copy p,.projects-top p,.film-project-copy>p,.project-scope,
+  .quality-panel>p,.quality-commitments p,.quality-close,.hse-copy p,.contact-main>p,.contact-bottom a{
+    font-size:1.7rem!important;line-height:1.55!important;
+  }
+  .film-nav .film-nav-mark:after{font-size:1.4rem!important}
+  .film-menu-button span{font-size:1.4rem!important}
+  .discipline-list button{font-size:1.4rem!important}
+  .discipline-list small{font-size:1.4rem!important}
+  .film-project-copy>span,.project-scope span,.projects-scroll-hint,.project-status,.project-image-index,.contact-legal{font-size:1.4rem!important}
+}
+/* Reduced-motion users get both messages in normal document flow, without scroll pins or hidden states. */
+@media(prefers-reduced-motion:reduce){
+  .vision-scene{
+    height:auto!important;min-height:100svh!important;max-height:none!important;
+    padding:90px 24px 48px!important;overflow:visible!important;background:var(--vision-orange)!important;
+  }
+  .vision-orange-plane{display:none!important}
+  .vision-beats{position:relative!important;inset:auto!important;display:flex!important;flex-direction:column!important;gap:36px!important;pointer-events:auto!important}
+  .vision-copy,.mission-copy{
+    position:relative!important;inset:auto!important;width:100%!important;height:auto!important;max-width:none!important;
+    padding:0!important;margin:0!important;opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important;
+  }
+  .vision-copy .film-chip,.mission-copy .film-chip{opacity:1!important;visibility:visible!important;transform:none!important}
+  .vision-copy .vision-line,.mission-copy .mission-line{opacity:1!important;visibility:visible!important;transform:none!important}
+  .mission-copy img{display:none!important}
+}
