@@ -1,0 +1,118 @@
+/* Full-bleed construction banner for the homepage statement scene. */
+.statement-scene {
+  position: relative !important;
+  isolation: isolate;
+  width: 100% !important;
+  min-height: 420px !important;
+  height: auto !important;
+  max-height: none !important;
+  box-sizing: border-box !important;
+  padding: clamp(54px, 6.5vw, 88px) 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  overflow: hidden !important;
+  text-align: center !important;
+  color: #fff !important;
+  background-color: #171516 !important;
+  background-image: url("https://images.pexels.com/photos/14704781/pexels-photo-14704781.jpeg?auto=compress&cs=tinysrgb&w=2400") !important;
+  background-size: cover !important;
+  background-position: center 54% !important;
+  background-repeat: no-repeat !important;
+}
+.statement-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(12,12,12,.64), rgba(12,12,12,.52) 48%, rgba(12,12,12,.64)),
+              linear-gradient(0deg, rgba(12,12,12,.58), rgba(12,12,12,.28));
+}
+.statement-scene .statement-rule {
+  width: 1px !important;
+  height: 34px;
+  flex: 0 0 auto;
+  align-self: center !important;
+  margin: 0 0 20px !important;
+  background: #DF481D !important;
+}
+.statement-scene .statement-text {
+  width: auto !important;
+  max-width: 18ch !important;
+  margin: 0 !important;
+  color: #fff !important;
+  text-align: center !important;
+  font-size: clamp(3.8rem, 7vw, 8.4rem) !important;
+  line-height: .98 !important;
+  letter-spacing: -.055em !important;
+  text-wrap: balance;
+}
+.statement-scene .statement-text em {
+  color: #fff !important;
+  font-style: normal !important;
+}
+.statement-scene .statement-support {
+  align-self: center !important;
+  width: min(100%, 650px) !important;
+  max-width: 48ch !important;
+  margin: 20px auto 0 !important;
+  color: rgba(255,255,255,.9) !important;
+  text-align: center !important;
+  font-size: clamp(1.5rem, 1.5vw, 1.8rem) !important;
+  line-height: 1.55 !important;
+  text-wrap: pretty;
+}
+.statement-scene > .film-outline-cta {
+  align-self: center !important;
+  margin: 24px auto 0 !important;
+  border-color: rgba(255,255,255,.72) !important;
+  color: #fff !important;
+  background: rgba(18,18,18,.18) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.statement-scene > .film-outline-cta:hover {
+  border-color: #DF481D !important;
+  background: #DF481D !important;
+}
+@media (min-width: 900px) {
+  .statement-scene {
+    min-height: 420px !important;
+    padding: 62px 32px !important;
+    background-position: center 52% !important;
+  }
+}
+@media (max-width: 899px) {
+  .statement-scene {
+    min-height: 390px !important;
+    padding: 54px 22px !important;
+    background-position: 43% center !important;
+  }
+  .statement-scene .statement-rule {
+    height: 28px !important;
+    margin-bottom: 18px !important;
+  }
+  .statement-scene .statement-text {
+    max-width: 12ch !important;
+    font-size: clamp(3.4rem, 10vw, 5.2rem) !important;
+    line-height: 1.02 !important;
+  }
+  .statement-scene .statement-support {
+    width: 100% !important;
+    max-width: 34ch !important;
+    margin-top: 18px !important;
+    font-size: 1.55rem !important;
+    line-height: 1.5 !important;
+  }
+  .statement-scene > .film-outline-cta {
+    margin-top: 22px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .statement-scene {
+    background-attachment: scroll;
+  }
+}
