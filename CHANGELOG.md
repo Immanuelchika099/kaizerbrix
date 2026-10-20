@@ -85,3 +85,10 @@
 - Preserved the orange-and-white brand direction, current company wording, existing photo asset path and scroll-led homepage architecture.
 - Added a clear “Discover our expertise” in-page action and refined the bottom location/scroll labels.
 - The hero image remains an illustrative placeholder until approved KaizerBrix photography is supplied.
+
+
+## 2026-10-20 — Hero spacing and navigation correction
+- Restored the hero heading to the original bold Montserrat-style sans-serif treatment with consistent uppercase lines, controlled line-height, and clear separation to prevent visual collisions.
+- Rebalanced desktop and mobile hero spacing and image placement.
+- Changed the navbar to a conventional solid white bar with dark text and a solid white dropdown menu, replacing the dark full-screen menu treatment.
+- Kept the existing page structure, content, scroll effects, and orange brand accent.
