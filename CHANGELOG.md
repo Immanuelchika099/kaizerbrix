@@ -39,3 +39,9 @@
 - Restyled the homepage navigation as a compact floating charcoal-glass capsule with the existing KaizerBrix monogram and a typographic brand lockup.
 - Reworked the expanded navigation presentation into an editorial full-screen layout with a radial clip-path entrance, staggered link reveals, orange accents, and a mobile-first single-column layout.
 - Preserved the existing anchor destinations and external route links. Live visual QA remains pending because the current Vercel deployment quota has blocked a fresh production preview.
+
+### Hero + navbar transition tuning
+- Added a restrained navbar arrival animation so it settles into view after the intro overlay, and tightened the floating bar's brand details.
+- Refined the hero image treatment and added a soft directional white overlay so oversized type remains legible while the photography still carries atmosphere.
+- Adjusted mobile hero sizing and spacing around dynamic viewport units, short-screen typography, image placement, and safe-area footer controls to reduce awkward pin entry on Android-sized screens.
+- Live Android/desktop QA remains outstanding until a fresh Vercel deployment is available; changes are source-side and have not been represented as device-tested.
