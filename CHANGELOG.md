@@ -92,3 +92,10 @@
 - Rebalanced desktop and mobile hero spacing and image placement.
 - Changed the navbar to a conventional solid white bar with dark text and a solid white dropdown menu, replacing the dark full-screen menu treatment.
 - Kept the existing page structure, content, scroll effects, and orange brand accent.
+
+
+## 2026-10-20 — Temporary photography restored and About scroll film
+- Restored visible architectural/construction imagery by falling back to relevant temporary Unsplash photographs whenever the existing local image path is missing. These are explicitly temporary illustrative images until KaizerBrix supplies approved originals; local assets still take priority.
+- Extended the desktop About section's pinned scroll sequence so the page holds its composition while the headline words progressively transition from faint grey to full ink, then releases back into normal page flow.
+- Kept a non-pinned progressive word reveal on smaller screens to avoid trapping a tall stacked section inside a mobile viewport. Reduced-motion users see readable, fully visible text.
+- Source changes are committed; live deployment and visual browser QA remain unverified.
