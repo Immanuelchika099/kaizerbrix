@@ -975,7 +975,7 @@ html,body{overflow-x:clip}
 }
 .hero-tagline,.about-copy p,.about-body-copy p,.service-detail,.service-detail li,.statement-support,.value-copy p,.projects-top p,.film-project-copy>p,.project-scope,
 .quality-panel>p,.quality-commitments p,.quality-close,.hse-copy p,.contact-main>p,.contact-bottom a{
-  font-size:clamp(1.7rem,1.15vw,2rem)!important;
+  font-size:clamp(1.8rem,1.15vw,2rem)!important;
   line-height:1.55!important;
 }
 .discipline-list button,.discipline-list small,.service-detail>span,.film-menu-divider,.film-menu .film-menu-divider~a,
@@ -1007,3 +1007,8 @@ html,body{overflow-x:clip}
   .vision-copy .vision-line,.mission-copy .mission-line{opacity:1!important;visibility:visible!important;transform:none!important}
   .mission-copy img{display:none!important}
 }
+
+@media(min-width:900px){
+  .hero-tagline,.about-copy p,.about-body-copy p,.service-detail,.service-detail li,.statement-support,.value-copy p,.projects-top p,.film-project-copy>p,.project-scope,.quality-panel>p,.quality-commitments p,.quality-close,.hse-copy p,.contact-main>p,.contact-bottom a{font-size:clamp(1.8rem,1.15vw,2rem)!important;line-height:1.55!important}
+}
+.value-copy h3,.section-vertical,.film-nav .film-nav-mark:after,.film-nav .film-menu-button span,.hero-cta,.quality-commitments h3,.quality-commitments article>span,.contact-bottom>div>span{font-size:max(1.4rem,1em)!important}
