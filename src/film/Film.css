@@ -1754,3 +1754,18 @@ html,body{overflow-x:clip}
     gap:clamp(38px,7vw,56px)!important;
   }
 }
+
+
+/* Give the stacked Vision and Mission content a more generous separation on mobile. */
+@media (max-width: 899px) {
+  .vision-scene {
+    padding: 42px 22px 52px !important;
+  }
+  .vision-scene .vision-beats {
+    gap: clamp(64px, 10vw, 84px) !important;
+  }
+  .vision-scene .vision-copy,
+  .vision-scene .mission-copy {
+    padding: 0 !important;
+  }
+}
