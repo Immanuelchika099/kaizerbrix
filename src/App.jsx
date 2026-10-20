@@ -40,6 +40,23 @@ function LoadingFilm() {
 function RoutedPages() {
   const location = useLocation();
   const reduce = useReducedMotion();
+  useEffect(() => {
+    const seo = {
+      '/': ['KaizerBrix Consults | Building Enduring Legacies', 'A cinematic introduction to KaizerBrix Consults, a multidisciplinary built-environment consultancy in Port Harcourt, Nigeria.'],
+      '/about': ['About KaizerBrix Consults | Purpose & Principles', 'Learn about KaizerBrix Consults, its vision, mission and principles for considered design and construction.'],
+      '/expertise': ['Our Expertise | KaizerBrix Consults', 'Explore architecture, civil engineering, surveying, town planning and procurement services from KaizerBrix Consults.'],
+      '/projects': ['Selected Projects | KaizerBrix Consults', 'Explore residential projects recorded in the KaizerBrix Consults company profile.'],
+      '/contact': ['Contact KaizerBrix Consults | Start a Project', 'Contact KaizerBrix Consults in Port Harcourt to discuss a construction, design or consultancy project.']
+    };
+    const [title, description] = seo[location.pathname] || seo['/'];
+    document.title = title;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', description);
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute('content', description);
+  }, [location.pathname]);
   if (location.pathname === '/') return <Suspense fallback={<LoadingFilm />}><Film /></Suspense>;
 
   const route = <Routes location={location}>
