@@ -64,7 +64,7 @@
 .kb-footer-bottom>*{min-width:0;overflow-wrap:anywhere}
 @media(max-width:850px){
  body.kb-menu-active{overflow:hidden}
- .kb-site-nav.is-menu-open{position:sticky;background:#171516;color:#fff;border-color:transparent;z-index:220}
+ .kb-site-nav.is-menu-open{position:sticky;background:#171516;color:#fff;border-color:transparent;z-index:240}
  .kb-site-nav.is-menu-open .kb-nav-toggle{color:#fff;position:relative;z-index:240}
  .kb-nav-links.is-open{display:flex;position:fixed;z-index:230;inset:0;top:0;left:0;right:0;bottom:0;height:100dvh;overflow-y:auto;background:#171516;color:#fff;padding:104px 24px 40px;gap:0;justify-content:flex-start;box-shadow:none;border:0}
  .kb-nav-links.is-open>a:not(.kb-nav-cta){font:600 clamp(30px,8vw,48px)/1.1 'Manrope',sans-serif;color:#fff;padding:15px 0;border-bottom:1px solid #ffffff25;letter-spacing:-.04em}
