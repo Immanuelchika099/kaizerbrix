@@ -43,3 +43,11 @@ The PDF has been located and inspected locally. Its page artwork is flattened at
 - Next.js is not required for the current React + Vite app. React Router DOM is already installed and is sufficient for client-side routes; migrate only if server rendering or Next-specific features become a deliberate requirement.
 - Added dedicated routes for About, Expertise, Projects and Contact with page transitions, responsive page layouts and a shared navigation/footer.
 - Still required before production: run a local build/lint, check all image requests and desktop/Android layouts, test direct route loads and form handoff, and verify deployment.
+
+
+## Additional film direction and release state — 20 October 2026
+- External pages now use reveal choreography; the desktop Projects page pins a horizontal gallery while scrolling. Mobile and reduced-motion modes use a vertical project list.
+- Routes are lazy-loaded and update page titles/descriptions; Vercel rewrites support direct route loads.
+- Android manifest uses scalable SVG icons. iOS home-screen icon rendering should still be checked on device; SVG Apple touch icon support can vary.
+- The latest Vercel deployment status check is failing due to Vercel's daily deployment API limit, not a reported source build failure. Latest commits require a new deployment before production validation.
+- Build and lint checks remain unverified in a local environment. The GitHub Actions build workflow is configured, but its result must be checked before release.
