@@ -1,24 +1,27 @@
-# KeizaBrix Construction
+# KaizerBrix Consults
 
-**Building with precision. Creating with purpose.**
+A white-led, editorial construction consultancy website built around the supplied company profile. The experience uses restrained orange scene changes, architectural framing, GSAP scroll choreography and separate App Router pages.
 
-KeizaBrix Construction is a modern construction company website designed to showcase the company's brand, services, and projects through a premium digital experience.
+## Run locally
 
-The website combines a clean corporate identity, cinematic scrolling, smooth animations, and responsive design to communicate professionalism, build client confidence, and create a memorable online presence.
+```bash
+npm install
+npm run dev
+```
 
-### Features
+Open `http://localhost:3000`.
 
-- Premium, modern corporate design
-- Responsive experience across desktop, tablet, and mobile
-- Cinematic scrolling and smooth animations
-- Company and services presentation
-- Construction project showcase
-- Client enquiry and contact experience
+## Production build
 
-### Tech Stack
+```bash
+npm run build
+npm run start
+```
 
-React · Vite · JavaScript · CSS · Framer Motion · Lenis · React Router
+## Deploy to Vercel
 
----
+Import `Immanuelchika099/kaizerbrix`, keep the framework preset on **Next.js**, and deploy the branch you intend to publish. The project uses no required environment variables. A contact form is intentionally omitted until an email provider and server credentials are configured; contact actions fall back to `mailto:` and `tel:`.
 
-**KeizaBrix Construction** — Building with precision. Creating with purpose.
+## Source and content
+
+The company profile and `src/film/content.ts` are the source of truth. See `CHANGELOG.md` for implementation notes and `CONTENT_NEEDED.md` for missing client assets and details. Do not describe the site as production-ready until all source imagery is present and the desktop/mobile checks are completed.
