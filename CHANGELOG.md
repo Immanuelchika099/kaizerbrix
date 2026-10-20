@@ -1,3 +1,9 @@
+## 2026-10-20 — About photo scroll stability
+- Root cause identified in the animation setup: the About photo image itself was driven by two independent scrubbed GSAP transforms (a vertical parallax tween and a shared scale tween), while its parent wrapper was also being clipped/scaled/moved by the pinned About timeline. Multiple nested scroll-linked transforms made the photo susceptible to visible jitter during scroll.
+- Removed the two extra image-level scrub animations for .about-photo. The About photo now follows the existing .about-photo-wrap reveal choreography, while the separate parallax/scale effects remain enabled for the other sections.
+- Scope: src/film/Film.jsx only for behavior; no copy, layout, colors, or other section animations changed.
+- Verification: code-level selector checks passed. A live browser/viewport runner is not available in this environment, so visual confirmation at 390px, 430px, and desktop is still required before merging to production.
+
 # Changelog — KaizerBrix Consults
 
 ## 2026-10-20 — Cinematic multi-page implementation
