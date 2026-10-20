@@ -16,6 +16,12 @@ export function DesignArchive() {
   const [active, setActive] = useState<number | null>(null);
   useGSAP(() => {
     if (!root.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const grid = root.current.querySelector<HTMLElement>('.archive-grid');
+    if (grid && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const rows = contactSheet ? 2 : (window.innerWidth > 760 ? 4 : 8);
+      const points = Array.from({ length: rows }, (_, index) => index / Math.max(1, rows - 1));
+      ScrollTrigger.create({ trigger: grid, start: 'top top', end: 'bottom bottom', snap: { snapTo: gsap.utils.snap(points), duration: { min: 0.4, max: 0.8 }, ease: 'power2.inOut', directional: true } });
+    }
     const cards = gsap.utils.toArray<HTMLElement>('.archive-card');
     gsap.fromTo(cards, { clipPath: 'inset(10% 5% 10% 5%)', y: 24, opacity: 0.45 }, { clipPath: 'inset(0% 0% 0% 0%)', y: 0, opacity: 1, stagger: 0.045, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: root.current, start: 'top 78%' } });
   }, { scope: root, dependencies: [contactSheet], revertOnUpdate: true });
