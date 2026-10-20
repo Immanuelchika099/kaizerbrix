@@ -1,0 +1,37 @@
+name: Verify website
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, "chore/**", "feature/**", "fix/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Install, type-check and build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type-check
+        run: npm run lint
+
+      - name: Production build
+        run: npm run build
