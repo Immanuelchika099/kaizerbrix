@@ -17,3 +17,40 @@
 
 /* Android and compact-screen readability refinements */
 @media(max-width:899px){.about-copy p{font-size:1.4rem}.quality-panel>p,.hse-copy p,.contact-main>p,.film-project-copy>p{font-size:1.35rem}.quality-commitments p{font-size:1.25rem}.quality-commitments h3{font-size:1.4rem}.contact-bottom a{font-size:1.2rem}.service-detail li{font-size:1.25rem;line-height:1.7}}
+
+
+/* Navigation and scroll-pin refinement — full-screen editorial menu */
+body.film-menu-active{overflow:hidden;touch-action:none}
+.film-nav.menu-open{color:#fff;background:transparent;border-color:transparent}
+.film-nav.menu-open .film-nav-mark{color:#fff}
+.film-nav.menu-open .film-menu-button i,
+.film-nav.menu-open .film-menu-button i:after{background:#fff}
+.film-menu{position:fixed;inset:0;z-index:99;width:100%;max-height:100vh;max-height:100dvh;overflow-y:auto;padding:112px clamp(28px,9vw,140px) 48px;background:#171516;color:#fff;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;column-gap:clamp(24px,7vw,100px);row-gap:0}
+.film-menu>a{font-size:clamp(2.8rem,5.2vw,7.2rem);line-height:1.05;padding:20px 0 22px;border-bottom:1px solid #ffffff25;transition:color .22s, padding-left .22s}
+.film-menu>a:hover,.film-menu>a:focus-visible{color:#ff8967;padding-left:10px}
+.film-menu>a span{color:#DF481D;min-width:28px}
+.film-menu-divider{grid-column:1/-1;margin-top:28px;padding:20px 0 8px;border-bottom:1px solid #ffffff45;font-size:1rem;letter-spacing:.18em;color:#ffffff9a}
+.film-menu .film-menu-divider~a{font-size:clamp(1.8rem,2.5vw,3rem);padding:15px 0}
+.film-menu .film-menu-divider~a span{color:#DF481D}
+.film-menu-button{min-height:44px;padding:10px 0}
+.film-menu-button i{transition:transform .25s}
+.film-menu-button[aria-expanded="true"] i{transform:rotate(45deg)}
+.film-menu-button[aria-expanded="true"] i:after{transform:translateY(0) rotate(90deg)}
+@media(max-width:899px){
+ .film-nav{height:68px}
+ .film-menu{padding:94px 24px 35px;grid-template-columns:1fr;max-height:100dvh;gap:0}
+ .film-menu>a{font-size:clamp(2.8rem,9vw,4.5rem);padding:12px 0 14px}
+ .film-menu-divider{margin-top:18px;padding-top:17px}
+ .film-menu .film-menu-divider~a{font-size:2.1rem;padding:11px 0}
+ .hero-scene{height:100svh;height:100dvh;min-height:660px;padding:98px 22px 44px;justify-content:flex-start}
+ .hero-title{font-size:clamp(5.5rem,16.2vw,10rem);margin-top:28px;line-height:.82}
+ .hero-photo-frame{top:45%;right:22px;width:46%;height:31%;max-height:270px}
+ .hero-tagline{max-width:54%;margin-top:30px}
+ .hero-bottom{bottom:18px}
+}
+@media(max-width:380px){
+ .hero-title{font-size:clamp(5rem,15.5vw,6.1rem)}
+ .hero-tagline{font-size:1.05rem;max-width:58%}
+ .hero-photo-frame{top:47%;height:28%}
+}
+@media(prefers-reduced-motion:reduce){body.film-menu-active{overflow:auto;touch-action:auto}}
