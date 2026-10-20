@@ -16,14 +16,32 @@ function RouteCurtain() {
   const [cover, setCover] = useState(false);
 
   useEffect(() => {
-    if (previousPath.current === location.pathname) return;
+    const routeChanged = previousPath.current !== location.pathname;
     previousPath.current = location.pathname;
-    if (window.__kbLenis) window.__kbLenis.scrollTo(0, { immediate: true, force: true });
-    window.scrollTo(0, 0);
-    if (reduce) return;
+
+    // Let route changes, direct links, and browser history all start at the page top.
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+    const scrollToTop = () => {
+      if (window.__kbLenis) window.__kbLenis.scrollTo(0, { immediate: true, force: true });
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    };
+    const frame = window.requestAnimationFrame(scrollToTop);
+    const settle = window.setTimeout(scrollToTop, 80);
+
+    if (!routeChanged || reduce) {
+      return () => {
+        window.cancelAnimationFrame(frame);
+        window.clearTimeout(settle);
+      };
+    }
+
     setCover(true);
     const reveal = window.setTimeout(() => setCover(false), 630);
-    return () => window.clearTimeout(reveal);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(settle);
+      window.clearTimeout(reveal);
+    };
   }, [location.pathname, reduce]);
 
   return <motion.div
