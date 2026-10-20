@@ -58,10 +58,11 @@ function SessionPreloader() {
       return;
     }
     gsap.set(paths, { strokeDasharray: 620, strokeDashoffset: 620 });
-    gsap.timeline({ onComplete: () => setVisible(false) })
-      .to(paths, { strokeDashoffset: 0, duration: 0.7, stagger: 0.08, ease: 'power2.inOut' })
-      .to(ref.current?.querySelector('.preloader-plane'), { clipPath: 'polygon(0 0,100% 0,100% 100%,0 100%)', duration: 0.45, ease: 'power3.inOut' }, '-=0.12')
-      .to(ref.current, { yPercent: -105, duration: 0.52, ease: 'power3.inOut' }, '-=0.05');
+    const timeline = gsap.timeline({ onComplete: () => setVisible(false) });
+    timeline.to(paths, { strokeDashoffset: 0, duration: 0.7, stagger: 0.08, ease: 'power2.inOut' });
+    const plane = ref.current.querySelector('.preloader-plane');
+    if (plane) timeline.to(plane, { clipPath: 'polygon(0 0,100% 0,100% 100%,0 100%)', duration: 0.45, ease: 'power3.inOut' }, '-=0.12');
+    timeline.to(ref.current, { yPercent: -105, duration: 0.52, ease: 'power3.inOut' }, '-=0.05');
   }, { scope: ref, dependencies: [visible], revertOnUpdate: true });
   if (!visible) return null;
   return <div className="session-preloader" ref={ref} aria-hidden="true"><svg className="preloader-mark" viewBox="0 0 130 110"><g fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="square" strokeLinejoin="round"><path d="M24 100V43L57 10Q72 -1 83 12Q94 25 80 39L57 62V100"/><path d="M51 100V57L84 24Q97 11 109 24Q121 37 107 51L84 74V100"/></g></svg><div className="preloader-plane"/></div>;
