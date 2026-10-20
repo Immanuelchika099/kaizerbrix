@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { AboutPage, ExpertisePage, ProjectsPage, ContactPage } from './pages/Pages.jsx';
 import './pages/Pages.css';
@@ -45,6 +45,25 @@ function RouteEffects() {
   return null;
 }
 
+function BrandIntro() {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    // Run on every fresh website load, including direct visits to inner routes.
+    // Ordinary client-side navigation does not replay the intro.
+    const timer = window.setTimeout(() => setVisible(false), 2400);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  if (!visible) return null;
+  return (
+    <div className="kb-brand-intro" role="status" aria-label="Loading KaizerBrix Consults">
+      <img src="/kaizerbrix-logo.png" alt="KaizerBrix Consults" />
+      <span className="kb-brand-intro-line" aria-hidden="true" />
+    </div>
+  );
+}
+
 function AppRoutes() {
   return <>
     <RouteEffects />
@@ -56,6 +75,7 @@ function AppRoutes() {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="*" element={<Suspense fallback={null}><Film /></Suspense>} />
     </Routes>
+    <BrandIntro />
   </>;
 }
 
