@@ -156,7 +156,7 @@ export function MotionShell({ children }: { children: React.ReactNode }) {
         <div className="menu-preview" aria-hidden="true"><MediaFrame src={preview} alt="Architectural preview" priority={false} /></div>
         <div className="menu-bottom"><span>{brand.address}</span><a href="tel:+2347073847960">+234 (0) 707 384 7960</a><a href="mailto:kaizerbrixconsults@gmail.com">kaizerbrixconsults@gmail.com</a></div>
       </nav>
-      <div className="page-transition" aria-hidden="true" style={{ visibility: transitionActive ? 'visible' : 'hidden' }}><div className="transition-plane" ref={planeRef}/><BrandMark className="transition-mark" ref={undefined as never} /><svg ref={markRef} className="transition-mark" viewBox="0 0 130 110" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="square" strokeLinejoin="round"><path d="M24 100V43L57 10Q72 -1 83 12Q94 25 80 39L57 62V100"/><path d="M51 100V57L84 24Q97 11 109 24Q121 37 107 51L84 74V100"/></g></svg></div>
+      <div className="page-transition" aria-hidden="true" style={{ visibility: transitionActive ? 'visible' : 'hidden' }}><div className="transition-plane" ref={planeRef}/><svg ref={markRef} className="transition-mark" viewBox="0 0 130 110" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="square" strokeLinejoin="round"><path d="M24 100V43L57 10Q72 -1 83 12Q94 25 80 39L57 62V100"/><path d="M51 100V57L84 24Q97 11 109 24Q121 37 107 51L84 74V100"/></g></svg></div>
       <div key={pathname} className="route-content">{children}</div>
     </div>
   </MotionContext.Provider>;
