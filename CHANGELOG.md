@@ -65,3 +65,5 @@
 - Added reduced-motion layouts that restore content to normal flow instead of leaving absolute/overlapping animated rows.
 - Added consistent mobile copy sizing and section gutters to the external About, Expertise, Projects and Contact routes.
 - Changes are source-side. Production browser screenshots, programmatic overlap/overflow measurements and final deployment verification are still outstanding.
+
+- Follow-up safety pass: kept the fixed navigation/menu outside root-level overflow clipping, and explicitly restored normal-flow Vision/Mission and project layouts for reduced-motion users so hidden/absolute content cannot collapse the section.
