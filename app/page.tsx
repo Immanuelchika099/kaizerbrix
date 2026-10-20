@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { about, designPlates, projects, services, values } from './data';
-import { Credits, KMark, MediaFrame, SceneReveal, TransitionLink } from '@/components/Experience';
+import { Credits, KMark, KPortal, MediaFrame, SceneReveal, TransitionLink } from '@/components/Experience';
 
 export const metadata: Metadata = { title: 'Building Enduring Legacies', description: 'KaizerBrix Consults brings together architecture, civil engineering, surveying, town planning and procurement.' };
 
@@ -12,6 +12,7 @@ export default function HomePage() {
       <div className="hero-crop hero-crop-a"/><div className="hero-crop hero-crop-b"/>
     </SceneReveal>
 
+    <KPortal label="Hero into the About scene"/>
     <SceneReveal className="home-about section-pad" id="about-home" theme="ink" label="SC 02 / ABOUT">
       <div className="editorial-grid"><div><p className="scene-label" data-reveal>01 / ABOUT KAIZERBRIX</p><p className="micro" data-reveal>MULTIDISCIPLINARY CONSULTANCY</p></div><div><h2 data-reveal>Designing with purpose. Building for <em>time.</em></h2><div className="editorial-copy" data-reveal><p>{about.paragraphs[0]}</p><p>{about.paragraphs[1]}</p><TransitionLink className="text-link" href="/about">ABOUT THE PRACTICE <span>↗</span></TransitionLink></div></div></div>
       <div className="home-about-media" data-photo><MediaFrame src="/images/tower-hardhat-bw.webp" alt="Black and white tower and red hard hat from the company profile" caption="FIG. 02 / BUILT ENVIRONMENT"/></div>
