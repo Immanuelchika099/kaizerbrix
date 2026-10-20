@@ -176,3 +176,12 @@
 - Known stock-photo cleanup item retained as requested: replace the stock photograph of the man drawing/plans if the shirt's third-party “KRA” logo is visible in that image; no photo was swapped in this fix.
 - Changed files: `src/pages/Pages.css`, `src/film/Film.css`. Other routes' markup and copy were not changed.
 - Verification limitation: the connected GitHub tools allow source inspection and commits, but this environment has no checked-out working tree or available Playwright browser runner. Chromium/WebKit runs at 390×844, 768×1024 and 1440×900, Slow 4G lazy-load checks, before/after screenshots, measured page heights/gaps, and post-scroll opacity/border audits were therefore not run. Do not treat those checks as passed; run them after a preview deployment is available.
+
+
+## 2026-10-20 — Supabase contact enquiries
+- Connected the Contact page form to the Supabase REST Data API instead of opening a prefilled email draft.
+- Created `public.kaizerbrix_enquiries` in the available Supabase project `iman-portfolio` (`pqaxmjckirtxnihvxavq`) with name, email, project type, message and created timestamp fields.
+- Enabled RLS. Anonymous visitors can insert validated enquiries only; only the authenticated account with email `imanwahmed367@gmail.com` can select or delete saved enquiries through the API.
+- The frontend uses the project's publishable key (not a service-role secret), disables repeat submits while saving, resets the form after success, and shows a success or failure message.
+- Verified the table exists, RLS is enabled, the expected columns are present, and insert/read/delete policies are installed. A live browser form submission has not yet been run.
+- Enquiries can be viewed in the Supabase Table Editor under `public.kaizerbrix_enquiries`. This stores enquiries; it does not by itself send email or push notifications.
