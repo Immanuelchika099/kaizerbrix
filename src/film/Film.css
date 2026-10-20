@@ -1782,3 +1782,31 @@ html,body{overflow-x:clip}
   transform-origin:center!important;
 }
 .preloader-overlay .preloader-mark path{display:none!important}
+
+
+/* Keep the supplied wordmark proportional and optically centred in its navbar pill. */
+.film-nav .film-nav-mark{
+  width:auto!important;
+  min-width:0!important;
+  flex:0 0 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  padding-inline:18px!important;
+  overflow:hidden;
+}
+.film-nav .film-nav-mark .film-nav-logo{
+  width:clamp(132px,17vw,190px)!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:48px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  aspect-ratio:auto!important;
+  flex:0 1 auto!important;
+}
+@media(max-width:520px){
+  .film-nav .film-nav-mark{padding-inline:14px!important}
+  .film-nav .film-nav-mark .film-nav-logo{width:clamp(120px,42vw,164px)!important;max-height:42px!important}
+}
