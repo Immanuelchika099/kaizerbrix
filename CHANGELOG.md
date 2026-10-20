@@ -105,3 +105,12 @@
 - The pinned desktop About sequence now reveals every word in the headline and both supporting paragraphs, not just the heading. Words start faint and progressively transition to full ink as scroll advances; the image reveals during the same pinned sequence.
 - Increased supporting-copy size on mobile for more comfortable reading while preserving word-by-word scroll reveal without a sticky pin on small screens.
 - Source committed; visual browser QA is still pending.
+
+
+## 2026-10-20 — About pin, icon consistency and cinematic navigation
+- Fixed the actual ScrollTrigger pin condition so the About scene is pinned on mobile as well as desktop; the mobile branch now has a scroll-controlled reveal/movement timeline instead of a normal-flow reveal only.
+- Replaced remaining arrow-character controls and link marks in the homepage with Lucide arrow icons.
+- Removed the separate text-only lazy-loading screen so the animated KaizerBrix mark is the single branded intro loader.
+- Reshaped the floating navbar and its menu button into rounded pills with a restrained translucent glass finish.
+- Added a warm architectural hero field, cinematic photo grading, layered gradient lighting and a slim KaizerBrix-orange edge accent while retaining the existing image and content.
+- Source committed to main. Live visual QA on phone and desktop is still required; no claim of verified browser behaviour until checked.
