@@ -10,15 +10,15 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/icon-192.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/kaizerbrix-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icon-512.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/kaizerbrix-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ]
