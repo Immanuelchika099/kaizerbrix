@@ -227,3 +227,5 @@
 - Added `scroll-margin-top: 88px` to homepage section anchors so fixed pill navigation is less likely to cover targeted sections.
 - Files changed: `src/film/Film.jsx` (mobile pin distances) and `src/film/Film.css` (mobile spacing, alignment, single divider, anchor offset).
 - Verification note: changes are committed to `main`; this environment did not provide a live browser/viewport runner, so visual scroll QA at 390px, 430px, and desktop remains unverified here.
+
+- Deployment note: Vercel's deployment API returned a 402 rate-limit response (deployment limit reached; retry after 24 hours), so a new production deployment could not be triggered from this environment.
