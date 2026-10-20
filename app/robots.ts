@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
-  return { rules: { userAgent: '*', allow: '/' }, sitemap: 'https://kaizerbrixconsults.com/sitemap.xml' };
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  return { rules: { userAgent: '*', allow: '/' }, ...(siteUrl ? { sitemap: new URL('/sitemap.xml', siteUrl).toString() } : {}) };
 }
