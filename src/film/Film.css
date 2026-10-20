@@ -406,3 +406,55 @@ html,body{overflow-x:clip}
   .statement-text{font-size:clamp(5rem,8.5vw,11rem);max-width:12ch}
   .statement-support{max-width:760px;font-size:clamp(1.4rem,1.25vw,1.65rem);line-height:1.8;margin-top:32px}
 }
+
+
+/* Cinematic act refinements: short, deliberate mobile pins and one service on screen. */
+.film-photo-placeholder{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:8px;min-width:0;min-height:160px;padding:16px;background:#f0eeec;color:#171516;border:1px solid #d8d3d0;overflow:hidden}
+.film-photo-placeholder:before{content:'';position:absolute;inset:12px;border:1px dashed #b9b1ac;pointer-events:none}
+.film-photo-placeholder span,.film-photo-placeholder small{position:relative;z-index:1;max-width:100%;overflow-wrap:anywhere}
+.film-photo-placeholder span{font:700 .85rem var(--display);letter-spacing:.12em;color:var(--orange)}
+.film-photo-placeholder small{font:500 1rem var(--body);line-height:1.4}
+.hero-photo-frame .film-photo-placeholder{position:absolute;inset:0;min-height:0;padding:18px}
+.expertise-right .film-photo-placeholder,.film-project-photo .film-photo-placeholder,.about-photo-wrap .film-photo-placeholder{position:absolute;inset:0;min-height:0}
+@media (min-width:900px) and (prefers-reduced-motion:no-preference){
+  .expertise-scene{height:100svh;height:100dvh;min-height:680px;max-height:1000px;overflow:hidden;align-items:stretch;padding-top:clamp(105px,13vh,132px);padding-bottom:clamp(38px,6vh,64px)}
+  .expertise-right{height:100%;min-height:0;overflow:hidden}
+  .discipline-panel{will-change:clip-path,opacity,transform}
+  .service-active-name{display:block;font:700 clamp(1.2rem,1.3vw,1.6rem) var(--display);text-transform:uppercase;letter-spacing:.02em;margin-bottom:8px}
+  .service-detail-copy ul{margin:0;padding:0;list-style:none}
+}
+@media (max-width:899px) and (prefers-reduced-motion:no-preference){
+  .statement-scene{height:100svh;height:100dvh;min-height:620px;max-height:850px;padding:calc(80px + 3svh) 24px 36px;overflow:hidden}
+  .statement-rule{height:58px;margin-bottom:22px}
+  .statement-text{font-size:clamp(4.2rem,12.5vw,6.2rem);line-height:.94;max-width:10ch}
+  .statement-support{max-width:31ch;margin:22px 0 0;font-size:1.25rem;line-height:1.65}
+  .statement-number{top:82px;right:24px;font-size:.8rem}
+  .expertise-scene{height:100svh;height:100dvh;min-height:640px;max-height:820px;padding:82px 22px 24px;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(0,38svh) minmax(0,1fr);gap:14px;overflow:hidden}
+  .expertise-right{grid-row:1;grid-column:1;min-height:0;height:100%;overflow:hidden}
+  .expertise-left{grid-row:2;grid-column:1;min-height:0;display:grid;grid-template-columns:1fr;grid-template-rows:auto auto 1fr;align-content:start;gap:8px;overflow:hidden}
+  .expertise-left>.film-chip{font-size:.82rem;padding:6px 9px}
+  .expertise-intro{display:none}
+  .discipline-list{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;padding:2px 0 8px;scrollbar-width:thin;scroll-snap-type:x proximity}
+  .discipline-list li{flex:0 0 auto;border:0;scroll-snap-align:start}
+  .discipline-list button{width:auto;min-height:38px;padding:8px 10px;border:1px solid #ddd;font:700 .78rem var(--display);white-space:nowrap;gap:7px}
+  .discipline-list small{font-size:.75rem}
+  .orange-square{width:5px;height:5px;flex-basis:5px}
+  .discipline-list .active button{border-color:var(--orange)}
+  .service-detail{margin-top:0;gap:12px;align-items:flex-start;font-size:1.12rem;line-height:1.5;overflow:auto}
+  .service-detail>span{font-size:.75rem;padding-top:3px}
+  .service-active-name{display:block;font:700 1.05rem var(--display);letter-spacing:.01em;text-transform:uppercase;margin-bottom:5px}
+  .service-detail-copy ul{margin:0;padding:0;list-style:none}
+  .service-detail-copy li{margin:0 0 3px}
+  .discipline-panel>span{left:10px;bottom:10px;font-size:.75rem}
+}
+@media (max-width:380px) and (prefers-reduced-motion:no-preference){
+  .expertise-scene{padding-left:16px;padding-right:16px;grid-template-rows:minmax(0,34svh) minmax(0,1fr);gap:10px}
+  .statement-scene{padding-left:20px;padding-right:20px}
+  .statement-text{font-size:clamp(3.8rem,12.2vw,4.6rem)}
+  .statement-support{font-size:1.15rem;line-height:1.55}
+}
+@media (prefers-reduced-motion:reduce){
+  .expertise-scene,.statement-scene{height:auto;max-height:none;min-height:0;overflow:visible}
+  .discipline-panel{position:relative;inset:auto;display:none;clip-path:none!important;opacity:1!important}
+  .discipline-panel.active{display:block}
+}
