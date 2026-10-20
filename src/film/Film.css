@@ -1052,3 +1052,55 @@ html,body{overflow-x:clip}
  .values-scene>.film-outline-cta{margin-top:0}
 }
 @media(prefers-reduced-motion:reduce){.film-outline-cta,.film-outline-cta svg{transition:none}}
+
+
+/* Art-directed hero: clean white canvas, a framed image that grows into view. */
+.hero-scene{background:#fff!important;min-height:680px;height:100svh;height:100dvh;padding:clamp(110px,14vh,150px) var(--gutter) 72px!important;justify-content:center}
+.hero-scene:before{display:none!important}
+.hero-copy{width:min(54%,760px)!important;max-width:760px!important;padding-right:20px}
+.hero-title{font-size:clamp(5.6rem,9.4vw,14.4rem)!important;line-height:.84!important;margin-top:0!important;position:relative;z-index:3}
+.hero-enduring{margin-left:3.5vw!important}
+.hero-legacies{margin-left:0!important}
+.hero-tagline{max-width:310px;margin-top:28px!important;font-size:1.6rem!important;line-height:1.5!important;font-weight:600}
+.hero-tagline i{height:28px!important}
+.hero-photo-frame{top:12%!important;right:5%!important;width:46%!important;height:76%!important;max-height:none!important;clip-path:inset(0)!important;border-radius:24px!important;overflow:hidden;box-shadow:0 22px 70px rgba(23,21,22,.13)!important;background:#e8e4df}
+.hero-photo{border-radius:24px;object-position:center 42%;filter:saturate(.82) contrast(1.03)!important}
+.hero-bottom{font-size:1rem!important;letter-spacing:.06em!important;color:#514b47;z-index:5}
+.hero-bottom span:first-child{display:flex;align-items:center;gap:10px}
+.hero-bottom span:first-child i{display:block!important;width:22px;height:1px;background:var(--orange)}
+.hero-diagonal{display:none!important}
+
+/* Make the pinned service imagery the visual anchor, with soft architectural edges. */
+.expertise-scene{grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr)!important;gap:4.5vw!important}
+.expertise-right{min-width:0;border-radius:24px;overflow:hidden}
+.discipline-panel,.discipline-panel img{border-radius:24px}
+.discipline-panel{inset:0!important}
+.film-project-photo{border-radius:22px}
+.film-project-photo img{border-radius:22px}
+.design-image-pair,.design-image-pair img,.about-photo-wrap,.about-photo{border-radius:18px}
+@media(max-width:899px){
+ .hero-scene{height:auto!important;min-height:100svh!important;min-height:100dvh!important;padding:108px 22px 66px!important;justify-content:flex-start!important;overflow:hidden}
+ .hero-copy{width:100%!important;max-width:620px!important;padding-right:0}
+ .hero-title{font-size:clamp(5.2rem,14.7vw,9.2rem)!important;line-height:.84!important;margin-top:0!important}
+ .hero-enduring{margin-left:4vw!important}
+ .hero-legacies{margin-left:0!important}
+ .hero-tagline{max-width:100%;margin-top:18px!important;font-size:1.5rem!important}
+ .hero-photo-frame{top:auto!important;right:5%!important;bottom:9%!important;width:90%!important;height:38%!important;max-height:none!important;border-radius:20px!important;clip-path:inset(0)!important}
+ .hero-photo{border-radius:20px}
+ .hero-bottom{left:22px!important;right:22px!important;bottom:12px!important;font-size:.9rem!important;letter-spacing:.03em!important;gap:12px}
+ .hero-bottom span:first-child{max-width:58%;flex-wrap:wrap;gap:5px;line-height:1.4}
+ .hero-bottom span:last-child{gap:6px}
+ .hero-bottom span:last-child i{width:14px}
+ .expertise-scene{grid-template-columns:minmax(0,1fr)!important;gap:22px!important}
+ .expertise-right{width:100%;border-radius:20px}
+ .discipline-panel,.discipline-panel img{border-radius:20px}
+ .film-project-photo,.film-project-photo img{border-radius:18px}
+}
+@media(max-width:380px){
+ .hero-title{font-size:clamp(4.7rem,14.5vw,5.5rem)!important}
+ .hero-photo-frame{height:35%!important;bottom:10%!important}
+ .hero-bottom{font-size:.82rem!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-photo-frame{transform:none!important}
+}
