@@ -92,7 +92,7 @@ function RoutedPages() {
     <motion.div
       key={location.pathname}
       className="kb-route-layer"
-      initial={reduce ? { opacity: 1 } : { opacity: 0 }}
+      initial={false}
       animate={{ opacity: 1, transition: { duration: reduce ? 0 : 0.38, ease: [0.22, 1, 0.36, 1] } }}
       exit={reduce ? { opacity: 1 } : { opacity: 0, transition: { duration: 0.14 } }}
     >
