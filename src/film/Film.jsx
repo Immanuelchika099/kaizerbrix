@@ -11,6 +11,7 @@ const temporaryPhotoFor=(src='')=>{const name=src.split('/').pop()?.toLowerCase(
 function Photo({src,alt,className='',remoteFallback=true}){const [useRemote,setUseRemote]=useState(false),[failed,setFailed]=useState(false);const fallback=temporaryPhotoFor(src);if(failed)return null;return <img className={className} src={useRemote?fallback:src} alt={alt} width="1600" height="1000" loading="lazy" decoding="async" onError={()=>{if(remoteFallback&&!useRemote)setUseRemote(true);else setFailed(true)}}/>}
 function Preloader(){
   // Show the branded intro on each fresh homepage load. SPA route changes do not remount Film.
+  const [show,setShow] = useState(true);
   const ref = useRef(null);
 
   useEffect(() => {
