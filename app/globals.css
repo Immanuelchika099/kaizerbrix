@@ -365,3 +365,6 @@ main{display:block}
 .case-separate-plate{margin-top:32px}.case-separate-plate .media-frame{aspect-ratio:2.39/1}
 @media(prefers-reduced-motion:reduce){.film-grain-overlay{display:none}.k-portal{height:1px;margin-bottom:0;overflow:hidden}.k-portal svg{display:none}.home-project-grid{display:grid;width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.home-project{width:auto;flex:none}.home-project-2,.home-project-3{margin-top:0}.values-pin-layout{display:none}.values-mobile{display:block}}
 @media(max-width:760px) and (prefers-reduced-motion:reduce){.home-project-grid{grid-template-columns:1fr}}
+
+.service-chapter .media-frame{aspect-ratio:1.25/1}
+@media(max-width:760px){.service-chapter .media-frame{aspect-ratio:1.2/1}}
