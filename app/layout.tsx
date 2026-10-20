@@ -3,7 +3,6 @@ import './globals.css';
 import { MotionShell } from '@/components/Experience';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kaizerbrixconsults.com'),
   title: { default: 'KaizerBrix Consults | Building Enduring Legacies', template: '%s | KaizerBrix Consults' },
   description: 'Architecture, civil engineering, surveying, town planning and procurement consultancy from Port Harcourt, Nigeria.',
   applicationName: 'KaizerBrix Consults',
