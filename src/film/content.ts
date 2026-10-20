@@ -1,15 +1,15 @@
 export const brand={name:'KaizerBrix Consults',orange:'#DF481D',white:'#FFFFFF',panel:'#F4F4F4',charcoal:'#171516',email:'kaizerbrixconsults@gmail.com',phone:'+2347073847960',address:'67 Mgbuoshimini Road, Rumueme, Port Harcourt, Rivers State.'};
 export const services=[
-{name:'Architecture',lines:['Innovative design methodologies','Parametric modeling and BIM technology'],image:'/images/architecture-render.webp'},
-{name:'Civil Engineering',lines:['Rigorous structural analysis','Geotechnical investigations','Hydraulic modeling'],image:'/images/rebar-crew.webp'},
-{name:'Surveying',lines:['Cadastral surveys','Laser scanning','Drone-based topographic mapping'],image:'/images/excavator-site.webp'},
-{name:'Town Planning',lines:['Sustainable urban and regional development','Zoning, land use, and transportation planning'],image:'/images/aerial-site-plan.webp'},
-{name:'Procurement',lines:['Cost control','Value engineering','Project management'],image:'/images/orange-loader.webp'},
+{name:'Architecture',lines:['Innovative design methodologies','Parametric modeling and BIM technology'],image:'/images/IMG_1646.PNG'},
+{name:'Civil Engineering',lines:['Rigorous structural analysis','Geotechnical investigations','Hydraulic modeling'],image:'/images/IMG_1664.PNG'},
+{name:'Surveying',lines:['Cadastral surveys','Laser scanning','Drone-based topographic mapping'],image:'/images/IMG_1663.PNG'},
+{name:'Town Planning',lines:['Sustainable urban and regional development','Zoning, land use, and transportation planning'],image:'/images/IMG_1651.PNG'},
+{name:'Procurement',lines:['Cost control','Value engineering','Project management'],image:'/images/IMG_1662.PNG'},
 {name:'Construction',lines:['Construction','Finishing'],image:'/images/rebar-crew.webp'}];
 export const projects=[
-{status:'EXECUTED',name:'5 Bedroom Duplex',location:'Yenagoa, Bayelsa State',year:'2023',image:'/images/project-yenagoa.webp',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']},
-{status:'EXECUTED',name:'5 Bedroom Duplex',location:'Port Harcourt, Rivers State',year:'2023',image:'/images/project-port-harcourt.webp',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']},
-{status:'ONGOING',name:'5 Bedroom Duplex',detail:'Including 3 units of self contain, swimming pool and security house',location:'Bonny Island, Rivers State',year:'2024',image:'/images/project-bonny-island.webp',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']}];
+{status:'EXECUTED',name:'5 Bedroom Duplex',location:'Yenagoa, Bayelsa State',year:'2023',image:'/images/IMG_1642.PNG',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']},
+{status:'EXECUTED',name:'5 Bedroom Duplex',location:'Port Harcourt, Rivers State',year:'2023',image:'/images/IMG_1645.PNG',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']},
+{status:'ONGOING',name:'5 Bedroom Duplex',detail:'Including 3 units of self contain, swimming pool and security house',location:'Bonny Island, Rivers State',year:'2024',image:'/images/IMG_1659.PNG',scope:['Surveying','Architectural Design','Clearing','Construction','Finishing']}];
 export const designPlates=[
 ['5 BEDROOM DUPLEX','design-5-bedroom-01','design-5-bedroom-02'],['CLUBHOUSE / RESTAURANT','design-clubhouse-01','design-clubhouse-02'],['4 BEDROOM DUPLEX','design-4-bedroom-01','design-4-bedroom-02'],['5 BEDROOM DUPLEX','design-5-bedroom-03','design-5-bedroom-04'],['5 BEDROOM DUPLEX','design-5-bedroom-05','design-5-bedroom-06'],['8 UNITS OF 1 BEDROOM FLATS','design-flats-01','design-flats-02'],['3 BEDROOM BUNGALOW','design-bungalow-01','design-bungalow-02'],['OFFICE BUILDING','design-office-01','design-office-02']].map(([name,a,b])=>({name,images:[`/images/${a}.webp`,`/images/${b}.webp`]}));
 export const values=[
