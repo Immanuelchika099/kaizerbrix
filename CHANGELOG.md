@@ -217,3 +217,13 @@
 - Kept the image composition intact with `object-fit: contain`; added persistent explore cues on touch layouts so the interaction is discoverable without hover.
 - Added focus/pressed states and reduced-motion handling. Full-screen viewing and previous/next navigation remain unchanged.
 - Verification limitation: code was committed to `main`; local Vite build and browser/device visual QA have not been run in this environment.
+
+
+## 2026-10-20 — Mobile section spacing and contact divider
+- Root cause: the mobile expertise scene was pinned for `+=180%` and the statement scene for `+=42%`; these scroll runways were unnecessarily long for the corresponding animation timelines. Reduced them to `+=125%` and `+=22%` on mobile only. Desktop pin distances are unchanged.
+- Root cause: the statement scene inherited `min-height: 100svh` and had a mobile `min-height: 85svh`, large `120px / 80px` vertical padding, flex centring, and default paragraph margins. This spread the “Made to endure.” heading, supporting copy, and button apart. Mobile now sizes to content, aligns the block to the same left edge, and uses consistent 24px gaps between copy and CTA.
+- Root cause: the gap before “OUR CORE VALUES” accumulated from statement bottom padding and values top padding. Tightened the mobile expertise bottom padding and set the statement/values boundary padding to keep the visible CTA-to-tag gap around 80px. Removed the mobile-only values progress line from the bottom of the section so it cannot add an unnecessary visual marker.
+- Root cause: the contact footer drew one border under `.contact-email` and another via `.contact-bottom { border-top: 1px solid #ffffff80; padding-top: 28px; }`. Removed the second border and its padding while preserving the email underline. The contact info grid now starts 48px after the email row on mobile and desktop.
+- Added `scroll-margin-top: 88px` to homepage section anchors so fixed pill navigation is less likely to cover targeted sections.
+- Files changed: `src/film/Film.jsx` (mobile pin distances) and `src/film/Film.css` (mobile spacing, alignment, single divider, anchor offset).
+- Verification note: changes are committed to `main`; this environment did not provide a live browser/viewport runner, so visual scroll QA at 390px, 430px, and desktop remains unverified here.
