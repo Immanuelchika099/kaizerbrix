@@ -1142,3 +1142,33 @@ html,body{overflow-x:clip}
  .contact-bottom a{font-size:1.25rem}
  .project-scope,.projects-top p{font-size:1.3rem}
 }
+
+
+/* Focused finish: keep the hero image rounded from frame one, with no square underlay peeking through. */
+.hero-photo-frame{
+  border-radius:24px!important;
+  clip-path:inset(0 round 24px)!important;
+  overflow:hidden!important;
+  isolation:isolate;
+  background:transparent!important;
+}
+.hero-photo{
+  inset:-1px!important;
+  width:calc(100% + 2px)!important;
+  height:calc(100% + 2px)!important;
+  max-width:none!important;
+  border-radius:inherit!important;
+  object-fit:cover!important;
+}
+.about-scene .about-copy h2,
+.about-scene .about-copy .about-reveal-word{
+  color:#171516!important;
+  opacity:1;
+}
+@media(max-width:899px){
+  .hero-photo-frame{
+    border-radius:20px!important;
+    clip-path:inset(0 round 20px)!important;
+  }
+  .hero-photo{border-radius:inherit!important}
+}
