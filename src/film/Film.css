@@ -1666,3 +1666,48 @@ html,body{overflow-x:clip}
     margin: 26px 0 0 !important;
   }
 }
+
+
+/* Softer, more deliberate transitions for the six-discipline sequence. */
+.discipline-list button,
+.discipline-list small,
+.discipline-list .orange-square {
+  transition:
+    color .42s cubic-bezier(.22,1,.36,1),
+    background-color .42s cubic-bezier(.22,1,.36,1),
+    transform .55s cubic-bezier(.22,1,.36,1),
+    opacity .42s ease;
+}
+.discipline-list .active .orange-square {
+  transform: scale(1.22);
+}
+.discipline-panel {
+  will-change: clip-path, opacity, transform;
+}
+.service-active-name {
+  transition: color .35s ease, opacity .45s ease, transform .55s cubic-bezier(.22,1,.36,1);
+}
+.service-descriptions p {
+  visibility: visible !important;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity .42s ease,
+    transform .6s cubic-bezier(.22,1,.36,1),
+    color .35s ease;
+}
+.service-descriptions p.is-active {
+  visibility: visible !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .discipline-list button,
+  .discipline-list small,
+  .discipline-list .orange-square,
+  .service-active-name,
+  .service-descriptions p {
+    transition: none !important;
+    transform: none !important;
+  }
+}
