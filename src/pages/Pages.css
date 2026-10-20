@@ -140,3 +140,35 @@
  .kb-project-rail .kb-project-card,.kb-project-rail .kb-project-card.is-featured{width:auto!important;display:block!important;transform:none!important}
  .kb-rail-progress,.kb-rail-caption{display:none!important}
 }
+
+
+/* Readability pass: raise supporting copy and metadata across all inner pages. */
+.kb-nav-links>a:not(.kb-nav-cta){font-size:14px}
+.kb-nav-cta{font-size:13px}
+.kb-eyebrow,.kb-service-meta,.kb-project-card-info>span,
+.kb-project-scope>span,.kb-projects-note>span,.kb-contact-address>span{font-size:11px}
+.kb-page-intro-copy>p,.kb-about-statement-foot,.kb-vision-copy p,
+.kb-values-grid p,.kb-service-copy li,.kb-project-card-info>p,
+.kb-projects-note p,.kb-contact-copy>p,.kb-contact-direct,
+.kb-contact-address p,.kb-contact-address a{font-size:15px;line-height:1.75}
+.kb-values-grid h3{font-size:17px}
+.kb-project-scope p{font-size:13px;line-height:1.65}
+.kb-contact-form label{font-size:14px}
+.kb-contact-form>small,.kb-form-note{font-size:12px;line-height:1.6}
+.kb-footer-bottom{font-size:12px;line-height:1.6}
+.kb-status,.kb-project-number{font-size:10px}
+.kb-service-image>span,.kb-project-rail .kb-rail-caption{font-size:10px}
+@media(max-width:850px){
+ .kb-nav-links>a:not(.kb-nav-cta){font-size:16px}
+ .kb-nav-cta{font-size:14px}
+ .kb-eyebrow,.kb-service-meta,.kb-project-card-info>span,
+ .kb-project-scope>span,.kb-projects-note>span,.kb-contact-address>span{font-size:11px}
+ .kb-page-intro-copy>p,.kb-about-statement-foot,.kb-vision-copy p,
+ .kb-values-grid p,.kb-service-copy li,.kb-project-card-info>p,
+ .kb-projects-note p,.kb-contact-copy>p,.kb-contact-direct,
+ .kb-contact-address p,.kb-contact-address a{font-size:15px;line-height:1.75}
+ .kb-values-grid h3{font-size:17px}
+ .kb-project-scope p{font-size:13px}
+ .kb-contact-form label{font-size:14px}
+ .kb-contact-form>small,.kb-form-note{font-size:12px}
+}
