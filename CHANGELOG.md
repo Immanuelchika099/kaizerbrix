@@ -193,3 +193,12 @@
 - Added the supplied QR image (`IMG_1637.PNG`) to both the homepage contact footer and shared inner-page footer, preserving a white quiet zone for scanning.
 - Updated project-image notes to distinguish on-site photographs from architectural visualisations. The exact destination encoded by the QR image has not been independently verified.
 - Images were inspected from the repository and mapped by visual content; responsive rendering and live deployment still require a browser/build check.
+
+
+## Supplied KaizerBrix image archive — 20 October 2026
+- Replaced remote stock-photo references on the About, Expertise, Projects, and Contact pages with the client-supplied image archive under `public/images/`.
+- Mapped the homepage hero, company profile, service panels, project gallery, values, and HSE section to supplied construction-site photographs and architectural visualisations.
+- Added the supplied QR code (`/images/IMG_1637.PNG`) to the home and external-page footers, labelled “Scan to connect”.
+- Kept project-image copy transparent: the archive contains both site photography and architectural visualisations, and individual images are not independently matched to each named project.
+- Removed remote-photo fallback behaviour from the homepage photo component; missing local images no longer silently load third-party stock imagery.
+- The supplied files use a `.PNG` extension, but several appear to contain JPEG-encoded image data. Verify that Vercel/browser image decoding succeeds after deployment; rename/re-encode if needed.
