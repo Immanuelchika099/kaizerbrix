@@ -1104,3 +1104,7 @@ html,body{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){
  .hero-photo-frame{transform:none!important}
 }
+
+
+/* Final polish: keep the scroll-reactive orange rule, remove its static ash track. */
+.quality-commitments{border-top:0!important}
