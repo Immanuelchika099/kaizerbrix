@@ -21,6 +21,7 @@ export function DesignArchive() {
   }, { scope: root, dependencies: [contactSheet], revertOnUpdate: true });
 
   function toggleSheet() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setContactSheet((value) => !value); return; }
     const elements = root.current?.querySelectorAll<HTMLElement>('.archive-card');
     if (!elements?.length) { setContactSheet((value) => !value); return; }
     const state = Flip.getState(elements);
