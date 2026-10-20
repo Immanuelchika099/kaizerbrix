@@ -1769,3 +1769,16 @@ html,body{overflow-x:clip}
     padding: 0 !important;
   }
 }
+
+
+/* The preloader now uses the supplied standalone PNG brand mark. */
+.preloader-overlay .preloader-mark{
+  display:block!important;
+  width:clamp(76px,9vw,112px)!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  color:inherit!important;
+  transform-origin:center!important;
+}
+.preloader-overlay .preloader-mark path{display:none!important}
