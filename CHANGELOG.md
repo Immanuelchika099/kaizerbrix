@@ -142,3 +142,10 @@
 - Increased reading sizes and line-height across page introductions, service descriptions, project details, value cards and contact form fields, with mobile-first readable sizing.
 - Rebalanced section padding, content gaps and image heights to reduce awkward blank stretches while preserving intentional editorial breathing room.
 - Source changes are committed to main; production deployment and real-device visual QA remain pending.
+
+
+## 2026-10-20 — External-page spacing and readability follow-up
+- Tightened excess vertical padding and large minimum heights across About, Expertise, Projects and Contact, especially on mobile, so section transitions feel deliberate rather than stretched.
+- Raised supporting copy to comfortable reading sizes and balanced the Vision/Mission, service rows, project gallery and contact form spacing.
+- Preserved the shared homepage cinematic navbar and existing route structure; no redesign or placeholder-image replacement was included.
+- Source committed to main. Production deployment and browser/device visual QA remain pending.
