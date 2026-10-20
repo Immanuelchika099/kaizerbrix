@@ -458,3 +458,9 @@ html,body{overflow-x:clip}
   .discipline-panel{position:relative;inset:auto;display:none;clip-path:none!important;opacity:1!important}
   .discipline-panel.active{display:block}
 }
+
+
+/* Direction-aware navigation: clear the frame while scrolling down, restore on scroll-up. */
+.film-nav{transition:transform .36s cubic-bezier(.22,1,.36,1),background .3s,border-color .3s,color .3s;will-change:transform}
+.film-nav.is-hidden:not(.menu-open){transform:translateY(calc(-100% - 24px))}
+.film-nav.is-scrolled:not(.is-light):not(.menu-open){background:rgba(23,21,22,.94);border-color:rgba(255,255,255,.14)}
