@@ -202,3 +202,11 @@
 - Kept project-image copy transparent: the archive contains both site photography and architectural visualisations, and individual images are not independently matched to each named project.
 - Removed remote-photo fallback behaviour from the homepage photo component; missing local images no longer silently load third-party stock imagery.
 - The supplied files use a `.PNG` extension, but several appear to contain JPEG-encoded image data. Verify that Vercel/browser image decoding succeeds after deployment; rename/re-encode if needed.
+
+
+## 2026-10-20 — Cinematic 3D architectural gallery
+- Added a dedicated **3D Images** section to the existing Projects/Gallery route using the supplied local image sequence `public/images/IMG_1646.PNG` through `IMG_1660.PNG` (15 files).
+- Built an editorial dark gallery treatment with a varied 12-column desktop composition, a two-column mobile layout, hover motion, clear image numbering, and reduced-motion support. Images use `object-fit: contain` so architectural designs are not cropped.
+- Added an accessible full-screen image viewer with previous/next controls, Escape-to-close, arrow-key navigation, and body-scroll locking.
+- Assumption: the 3D section belongs below the existing selected-projects content on the current Projects route; the other 16 company-profile images remain unmapped and untouched.
+- Verification limitation: source changes were committed through GitHub, but this environment cannot run the local Vite build or browser/device visual checks. Verify with `npm run build` and review the route on desktop and mobile before treating visual QA as complete.
