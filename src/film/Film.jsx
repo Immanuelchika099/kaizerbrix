@@ -10,10 +10,7 @@ const serviceDescriptions={'Architecture':'Thoughtful spaces shaped by people an
 const temporaryPhotoFor=(src='')=>{const name=src.split('/').pop()?.toLowerCase()||'';if(name.includes('tower-hardhat')||name.includes('hse-worker')||name.includes('rebar'))return 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=85';if(name.includes('engineer')||name.includes('blueprint'))return 'https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&w=1800&q=85';if(name.includes('loader')||name.includes('construction')||name.includes('machinery'))return 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=85';if(name.includes('project')||name.includes('duplex')||name.includes('apartment'))return 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85';return 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1800&q=85'};
 function Photo({src,alt,className='',remoteFallback=true}){const [useRemote,setUseRemote]=useState(false),[failed,setFailed]=useState(false);const fallback=temporaryPhotoFor(src);if(failed)return null;return <img className={className} src={useRemote?fallback:src} alt={alt} width="1600" height="1000" loading="lazy" decoding="async" onError={()=>{if(remoteFallback&&!useRemote)setUseRemote(true);else setFailed(true)}}/>}
 function Preloader(){
-  const [show,setShow] = useState(() => {
-    try { return !sessionStorage.getItem('kb-film-intro-seen'); }
-    catch { return true; }
-  });
+  // Show the branded intro on each fresh homepage load. SPA route changes do not remount Film.
   const ref = useRef(null);
 
   useEffect(() => {
@@ -24,7 +21,6 @@ function Preloader(){
     const finish = () => {
       if (finished) return;
       finished = true;
-      try { sessionStorage.setItem('kb-film-intro-seen', '1'); } catch {}
       setShow(false);
     };
 
