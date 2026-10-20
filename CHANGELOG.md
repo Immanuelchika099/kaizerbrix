@@ -33,3 +33,9 @@
 - Removed overflow clipping from the homepage and external-page roots where it could interfere with fixed/pinned ScrollTrigger scenes.
 - Re-aligned the homepage contact footer into a stable three-column desktop grid and a two-column mobile layout; refined the external-page footer spacing and wrapping.
 - Not yet verified: production build, Android browser testing, route refresh on deployed Vercel, or live visual review. Vercel's daily deployment limit remains a blocker for verifying the newest commit live.
+
+
+### Cinematic navbar
+- Restyled the homepage navigation as a compact floating charcoal-glass capsule with the existing KaizerBrix monogram and a typographic brand lockup.
+- Reworked the expanded navigation presentation into an editorial full-screen layout with a radial clip-path entrance, staggered link reveals, orange accents, and a mobile-first single-column layout.
+- Preserved the existing anchor destinations and external route links. Live visual QA remains pending because the current Vercel deployment quota has blocked a fresh production preview.
