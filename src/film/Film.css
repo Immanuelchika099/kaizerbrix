@@ -1348,3 +1348,112 @@ html,body{overflow-x:clip}
  .service-active-name{grid-column:1;grid-row:1}
  .service-detail-copy p{grid-column:2;grid-row:1;margin-top:0!important}
 }
+
+
+/* Final targeted layout corrections: keep service content intrinsic, with the image
+   absorbing remaining viewport height; never distribute spare space below the copy. */
+@media (max-width:899px){
+  .expertise-scene{
+    height:100svh!important;
+    height:100dvh!important;
+    min-height:640px!important;
+    max-height:1000px!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:minmax(180px,1fr) auto!important;
+    gap:14px!important;
+    overflow:hidden!important;
+    padding:82px var(--kb-section-gutter) calc(24px + env(safe-area-inset-bottom))!important;
+  }
+  .expertise-right{
+    grid-row:1!important;
+    grid-column:1!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:180px!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    align-self:stretch!important;
+    overflow:hidden!important;
+  }
+  .expertise-left{
+    grid-row:2!important;
+    grid-column:1!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:flex-start!important;
+    gap:0!important;
+    min-height:0!important;
+    height:auto!important;
+    overflow:visible!important;
+  }
+  .expertise-left>.film-chip{margin:0 0 12px!important;width:fit-content!important}
+  .expertise-intro{display:none!important}
+  .discipline-list{flex:0 0 auto!important;min-height:0!important;margin:0!important}
+  .service-detail{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    align-content:start!important;
+    gap:8px!important;
+    margin-top:12px!important;
+    min-height:0!important;
+    height:auto!important;
+    overflow:visible!important;
+  }
+  .service-detail>.service-counter{grid-row:1!important;font-size:1.4rem!important;line-height:1.4!important}
+  .service-detail-copy{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:0!important;min-height:0!important}
+  .service-active-name{grid-column:1!important;grid-row:1!important;font-size:clamp(2.8rem,8vw,4rem)!important;line-height:1.05!important;margin:0!important}
+  .service-descriptions{grid-column:1!important;grid-row:2!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;min-width:0!important;margin-top:10px!important}
+  .service-descriptions p{grid-area:1/1!important;grid-column:1!important;grid-row:1!important;margin:0!important;max-width:60ch!important;font-size:1.8rem!important;line-height:1.45!important;color:#333!important;visibility:hidden!important}
+  .service-descriptions p.is-active{visibility:visible!important}
+  .expertise-left>.film-outline-cta{align-self:flex-start!important;margin-top:40px!important;flex:0 0 auto!important}
+}
+@media (min-width:900px){
+  .expertise-scene{
+    height:100svh!important;
+    height:100dvh!important;
+    min-height:680px!important;
+    max-height:1000px!important;
+    padding-bottom:calc(24px + env(safe-area-inset-bottom))!important;
+  }
+  .expertise-left{justify-content:flex-start!important;min-height:0!important}
+  .expertise-left>.film-outline-cta{margin-top:40px!important}
+  .expertise-right{height:100%!important;min-height:0!important;align-self:stretch!important}
+  .service-detail-copy{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;align-items:start}
+  .service-active-name{grid-column:1!important;grid-row:1!important}
+  .service-descriptions{grid-column:2!important;grid-row:1!important;display:grid!important;grid-template-columns:minmax(0,1fr);min-width:0}
+  .service-descriptions p{grid-area:1/1!important;grid-column:1!important;grid-row:1!important;margin:0!important;max-width:60ch!important;font-size:1.8rem!important;line-height:1.55!important;color:#333!important;visibility:hidden!important}
+  .service-descriptions p.is-active{visibility:visible!important}
+}
+@media (max-width:639px){
+  .projects-top{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;gap:20px!important}
+  .projects-top>.film-chip{align-self:flex-start!important;margin:0!important}
+  .projects-heading{display:block!important;width:100%!important;max-width:100%!important;font-size:clamp(2.4rem,6vw,3.2rem)!important;line-height:1.2!important;overflow-wrap:normal!important}
+  .projects-record-count{white-space:nowrap!important;display:inline-block!important}
+}
+@media (min-width:640px){
+  .projects-top{display:flex!important;flex-direction:row!important;align-items:center!important;gap:24px!important}
+  .projects-top>.film-chip{margin:0!important}
+  .projects-heading{min-width:0!important;display:flex!important;flex-wrap:wrap!important;align-items:baseline!important;column-gap:8px!important}
+  .projects-record-count{white-space:nowrap!important;flex:0 0 auto!important}
+}
+.film-nav .film-nav-mark:after{
+  content:'KAIZERBRIX'!important;
+  display:block!important;
+}
+@media (max-width:899px){
+  .film-nav .film-nav-mark{flex:1 1 auto!important;min-width:0!important;width:auto!important;overflow:hidden!important}
+  .film-nav .film-nav-mark:after{font-size:1.4rem!important;letter-spacing:.015em!important;white-space:nowrap!important}
+  .film-nav .film-menu-button{flex:0 0 auto!important;min-width:88px!important}
+}
+/* Shared section-label spacing: headings stay visually connected without touching the tag. */
+.about-copy>.film-chip+h2,
+.vision-copy>.film-chip+h2,
+.mission-copy>.film-chip+h3,
+.quality-panel>.film-chip+h2,
+.hse-copy>.film-chip+h2,
+.contact-main>.film-chip+h2{margin-top:clamp(20px,2vw,32px)!important}
+.expertise-left>.film-chip+.expertise-intro{margin-top:24px!important}
+.values-heading>.film-chip+p{margin-top:20px!important}
