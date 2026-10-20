@@ -613,14 +613,14 @@ html,body{overflow-x:clip}
 .about-reveal-text{display:inline;}
 .about-reveal-word{display:inline-block;will-change:color,opacity,transform;}
 .about-body-copy{max-width:640px;}
-.about-body-copy p{font-size:1.45rem;line-height:1.9;}
+ .about-body-copy p{font-size:1.8rem;line-height:1.8;max-width:58ch;}
 @media(max-width:899px){
  .about-scene{min-height:0;}
  .about-copy h2{font-size:clamp(2.8rem,7.8vw,4.5rem);line-height:1.12;}
- .about-body-copy p{font-size:1.65rem;line-height:1.9;margin-top:20px;}
+  .about-body-copy p{font-size:1.85rem;line-height:1.8;margin-top:24px;}
  .about-reveal-word{will-change:color,opacity;}
 }
-@media(max-width:390px){.about-body-copy p{font-size:1.55rem;line-height:1.85;}}
+@media(max-width:390px){.about-body-copy p{font-size:1.7rem;line-height:1.8;}}
 @media(prefers-reduced-motion:reduce){.about-reveal-word{color:#171516!important;opacity:1!important;transform:none!important;}}
 
 
