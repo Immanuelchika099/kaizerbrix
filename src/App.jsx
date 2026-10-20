@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import './pages/Pages.css';
 
 const Film = lazy(() => import('./film/Film.jsx'));
 const AboutPage = lazy(() => import('./pages/Pages.jsx').then(module => ({ default: module.AboutPage })));
@@ -39,6 +40,8 @@ function LoadingFilm() {
 function RoutedPages() {
   const location = useLocation();
   const reduce = useReducedMotion();
+  if (location.pathname === '/') return <Suspense fallback={<LoadingFilm />}><Film /></Suspense>;
+
   const route = <Routes location={location}>
     <Route path="/" element={<Film />} />
     <Route path="/about" element={<AboutPage />} />
