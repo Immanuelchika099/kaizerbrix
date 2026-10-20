@@ -396,3 +396,14 @@
   .kb-page .kb-about-statement>p{font-size:clamp(28px,8vw,40px);margin-top:24px!important;margin-bottom:30px!important}
   .kb-page .kb-about-statement-foot{align-items:flex-start}
 }
+
+
+/* External-page footer: make the brand, contact details and copyright comfortably readable. */
+.kb-page .kb-footer-bottom{font-size:clamp(14px,1.05vw,16px)!important;line-height:1.6!important;gap:18px 28px!important}
+.kb-page .kb-footer-brand{font-size:clamp(16px,1.2vw,18px)!important;letter-spacing:.08em!important}
+.kb-page .kb-footer-bottom a:not(.kb-footer-brand){font-size:inherit!important}
+@media(max-width:850px){
+  .kb-page .kb-footer-bottom{font-size:14px!important;gap:16px!important;align-items:flex-start!important}
+  .kb-page .kb-footer-brand{font-size:16px!important}
+  .kb-page .kb-footer-bottom>*{max-width:100%;overflow-wrap:anywhere}
+}
