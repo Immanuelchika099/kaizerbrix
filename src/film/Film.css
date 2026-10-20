@@ -703,3 +703,36 @@ html,body{overflow-x:clip}
  }
  .hero-scene:after{width:3px}
 }
+
+
+/* Final correction: About begins pinning before its copy reaches the fixed nav.
+   Force the revealed copy to true ink black; don't let legacy pale-word rules win. */
+.about-scene .about-copy .about-reveal-word{
+  color:#171516;
+}
+.about-scene .about-copy .about-body-copy .about-reveal-word{
+  color:#171516;
+}
+.preloader-overlay{
+  background:#fff;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.preloader-mark{
+  z-index:2;
+  width:72px;
+  color:#DF481D;
+  transform-origin:center;
+}
+.preloader-mark path{
+  stroke:#DF481D;
+  stroke-width:10;
+  fill:none;
+}
+.preloader-cut{display:none!important}
+@media(max-width:899px){
+ .about-scene{scroll-margin-top:78px}
+ .about-scene .about-copy h2{color:#171516}
+ .about-scene .about-copy .about-reveal-word{color:#171516}
+}
