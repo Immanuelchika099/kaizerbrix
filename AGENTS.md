@@ -4,7 +4,7 @@
 - This is a real client website for KaizerBrix Consults, a multidisciplinary construction consultancy in Port Harcourt, Nigeria.
 - Stack: React, Vite, JavaScript, CSS, GSAP + ScrollTrigger, and Lenis. Preserve the existing architecture unless a verified technical reason requires changing it.
 - Main scroll-film experience: `src/film/Film.jsx`; content and image-path data: `src/film/content.ts`; global styles and design tokens: `src/index.css`.
-- Brand: white / paper, charcoal, and the supplied orange (`#DF481D)). Do not introduce purple or green as brand colors.
+- Brand: white / paper, charcoal, and the supplied orange (`#DF481D`). Do not introduce purple or green as brand colors.
 - `CONTENT_FLAGS.md` records source ambiguities, asset gaps, and required launch checks. Read it before changing content or claiming launch readiness.
 - The company profile PDF and supplied logo are the authoritative content and identity references. Do not invent service claims, project details, dates, awards, testimonials, client names, certifications, or statistics.
 
