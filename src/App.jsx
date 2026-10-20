@@ -36,7 +36,9 @@ function RouteCurtain() {
 }
 
 function LoadingFilm() {
-  return <div className="kb-route-loading" aria-label="Loading KaizerBrix"><span>KAIZERBRIX</span><i /></div>;
+  // The homepage's animated logo preloader is the single loading experience.
+  // Keep lazy-route fallback empty so a second text loader never flashes first.
+  return null;
 }
 
 function RoutedPages() {
