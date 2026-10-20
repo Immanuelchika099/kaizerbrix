@@ -25,3 +25,8 @@ Import `Immanuelchika099/kaizerbrix`, keep the framework preset on **Next.js**, 
 ## Source and content
 
 The company profile and `src/film/content.ts` are the source of truth. See `CHANGELOG.md` for implementation notes and `CONTENT_NEEDED.md` for missing client assets and details. Do not describe the site as production-ready until all source imagery is present and the desktop/mobile checks are completed.
+
+
+## Profile asset pack
+
+The optimized profile images, design renders, grain tile and PNG app icons are supplied separately in `kaizerbrix-assets.zip`. Extract the ZIP's `public/` folder into the repository root and commit the merged files on the feature branch before final visual testing. See `CONTENT_NEEDED.md` for the remaining client confirmations.
