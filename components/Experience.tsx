@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ComponentProps, type MutableRefObject, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useId, type ComponentProps, type MutableRefObject, type ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -22,6 +22,48 @@ export function useMotion() {
 
 function BrandMark({ className = '' }: { className?: string }) {
   return <svg className={className} viewBox="0 0 130 110" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="square" strokeLinejoin="round"><path d="M24 100V43L57 10Q72 -1 83 12Q94 25 80 39L57 62V100"/><path d="M51 100V57L84 24Q97 11 109 24Q121 37 107 51L84 74V100"/></g></svg>;
+}
+
+
+export function KPortal({ label = 'K portal transition' }: { label?: string }) {
+  const root = useRef<HTMLElement | null>(null);
+  const group = useRef<SVGGElement | null>(null);
+  const rawId = useId();
+  const maskId = 'kb-portal-' + rawId.replace(/:/g, '');
+  useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !root.current || !group.current) return;
+    gsap.set(group.current, { scale: 1, transformOrigin: '50% 50%', transformBox: 'fill-box' });
+    gsap.to(group.current, { scale: 8.5, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top top', end: '+=90%', scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true } });
+  }, { scope: root, revertOnUpdate: true });
+  return <section ref={root} className="k-portal" aria-label={label} data-nav-theme="ink" data-scene-label="K / PORTAL"><svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><defs><mask id={maskId}><rect width="1000" height="1000" fill="white"/><g ref={group} fill="black"><path d="M275 170H410V435L615 210H790L550 470L815 830H640L445 575L410 615V830H275Z"/></g></mask></defs><rect width="1000" height="1000" fill="#DF481D" mask={\`url(#\${maskId})\`}/></svg></section>;
+}
+
+function SessionPreloader() {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem('kaizerbrix-film-intro-seen')) return;
+      sessionStorage.setItem('kaizerbrix-film-intro-seen', '1');
+      setVisible(true);
+    } catch { setVisible(false); }
+  }, []);
+  useGSAP(() => {
+    if (!visible || !ref.current) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const paths = ref.current.querySelectorAll<SVGPathElement>('path');
+    if (reduced) {
+      gsap.to(ref.current, { opacity: 0, duration: 0.2, delay: 0.2, onComplete: () => setVisible(false) });
+      return;
+    }
+    gsap.set(paths, { strokeDasharray: 620, strokeDashoffset: 620 });
+    gsap.timeline({ onComplete: () => setVisible(false) })
+      .to(paths, { strokeDashoffset: 0, duration: 0.7, stagger: 0.08, ease: 'power2.inOut' })
+      .to(ref.current?.querySelector('.preloader-plane'), { clipPath: 'polygon(0 0,100% 0,100% 100%,0 100%)', duration: 0.45, ease: 'power3.inOut' }, '-=0.12')
+      .to(ref.current, { yPercent: -105, duration: 0.52, ease: 'power3.inOut' }, '-=0.05');
+  }, { scope: ref, dependencies: [visible], revertOnUpdate: true });
+  if (!visible) return null;
+  return <div className="session-preloader" ref={ref} aria-hidden="true"><svg className="preloader-mark" viewBox="0 0 130 110"><g fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="square" strokeLinejoin="round"><path d="M24 100V43L57 10Q72 -1 83 12Q94 25 80 39L57 62V100"/><path d="M51 100V57L84 24Q97 11 109 24Q121 37 107 51L84 74V100"/></g></svg><div className="preloader-plane"/></div>;
 }
 
 export function MotionShell({ children }: { children: ReactNode }) {
@@ -148,7 +190,7 @@ export function MotionShell({ children }: { children: ReactNode }) {
 
   const contextValue = useMemo(() => ({ navigate, lenis: lenisRef }), [navigate]);
   return <MotionContext.Provider value={contextValue}>
-    <div className="site-root" ref={rootRef}>
+    <div className="site-root" ref={rootRef}><SessionPreloader/>
       <div className="site-progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
       <header className="site-nav" data-theme={navTheme} data-hidden={navHidden && !menuOpen}>
         <div className="nav-left"><Link href="/" aria-label="KaizerBrix Consults home" onClick={(e) => { e.preventDefault(); navigate('/'); }}><BrandMark className="k-mark" /></Link></div>
