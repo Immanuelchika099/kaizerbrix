@@ -605,3 +605,20 @@ html,body{overflow-x:clip}
 /* Temporary remote photography + pinned About word reveal */
 .about-copy .word-reveal span{color:#bdb8b2;opacity:.3;transition:color .2s ease}
 @media(prefers-reduced-motion:reduce){.about-copy .word-reveal span{color:#171516!important;opacity:1!important}}
+
+
+/* About section: full-section pinned word-by-word reveal */
+.about-scene{min-height:100svh;}
+.about-copy{position:relative;z-index:2;}
+.about-reveal-text{display:inline;}
+.about-reveal-word{display:inline-block;will-change:color,opacity,transform;}
+.about-body-copy{max-width:640px;}
+.about-body-copy p{font-size:1.45rem;line-height:1.9;}
+@media(max-width:899px){
+ .about-scene{min-height:0;}
+ .about-copy h2{font-size:clamp(2.8rem,7.8vw,4.5rem);line-height:1.12;}
+ .about-body-copy p{font-size:1.65rem;line-height:1.9;margin-top:20px;}
+ .about-reveal-word{will-change:color,opacity;}
+}
+@media(max-width:390px){.about-body-copy p{font-size:1.55rem;line-height:1.85;}}
+@media(prefers-reduced-motion:reduce){.about-reveal-word{color:#171516!important;opacity:1!important;transform:none!important;}}
