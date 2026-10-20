@@ -28,7 +28,7 @@ export default function HomePage() {
     </SceneReveal>
 
     <SceneReveal className="home-statement section-pad" theme="ink" label="SC 05 / STATEMENT">
-      <span className="statement-rule"/><p className="scene-label" data-reveal>SC 05 / STATEMENT</p><h2 data-reveal>We build structures that <em>echo</em> through the ages.</h2><p data-reveal>From design to completion, we work toward enduring value and quality in every detail.</p>
+      <span className="statement-rule"/><p className="scene-label" data-reveal>SC 05 / STATEMENT</p><h2 data-reveal>We build structures that <em data-weight-scrub>echo</em> through the ages.</h2><p data-reveal>From design to completion, we work toward enduring value and quality in every detail.</p>
     </SceneReveal>
 
     <SceneReveal className="home-projects section-pad" theme="ink" label="SC 06 / PROJECTS">
