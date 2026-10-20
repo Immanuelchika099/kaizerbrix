@@ -21,7 +21,51 @@ const referencePhotos={
 'hse-worker-rebar.webp':'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=85'
 };
 function Photo({src,alt,className=''}){const key=src?.split('/').pop();const resolved=referencePhotos[key]||src;return <img className={className} src={resolved} alt={alt} loading="lazy" decoding="async" referrerPolicy="no-referrer"/>}
-function Preloader(){const[show,setShow]=useState(()=>{try{return!sessionStorage.getItem('kb-film-intro-seen')}catch{return true}});const ref=useRef(null);useEffect(()=>{if(!show)return;const c=gsap.context(()=>{gsap.set('.preloader-mark path',{strokeDasharray:520,strokeDashoffset:520,fillOpacity:0});gsap.timeline({onComplete:()=>{try{sessionStorage.setItem('kb-film-intro-seen','1')}catch{}setShow(false)}}).to('.preloader-mark path',{strokeDashoffset:0,duration:.8,ease:'power2.inOut'}).to('.preloader-mark path',{fillOpacity:1,duration:.25},'-.18').to('.preloader-cut',{clipPath:'polygon(0 0,100% 0,100% 100%,0 100%)',duration:.48,ease:'power3.inOut'}).to('.preloader-overlay',{yPercent:-105,duration:.55,ease:'power3.inOut'},'-.12')},ref);return()=>c.revert()},[show]);return show?<div className="preloader-overlay" ref={ref}><Mark className="preloader-mark"/><div className="preloader-cut"/></div>:null}
+function Preloader(){
+  const [show,setShow] = useState(() => {
+    try { return !sessionStorage.getItem('kb-film-intro-seen'); }
+    catch { return true; }
+  });
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!show) return;
+    let finished = false;
+    let context;
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      try { sessionStorage.setItem('kb-film-intro-seen', '1'); } catch {}
+      setShow(false);
+    };
+
+    // Never let the full-screen intro hide the actual site if an animation
+    // fails to initialise or stalls on a mobile browser.
+    const failsafe = window.setTimeout(finish, 2600);
+
+    try {
+      context = gsap.context(() => {
+        gsap.set('.preloader-mark path', { strokeDasharray: 520, strokeDashoffset: 520, fillOpacity: 0 });
+        gsap.timeline({ onComplete: finish })
+          .to('.preloader-mark path', { strokeDashoffset: 0, duration: .8, ease: 'power2.inOut' })
+          .to('.preloader-mark path', { fillOpacity: 1, duration: .25 }, '-.18')
+          .to('.preloader-cut', { clipPath: 'polygon(0 0,100% 0,100% 100%,0 100%)', duration: .48, ease: 'power3.inOut' })
+          .to('.preloader-overlay', { yPercent: -105, duration: .55, ease: 'power3.inOut' }, '-.12');
+      }, ref);
+    } catch (error) {
+      console.error('[KaizerBrix] Intro animation failed; showing the site.', error);
+      finish();
+    }
+
+    return () => {
+      window.clearTimeout(failsafe);
+      context?.revert();
+    };
+  }, [show]);
+
+  return show ? <div className="preloader-overlay" ref={ref}><Mark className="preloader-mark"/><div className="preloader-cut"/></div> : null;
+}
 function Nav(){const[open,setOpen]=useState(false),[light,setLight]=useState(false);useEffect(()=>{const fn=()=>{let yes=false;document.querySelectorAll('[data-nav-light]').forEach(e=>{const r=e.getBoundingClientRect();if(r.top<90&&r.bottom>90)yes=true});setLight(yes)};window.addEventListener('scroll',fn,{passive:true});fn();return()=>window.removeEventListener('scroll',fn)},[]);useEffect(()=>{const closeOnEscape=e=>{if(e.key==='Escape')setOpen(false)};document.addEventListener('keydown',closeOnEscape);document.body.classList.toggle('film-menu-active',open);if(open)window.__kbLenis?.stop();else window.__kbLenis?.start();return()=>{document.removeEventListener('keydown',closeOnEscape);document.body.classList.remove('film-menu-active')}},[open]);return <><header className={`film-nav ${light?'is-light':''} ${open?'menu-open':''}`}><a href="#home" className="film-nav-mark" aria-label="KaizerBrix home" onClick={()=>setOpen(false)}><Mark/></a><button className="film-menu-button" onClick={()=>setOpen(v=>!v)} aria-expanded={open} aria-controls="film-site-menu" aria-label={open?'Close site menu':'Open site menu'}><span>{open?'CLOSE':'MENU'}</span><i/></button></header>{open&&<nav className="film-menu" id="film-site-menu" aria-label="Site navigation">{links.map(([n,t,h])=><a href={h} key={n} onClick={()=>setOpen(false)}><span>{n}</span>{t}</a>)}<div className="film-menu-divider">EXPLORE THE SITE</div><Link to="/about" onClick={()=>setOpen(false)}><span>↗</span>About</Link><Link to="/expertise" onClick={()=>setOpen(false)}><span>↗</span>Expertise</Link><Link to="/projects" onClick={()=>setOpen(false)}><span>↗</span>Projects</Link><Link to="/contact" onClick={()=>setOpen(false)}><span>↗</span>Contact</Link></nav>}<aside className="film-rail">{links.map(([n,t,h])=><button key={n} title={t} aria-label={'Go to '+t} onClick={()=>window.__kbLenis?.scrollTo(h,{offset:-10,duration:1.25})}><span>{n}</span><i/></button>)}</aside></>}
 function Hero(){return <section id="home" className="film-scene hero-scene"><div className="hero-copy"><p className="microline"><i/> ARCHITECTURE · CIVIL ENGINEERING · SURVEYING · TOWN PLANNING · PROCUREMENT</p><h1 className="hero-title"><span className="hero-building">BUILDING</span><span className="hero-enduring">enduring</span><span className="hero-legacies">LEGACIES<span>.</span></span></h1><p className="hero-tagline"><i/>We lay foundations that endure through generations.</p></div><div className="hero-photo-frame"><Photo src="/images/golden-tower.webp" alt="Illustrative architectural tower photograph used as a temporary reference" className="hero-photo"/><span className="frame-index">FIG. 01 / ARCHITECTURE</span></div><div className="hero-bottom"><span>PORT HARCOURT, NIGERIA</span><span>SCROLL TO EXPLORE <i/></span></div><div className="hero-diagonal"/></section>}
 function About(){return <section id="about" className="film-scene about-scene"><div className="about-copy"><Chip>ABOUT US</Chip><h2 className="word-reveal">{about.paragraphs[0].split(' ').map((word,i)=><span key={i}>{word}{' '}</span>)}</h2><p>{about.paragraphs[1]}</p><p>{about.paragraphs[2]}</p></div><figure className="about-photo-wrap"><Photo src="/images/tower-hardhat-bw.webp" alt="Illustrative tower and construction safety reference photograph" className="about-photo"/><figcaption>01 — BUILT ENVIRONMENT / ENGINEERING</figcaption></figure><span className="section-vertical">KAIZERBRIX CONSULTS / PROFILE</span></section>}
