@@ -312,3 +312,37 @@ main{display:block}
 .session-preloader{position:fixed;z-index:500;inset:0;background:#fff;color:var(--orange);display:grid;place-items:center;overflow:hidden}
 .preloader-mark{width:clamp(70px,12vw,150px);height:auto;position:relative;z-index:2}
 .preloader-plane{position:absolute;inset:0;background:var(--orange);clip-path:polygon(0 0,0 0,0 100%,0 100%)}
+
+.site-nav[data-pinned="true"] .nav-right{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,visibility .18s ease}
+.home-project-grid{display:flex;width:max-content;gap:3vw}
+.home-project{flex:0 0 min(52vw,760px);width:min(52vw,760px)}
+.home-project-2{margin-top:8vh}.home-project-3{margin-top:3vh}
+.home-projects{overflow:visible}
+.pinned-values{min-height:100svh;padding-top:clamp(80px,10vw,140px);padding-bottom:clamp(80px,10vw,140px)}
+.values-pin-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:8vw;min-height:65svh;align-items:center}
+.values-pin-left h2{font-size:clamp(4.5rem,7vw,9rem);margin:25px 0 35px}
+.values-pin-left ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:13px 20px}
+.value-index{display:flex;align-items:center;gap:10px;opacity:.45;transition:opacity .2s ease}
+.value-index.is-active{opacity:1}
+.value-index .counter{font-size:2.5rem;-webkit-text-stroke-width:.7px}
+.value-index.is-active .counter{color:var(--orange)}
+.value-index>span:last-child{font-size:.95rem;text-transform:uppercase;letter-spacing:.03em}
+.values-pin-stage{position:relative;min-height:400px}
+.value-step{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center}
+.value-step h3{font-size:clamp(3.5rem,6vw,8rem);text-transform:uppercase;margin:30px 0}
+.value-step p{font-size:clamp(1.5rem,1.5vw,1.9rem);line-height:1.8;max-width:650px}
+.values-mobile{display:none}
+.project-row .scope{opacity:.2;transition:opacity .25s ease}
+.project-row:hover .scope,.project-row:focus-within .scope{opacity:1}
+@media(max-width:760px){
+.home-project-grid{display:grid;width:100%;grid-template-columns:1fr;gap:38px}
+.home-project-2,.home-project-3{margin-top:0}
+.home-project{width:100%;flex:none}
+.pinned-values{min-height:0;padding-top:80px;padding-bottom:80px}
+.values-pin-layout{display:none}
+.values-mobile{display:block}
+.values-mobile .value-row{display:grid;grid-template-columns:42px 1fr;gap:15px;padding:25px 0;border-top:1px solid rgba(23,21,22,.25)}
+.values-mobile .value-row h3{font-size:2.6rem;text-transform:uppercase}
+.values-mobile .value-row p{font-size:1.4rem;line-height:1.8;margin-top:12px}
+.project-row .scope{opacity:1}
+}
