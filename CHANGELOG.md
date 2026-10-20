@@ -1,3 +1,11 @@
+## 2026-10-20 — Discipline scene transition polish
+- Expanded the six-discipline image transition timing and softened the wipe/fade/scale movement so changes feel more deliberate instead of abrupt.
+- Added restrained easing to discipline pill color, underline/active marker, number, and service-description changes.
+- Removed the active pill's automatic scrollIntoView effect, which could introduce a second scroll operation while Lenis and the pinned ScrollTrigger scene were already controlling the page.
+- Updated pill-selection scroll targets to match the revised timeline spacing and eased the scroll duration slightly.
+- Respects reduced-motion preferences for the added CSS transitions.
+- Verification note: code-level checks completed; live visual QA at 390px, 430px, and desktop is still required before merging to production.
+
 ## 2026-10-20 — About photo scroll stability
 - Root cause identified in the animation setup: the About photo image itself was driven by two independent scrubbed GSAP transforms (a vertical parallax tween and a shared scale tween), while its parent wrapper was also being clipped/scaled/moved by the pinned About timeline. Multiple nested scroll-linked transforms made the photo susceptible to visible jitter during scroll.
 - Removed the two extra image-level scrub animations for .about-photo. The About photo now follows the existing .about-photo-wrap reveal choreography, while the separate parallax/scale effects remain enabled for the other sections.
