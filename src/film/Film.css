@@ -2033,3 +2033,16 @@ html,body{overflow-x:clip}
     padding-top: 30px !important;
   }
 }
+
+
+/* Final navbar wordmark nudge: move the visible logo farther left inside the glass pill. */
+.film-nav .film-nav-mark .film-nav-logo,
+.film-nav.is-light .film-nav-mark .film-nav-logo {
+  transform: translateX(-12px) !important;
+}
+@media (max-width: 520px) {
+  .film-nav .film-nav-mark .film-nav-logo,
+  .film-nav.is-light .film-nav-mark .film-nav-logo {
+    transform: translateX(-8px) !important;
+  }
+}
