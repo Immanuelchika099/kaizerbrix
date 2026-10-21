@@ -2046,3 +2046,12 @@ html,body{overflow-x:clip}
     transform: translateX(-8px) !important;
   }
 }
+
+
+/* Hero typography correction: align “ENDURING” flush with “BUILDING” and “LEGACY”. */
+.hero-title .hero-enduring,
+.hero-title .hero-enduring span {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  text-indent: 0 !important;
+}
