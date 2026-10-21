@@ -1992,3 +1992,11 @@ html,body{overflow-x:clip}
     transition:none!important;
   }
 }
+
+
+/* Mobile: tighten the handoff from the final design/scope plate into Quality Policy. */
+@media (max-width: 899px) {
+  .designs-scene { padding-bottom: 28px !important; }
+  .design-plate { min-height: 0 !important; padding: 18px 0 10px !important; }
+  .quality-panel { padding-top: 64px !important; }
+}
