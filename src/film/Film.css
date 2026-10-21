@@ -290,8 +290,8 @@ html,body{overflow-x:clip}
  .service-detail{font-size:1.6rem;line-height:1.7;margin-top:20px}
  .service-detail li{font-size:1.6rem;line-height:1.7}
  .expertise-right{height:auto;min-height:0;aspect-ratio:4/3;max-height:440px}
- .discipline-panel{display:none}
- .discipline-panel.active{display:block;position:absolute;inset:0;opacity:1!important;visibility:visible!important;transform:none!important;clip-path:none!important}
+ .discipline-panel{display:block;position:absolute;inset:0}
+ /* Keep every discipline panel mounted on mobile so the GSAP crossfade/wipe can actually render. Do not force active-panel opacity, transform, or clip-path here: those are controlled by the scroll timeline. */
  .discipline-panel>span{font-size:1rem}
  .statement-scene{min-height:0;padding:var(--section-space) 24px}
  .statement-text{font-size:clamp(4.4rem,11.5vw,7rem);line-height:1.03;max-width:12ch;text-wrap:balance;transform:none}
