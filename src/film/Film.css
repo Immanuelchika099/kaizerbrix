@@ -2055,3 +2055,18 @@ html,body{overflow-x:clip}
   padding-left: 0 !important;
   text-indent: 0 !important;
 }
+
+
+/* Make the hero's “SCROLL TO EXPLORE” cue an accessible, clickable navigation link. */
+.hero-bottom .hero-scroll-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.hero-bottom .hero-scroll-link:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 6px;
+}
