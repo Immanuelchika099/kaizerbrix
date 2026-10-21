@@ -2020,3 +2020,16 @@ html,body{overflow-x:clip}
     padding-right: 0 !important;
   }
 }
+
+
+/* Mobile: remove the oversized handoff gap before the Quality Policy section.
+   The 3D Designs scene is currently deferred in Film.jsx, so target the real
+   preceding Projects scene rather than the non-rendered designs-scene selector. */
+@media (max-width: 899px) {
+  .projects-scene {
+    padding-bottom: 18px !important;
+  }
+  .quality-panel {
+    padding-top: 30px !important;
+  }
+}
