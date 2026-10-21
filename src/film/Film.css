@@ -2000,3 +2000,23 @@ html,body{overflow-x:clip}
   .design-plate { min-height: 0 !important; padding: 18px 0 10px !important; }
   .quality-panel { padding-top: 64px !important; }
 }
+
+
+/* Client correction: align the supplied wordmark to the navbar's inner left edge. */
+.film-nav .film-nav-mark,
+.film-nav.is-light .film-nav-mark {
+  justify-content: flex-start !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.film-nav .film-nav-mark .film-nav-logo,
+.film-nav.is-light .film-nav-mark .film-nav-logo {
+  object-position: left center !important;
+}
+@media (max-width: 520px) {
+  .film-nav .film-nav-mark,
+  .film-nav.is-light .film-nav-mark {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
